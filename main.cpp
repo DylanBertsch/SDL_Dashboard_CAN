@@ -39,7 +39,23 @@ int main( int argc, char* args[] )
                 //SDL_RenderDrawLine(renderer,0,0,200,200);
                 count++;
                 graph1.setValue(count);
-                SDL_RenderPresent(renderer);
+                ///////////////Draw Picture
+                for(int index = 10000; index < 11199; index++) {
+                    std::string filepath = "/home/dylan/Documents/Gauge1_AME/Comp " + std::to_string(index) + ".bmp";
+
+                    SDL_Surface *image = SDL_LoadBMP(filepath.c_str());
+                    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
+                    SDL_Rect r;
+                    r.x = 0;
+                    r.y = 0;
+                    r.w = 400;
+                    r.h = 400;
+                    SDL_RenderCopy(renderer, texture, NULL, &r);
+                    SDL_DestroyTexture(texture);
+                    SDL_FreeSurface(image);
+                    ////////////////////////////
+                    SDL_RenderPresent(renderer);
+                }
                 usleep(100000);
                 while (SDL_PollEvent(&event)) {
                     if (event.type == SDL_QUIT) {
