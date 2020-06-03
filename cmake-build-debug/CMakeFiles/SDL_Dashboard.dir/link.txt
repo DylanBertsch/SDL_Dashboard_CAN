@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/SDL_Dashboard.dir/main.cpp.o CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o  -o SDL_Dashboard -lSDL2 -lSDL2_ttf 
