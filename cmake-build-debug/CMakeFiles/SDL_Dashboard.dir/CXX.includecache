@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/dylan/CLionProjects/SDL_Dashboard/gui_library.h
+/home/dylan/Desktop/SDL_Dashboard/gui_library.h
 SDL2/SDL.h
 -
 vector
@@ -18,13 +18,13 @@ math.h
 SDL2/SDL_ttf.h
 -
 
-/home/dylan/CLionProjects/SDL_Dashboard/main.cpp
+/home/dylan/Desktop/SDL_Dashboard/main.cpp
 SDL2/SDL.h
 -
 stdio.h
 -
 gui_library.h
-/home/dylan/CLionProjects/SDL_Dashboard/gui_library.h
+/home/dylan/Desktop/SDL_Dashboard/gui_library.h
 unistd.h
 -
 

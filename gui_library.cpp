@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <SDL2/SDL_rect.h>
 #include "gui_library.h"
 
 void label::setValue(char newValue[])
@@ -383,53 +384,71 @@ void Renderer::render()
             }
 
         }
-        if(widPTR->widgetType == ITEM_HGRAPH)
+        if(widPTR->widgetType == ITEM_VGRAPH)
         {
-            //Set the foreground color to green
-            //setForegroundColor(0,10000000,120000);
-            HorizontalGraph* horizontalGraph = (HorizontalGraph*)widPTR;
-            int width = 300;
-            int height = 75;
+            VerticalGraph* verticalGraph = (VerticalGraph*)widPTR;
+            int width = 125;
+            int height = 250;
             SDL_Rect rect;
-            rect.x = horizontalGraph->xpos;
-            rect.y = horizontalGraph->ypos;
+            rect.x = verticalGraph->xpos;
+            rect.y = verticalGraph->ypos;
             rect.w = width;
             rect.h = height;
-            //Draw outer rectangle; white
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
             SDL_RenderDrawRect(renderer,&rect);
-            //Draw seperation for where instrument text is displayed
-            SDL_RenderDrawLine(renderer,horizontalGraph->xpos+width-100,horizontalGraph->ypos+height,horizontalGraph->xpos+width-100,horizontalGraph->ypos);
-            //Draw Gauge name
-            SDL_Color textColor = {255, 255, 255};
-            SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, horizontalGraph->widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+            //Draw Graph Name
+            SDL_Color textColor = {255, 255, 0};
+            SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, verticalGraph->widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
             SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
             SDL_Rect Message_rect; //create a rect
-            Message_rect.x = horizontalGraph->xpos+width-50-(25/2);  //controls the rect's x coordinate
-            Message_rect.y = horizontalGraph->ypos; // controls the rect's y coordinte
-            Message_rect.w = 25; // controls the width of the rect
-            Message_rect.h = 25; // controls the height of the rect
+            Message_rect.x = verticalGraph->xpos+(width/2)-25;
+            Message_rect.y = verticalGraph->ypos;
+            Message_rect.w = 50; // controls the width of the rect
+            Message_rect.h = 40; // controls the height of the rect
             SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
-            //Draw Gauge Value
-            textColor = {static_cast<Uint8>((Uint8)(255/horizontalGraph->max)*horizontalGraph->value), (Uint8)(153-(102/horizontalGraph->max)*horizontalGraph->value), 0};
-            std::string valueTest = std::to_string((int)horizontalGraph->value) + " " + std::string(horizontalGraph->unitName);
-            surfaceMessage = TTF_RenderText_Solid(Sans, valueTest.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+            //Draw inner rectangle for bar value
+            rect.x = (verticalGraph->xpos + (width/2)) - (25/2);
+            rect.y = verticalGraph->ypos + 50;
+            rect.w = 25;
+            rect.h = 150;
+            SDL_RenderDrawRect(renderer,&rect);
+            //Draw Bar (Vertical)
+            SDL_SetRenderDrawColor(renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+            rect.x = ((verticalGraph->xpos + (width/2)) - (25/2))+2;
+            rect.y = verticalGraph->ypos + 52;
+            rect.w = 21;
+            rect.h = ((150)/(verticalGraph->max))*verticalGraph->value;
+            SDL_RenderFillRect(renderer,&rect);
+            //Draw Tick Numbers
+            textColor = {0, 255, 0};
+            int tickDivision = 25;
+            for(int index = 0; index*tickDivision <= verticalGraph->max; index++)
+            {
+                std::string tickValue = std::to_string(index*tickDivision);
+                rect.x = ((verticalGraph->xpos + (width/2)) - (25/2))-40;
+                rect.y = verticalGraph->ypos+(index*40)+45;
+                rect.w = 25;
+                rect.h = 30;
+                SDL_Surface* surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, tickValue.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+                SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+                SDL_RenderCopy(renderer, Message, NULL, &rect);
+                SDL_DestroyTexture(Message);
+                SDL_FreeSurface(surfaceMessage);
+            }
+            //Draw Value text
+            textColor = {255,255,255};
+            std::string valueText = std::to_string((int)verticalGraph->value) + " " +std::string(verticalGraph->unitName);
+            rect.x = verticalGraph->xpos+(50/2)-10;
+            rect.y = verticalGraph->ypos+height-45;
+            rect.w = 100;
+            rect.h = 40;
+            surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, valueText.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
             Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
-            Message_rect.x = horizontalGraph->xpos+width-50-(75/2);  //controls the rect's x coordinate
-            Message_rect.y = horizontalGraph->ypos+height-35; // controls the rect's y coordinate
-            Message_rect.w = 75; // controls the width of the rect
-            Message_rect.h = 35; // controls the height of the rect
-            SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+            SDL_RenderCopy(renderer, Message, NULL, &rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
-            int barWidth = (int)(((width-100)/(horizontalGraph->max)*horizontalGraph->value)+horizontalGraph->xpos);
-            SDL_SetRenderDrawColor(renderer, (int)(255/horizontalGraph->max)*horizontalGraph->value, (int)(153-(102/horizontalGraph->max)*horizontalGraph->value), 0, SDL_ALPHA_OPAQUE);
-            rect.y = (int)(horizontalGraph->ypos+(height/2)-10);
-            rect.w = barWidth;
-            rect.h = 20;
-            SDL_RenderFillRect(renderer, &rect);
         }
 
     }//End of for loop

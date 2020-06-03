@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug"/>
+				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug"/>
+				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SDL_Dashboard">
-				<Option output="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/SDL_Dashboard" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug"/>
+				<Option output="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/SDL_Dashboard" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -44,15 +44,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 SDL_Dashboard"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 SDL_Dashboard"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SDL_Dashboard/fast">
-				<Option output="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/SDL_Dashboard" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug"/>
+				<Option output="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/SDL_Dashboard" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -67,33 +67,33 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 SDL_Dashboard/fast"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 SDL_Dashboard/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug"/>
+				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j12 -f &quot;/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dylan/CLionProjects/SDL_Dashboard/gui_library.cpp">
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/gui_library.cpp">
 			<Option target="SDL_Dashboard"/>
 		</Unit>
-		<Unit filename="/home/dylan/CLionProjects/SDL_Dashboard/gui_library.h">
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/gui_library.h">
 			<Option target="SDL_Dashboard"/>
 		</Unit>
-		<Unit filename="/home/dylan/CLionProjects/SDL_Dashboard/main.cpp">
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/main.cpp">
 			<Option target="SDL_Dashboard"/>
 		</Unit>
-		<Unit filename="/home/dylan/CLionProjects/SDL_Dashboard/CMakeLists.txt">
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

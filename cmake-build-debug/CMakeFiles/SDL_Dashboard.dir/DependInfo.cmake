@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/dylan/CLionProjects/SDL_Dashboard/gui_library.cpp" "/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
-  "/home/dylan/CLionProjects/SDL_Dashboard/main.cpp" "/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/main.cpp.o"
+  "/home/dylan/Desktop/SDL_Dashboard/gui_library.cpp" "/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
+  "/home/dylan/Desktop/SDL_Dashboard/main.cpp" "/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

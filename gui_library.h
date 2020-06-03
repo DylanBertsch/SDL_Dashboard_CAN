@@ -6,7 +6,7 @@
 #define ITEM_OPTION 0
 #define ITEM_BUTTON 1
 #define ITEM_Label  2
-#define ITEM_HGRAPH 3
+#define ITEM_VGRAPH 3
 #define ITEM_ROUNDGAUGE 4
 #define ITEM_EDITOR_BUTTON 5
 #define ITEM_EDITOR_LABEL 6 //Differs from label becuase this is an editLabel which will spawn a editor on the screen.
@@ -129,15 +129,15 @@ public:
     }
 };
 
-class HorizontalGraph : public Widget{
+class VerticalGraph : public Widget{
 public:
     float value = 0.0;
     float min = 0.0;
     float max = 1.0;
     char unitName[10];
-    HorizontalGraph(char* graphName,char* UNITNAME, float MIN, float MAX, int XPOS, int YPOS) : Widget(XPOS, YPOS)
+    VerticalGraph(char* graphName, char* UNITNAME, float MIN, float MAX, int XPOS, int YPOS) : Widget(XPOS, YPOS)
     {
-        widgetType = ITEM_HGRAPH;
+        widgetType = ITEM_VGRAPH;
         min = MIN;
         max = MAX;
         strcpy(widgetName,graphName);
@@ -299,7 +299,8 @@ private:
     //Define the SDL environment variables
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
-    TTF_Font* Sans = TTF_OpenFont("/home/dylan/OpenSans-Regular.ttf", 25);
+    TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
+    TTF_Font* SansOilGaugeTicks = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
 public:
     int xCursor = 0;
     int yCursor = 100;

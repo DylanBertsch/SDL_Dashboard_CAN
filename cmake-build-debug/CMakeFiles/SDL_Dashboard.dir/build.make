@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.6494.38/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.6494.38/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dylan/CLionProjects/SDL_Dashboard
+CMAKE_SOURCE_DIR = /home/dylan/Desktop/SDL_Dashboard
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug
+CMAKE_BINARY_DIR = /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SDL_Dashboard.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/SDL_Dashboard.dir/flags.make
 
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SDL_Dashboard.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/main.cpp.o -c /home/dylan/CLionProjects/SDL_Dashboard/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SDL_Dashboard.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/main.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/main.cpp
 
 CMakeFiles/SDL_Dashboard.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/CLionProjects/SDL_Dashboard/main.cpp > CMakeFiles/SDL_Dashboard.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/main.cpp > CMakeFiles/SDL_Dashboard.dir/main.cpp.i
 
 CMakeFiles/SDL_Dashboard.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/CLionProjects/SDL_Dashboard/main.cpp -o CMakeFiles/SDL_Dashboard.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/main.cpp -o CMakeFiles/SDL_Dashboard.dir/main.cpp.s
 
 CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
 CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o: ../gui_library.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o -c /home/dylan/CLionProjects/SDL_Dashboard/gui_library.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/gui_library.cpp
 
 CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/CLionProjects/SDL_Dashboard/gui_library.cpp > CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/gui_library.cpp > CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.i
 
 CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/CLionProjects/SDL_Dashboard/gui_library.cpp -o CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/gui_library.cpp -o CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s
 
 # Object files for target SDL_Dashboard
 SDL_Dashboard_OBJECTS = \
@@ -95,7 +95,7 @@ SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/main.cpp.o
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/build.make
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SDL_Dashboard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SDL_Dashboard"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL_Dashboard.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/SDL_Dashboard.dir/clean:
 .PHONY : CMakeFiles/SDL_Dashboard.dir/clean
 
 CMakeFiles/SDL_Dashboard.dir/depend:
-	cd /home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dylan/CLionProjects/SDL_Dashboard /home/dylan/CLionProjects/SDL_Dashboard /home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug /home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug /home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/dylan/Desktop/SDL_Dashboard /home/dylan/Desktop/SDL_Dashboard /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SDL_Dashboard.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/dylan/CLionProjects/SDL_Dashboard
+# Install script for directory: /home/dylan/Desktop/SDL_Dashboard
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/dylan/CLionProjects/SDL_Dashboard/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
