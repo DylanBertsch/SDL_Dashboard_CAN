@@ -7,6 +7,8 @@ and may not be redistributed without written permission.*/
 #include "gui_library.h"
 #include <unistd.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
 SDL_Window * window = NULL;
 SDL_Renderer* renderer = NULL;
 
@@ -17,15 +19,15 @@ void drawCoolant(int coolantValue)
     SDL_Surface *image = SDL_LoadBMP(filepath.c_str());
     SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
     SDL_Rect r;
-    r.x = 500;
-    r.y = 475;
+    r.x = 600;
+    r.y = 490;
     r.w = 300;
     r.h = 300;
     SDL_RenderCopy(renderer, texture, NULL, &r);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(image);
     ////////////////////////////
-    SDL_RenderPresent(renderer);
+    //SDL_RenderDrawRect(renderer,&r);
 }
 
 void drawRPM(int RPMValue)
@@ -42,8 +44,8 @@ void drawRPM(int RPMValue)
     SDL_RenderCopy(renderer, texture, NULL, &r);
     SDL_DestroyTexture(texture);
     SDL_FreeSurface(image);
+    //SDL_RenderDrawRect(renderer,&r);
     ////////////////////////////
-    SDL_RenderPresent(renderer);
 }
 
 int main( int argc, char* args[] )
@@ -51,41 +53,55 @@ int main( int argc, char* args[] )
     if (SDL_Init(SDL_INIT_VIDEO) == 0) {
         TTF_Init();
         window = SDL_CreateWindow("SDL2 Window",
-                                              SDL_WINDOWPOS_CENTERED,
-                                              SDL_WINDOWPOS_CENTERED,
-                                              800, 800,
-                                              0);
-        renderer = SDL_CreateRenderer(window,0,SDL_RENDERER_ACCELERATED);
-        menuPage mainPage = menuPage();
-        mainPage.setTitle("Engineering Sample");
-        VerticalGraph graph1 = VerticalGraph("OIL", "PSI", 0, 75, 50, 500);
+                                  SDL_WINDOWPOS_CENTERED,
+                                  SDL_WINDOWPOS_CENTERED,
+                                  850, 800,
+                                  0);
+        renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
         int count = 0;
-        mainPage.addWidget(&graph1);
-        if (1==1) {
-            SDL_bool done = SDL_FALSE;
-            Renderer RENDERER(window,renderer);
-            RENDERER.addPage(&mainPage);
-            while (!done) {
-                SDL_Event event;
+        Renderer RENDERER = Renderer(window,renderer);
+        menuPage testPage = menuPage();
+        label RacemodeLabel = label("Test", 25, 5, 255);
+        label systemStatus = label("SYSTEM OK",25,250,255);
+        VerticalGraph oilGraph = VerticalGraph(0, 550, 75, 25,"OIL", "PSI");
+        VerticalGraph voltageGraph = VerticalGraph(0, 300, 15,5, "BATT", "Volts");
+        consoleWidget testConsole = consoleWidget(250, 500, 300, 300);
+        testConsole.addWidget(&RacemodeLabel);
+        RacemodeLabel.setValue("->Race Logger");
+        testConsole.addWidget(&systemStatus);
+        testPage.addWidget(&oilGraph);
+        testPage.addWidget(&testConsole);
+        testPage.addWidget(&voltageGraph);
+        RENDERER.addPage(&testPage);
 
+
+            while (true) {
+                SDL_Event event;
+                const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
+                SDL_WaitEventTimeout(&event,1);
+                printf("%d\n",testConsole.selectedIndex);
+                if(keyboard_state_array[SDL_SCANCODE_DOWN])
+                {
+                    testConsole.incrementSelectedIndex();
+                }
+                if(keyboard_state_array[SDL_SCANCODE_UP])
+                {
+                    testConsole.decrementSelectedIndex();
+                }
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
                 SDL_RenderClear(renderer);
                 //Draw
-                SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+                oilGraph.setValue(count % 75);
+                voltageGraph.setValue(count%14);
                 RENDERER.render();
                 //SDL_RenderDrawLine(renderer,0,0,200,200);
                 count = count + 5;
                 count = count % 6000;
-                graph1.setValue(count%75);
+                //graph1.setValue(count%75);
                 drawCoolant(count%700);
                 drawRPM(count);
-
-                usleep(75000);
-                while (SDL_PollEvent(&event)) {
-                    if (event.type == SDL_QUIT) {
-                        done = SDL_TRUE;
-                    }
-                }
+                SDL_RenderPresent(renderer);
+                usleep(50000);
             }
         }
 
@@ -95,7 +111,7 @@ int main( int argc, char* args[] )
         if (window) {
             SDL_DestroyWindow(window);
         }
-    }
     SDL_Quit();
     return 0;
 }
+#pragma clang diagnostic pop
