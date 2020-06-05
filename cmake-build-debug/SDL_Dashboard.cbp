@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/dataCommunication_mega2560.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
 		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/gui_library.cpp">
 			<Option target="SDL_Dashboard"/>
 		</Unit>

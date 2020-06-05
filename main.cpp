@@ -6,7 +6,7 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "gui_library.h"
 #include <unistd.h>
-
+#include "dataCommunication_mega2560.h"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 SDL_Window * window = NULL;
@@ -88,20 +88,34 @@ int main( int argc, char* args[] )
                 {
                     testConsole.decrementSelectedIndex();
                 }
+                if(keyboard_state_array[SDL_SCANCODE_E])
+                {
+                    int i = 0;
+                }
+                dataCommunication DATA = dataCommunication();
+                    char* data = DATA.read_data();
+                    if(data != (char*)-1)
+                    {
+                        std::vector<float>* numbers = DATA.processDataString(data);
+                        if(numbers != nullptr)
+                        {
+                            oilGraph.setValue(numbers->at(0));
+                        }
+                    }
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
                 SDL_RenderClear(renderer);
                 //Draw
-                oilGraph.setValue(count % 75);
+                //oilGraph.setValue(count % 75);
                 voltageGraph.setValue(count%14);
                 RENDERER.render();
                 //SDL_RenderDrawLine(renderer,0,0,200,200);
-                count = count + 5;
+                count = count + 1;
                 count = count % 6000;
                 //graph1.setValue(count%75);
                 drawCoolant(count%700);
                 drawRPM(count);
                 SDL_RenderPresent(renderer);
-                usleep(50000);
+                usleep(30000);
             }
         }
 
