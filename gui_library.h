@@ -13,6 +13,7 @@
 #define Widget_CoordinatePlane 7
 #define Widget_RPM 8
 #define Widget_CONSOLE 9
+#define Widget_BITMAP 10
 
 class Widget{
 public:
@@ -32,6 +33,33 @@ public:
         widgetType = WIDGET_TYPE;
     }
     void onDraw(SDL_Renderer* renderer);
+};
+
+class menuPage
+{
+public:
+    Widget* widget_array[5];
+    char title[20];
+    int widgetCount = 0;
+    int selectedItem = 0;
+    void selectMoveDown();
+    void selectMoveUp();
+    void addWidget(Widget* inputWidget)
+    {
+        widget_array[widgetCount] = inputWidget;
+        widgetCount++;
+    }
+    Widget* selectMenuItem();//return a page when Widget is clicked
+    menuPage()
+    {
+        memset(widget_array,0,sizeof(widget_array));
+    }
+
+    void setTitle(char* newTitle)
+    {
+        strcpy(title,newTitle);
+    }
+
 };
 
 class VerticalGraph : public Widget{
@@ -124,7 +152,7 @@ class label : public Widget
 public:
     char labelValue[20];
     int labelColor = 0;
-    void* editPagePointer;
+    menuPage* onClick_NextPage = nullptr;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
     label(char labelName[], int x, int y, int Color) : Widget(x,y,250,45,labelName,Widget_Label)
     {
@@ -136,12 +164,20 @@ public:
     {
         strcpy(labelValue,newValue);
     }
+
+    void setonClick_NextPage(menuPage* nextPage)
+    {
+        onClick_NextPage = nextPage;
+    }
 };
 
 class consoleWidget : public Widget
 {
 
 public:
+    bool pendingPageChange = false;
+    menuPage* pageChangePTR = nullptr;
+
     int selectedIndex = 0;
     std::vector<Widget*> menuWidgets;
     consoleWidget(int XPOS, int YPOS, int windowWidth, int windowHeight) : Widget(XPOS,YPOS,windowWidth,windowHeight,"CONSOLE",Widget_CONSOLE)
@@ -162,6 +198,25 @@ public:
     void decrementSelectedIndex()
     {
         selectedIndex--;
+    }
+
+    void selectOption()
+    {
+        //get the current selected widget;
+        Widget* selectedWidget = (Widget*)menuWidgets[selectedIndex];
+        if(selectedWidget->widgetType == Widget_Label)
+        {
+            label* selectedWidget_Label = (label*)selectedWidget;
+            //Check if the selected widget has a next page to go to.
+            if(selectedWidget_Label->onClick_NextPage != nullptr)
+            {
+                //Change the renderer to the next page.
+                pendingPageChange = true;
+                pageChangePTR = selectedWidget_Label->onClick_NextPage;
+                //inform the renderer that the previousPage is now the current page we are on; so we can travel back to this page.
+
+            }
+        }
     }
 
     void onDraw(SDL_Renderer* renderer)
@@ -204,31 +259,50 @@ public:
     }
 };
 
-
-class menuPage
-{
+class BitmapWidget : public Widget{
+private:
+    char filePath[250];
+    int startIndex = 0;
+    int endIndex = 0;
+    int value = 0;
 public:
-    Widget* widget_array[5];
-    char title[20];
-    int widgetCount = 0;
-    int selectedItem = 0;
-    void selectMoveDown();
-    void selectMoveUp();
-    void setTitle(char newTitle[]);
-    void addWidget(Widget* inputWidget)
+    BitmapWidget(int XPOS, int YPOS, int Width, int Height, char* FILEPATH, int START_INDEX, int END_INDEX) : Widget(XPOS,YPOS,Width,Height,"BITMAPW",Widget_BITMAP)
     {
-        widget_array[widgetCount] = inputWidget;
-        widgetCount++;
-    }
-    Widget* selectMenuItem();//return a page when Widget is clicked
-    menuPage()
-    {
-        memset(widget_array,0,sizeof(widget_array));
+        strcpy(filePath,FILEPATH);
+        startIndex = START_INDEX;
+        endIndex = END_INDEX;
     }
 
+    void setValue(int newValue)
+    {
+        value = newValue;
+    }
 
+    void onDraw(SDL_Renderer* renderer)
+    {
+        int index = startIndex+(value);
+        if(index > endIndex)
+        {
+
+        } else {
+            std::string Path = std::string(this->filePath) + std::to_string(index) + ".bmp";
+            SDL_Surface *image = SDL_LoadBMP(Path.c_str());
+            SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
+            SDL_Rect r;
+            r.x = xpos;
+            r.y = ypos;
+            r.w = width;
+            r.h = height;
+            SDL_RenderCopy(renderer, texture, NULL, &r);
+            SDL_DestroyTexture(texture);
+            SDL_FreeSurface(image);
+            ////////////////////////////
+            //SDL_RenderDrawRect(renderer,&r);
+        }
+    }
 
 };
+
 
 class Renderer
 {
@@ -263,7 +337,10 @@ public:
     }
     void selectCurrentOption();
     void moveSelectedItem(int DIRECTION);
-    void back();
+    void back()
+    {
+        currentPage = previousPage;
+    }
 
     void render()
     {
@@ -279,10 +356,44 @@ public:
                 }
                 case Widget_CONSOLE: {
                     consoleWidget* cWidget = (consoleWidget*)currentPage->widget_array[index];
+                    //Check if the consoleWidget has a pending page change | meaning the user has selected a label and this rendering class must change pages.
+                    if(cWidget->pendingPageChange == true)
+                    {
+                        previousPage = currentPage;
+                        currentPage = cWidget->pageChangePTR;
+                        cWidget->pageChangePTR = nullptr;
+                        cWidget->pendingPageChange = false;//Acknowledge page change
+                    }
                     cWidget->onDraw(renderer);
                     break;
                 }
-
+                case Widget_Label:
+                {
+                    label* LABEL = (label*)widPTR;
+                    //Draw Value Text
+                    SDL_Color textColor = {0, 255, 0};
+                    //if(selectedIndex == index)
+                    //{
+                    //    textColor = {255,0,0};
+                    //}
+                    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(LABEL->Sans, LABEL->labelValue, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+                    SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+                    SDL_Rect Message_rect; //create a rect
+                    Message_rect.x = LABEL->xpos;
+                    Message_rect.y = LABEL->ypos;
+                    Message_rect.w = LABEL->width; // controls the width of the rect
+                    Message_rect.h = LABEL->height; // controls the height of the rect
+                    SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+                    SDL_DestroyTexture(Message);
+                    SDL_FreeSurface(surfaceMessage);
+                    break;
+                }
+                case Widget_BITMAP:
+                {
+                    BitmapWidget* bitmapWidget = (BitmapWidget*)widPTR;
+                    bitmapWidget->onDraw(renderer);
+                    break;
+                }
 
             }
             //Call the widget's onDraw function to render the widget on the screen.

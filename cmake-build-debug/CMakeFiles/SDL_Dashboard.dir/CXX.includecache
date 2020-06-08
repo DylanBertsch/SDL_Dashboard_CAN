@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/dylan/Desktop/SDL_Dashboard/dataCommunication_mega2560.h
+fcntl.h
+-
+errno.h
+-
+termios.h
+-
+unistd.h
+-
+iostream
+-
+vector
+-
+
 /home/dylan/Desktop/SDL_Dashboard/gui_library.h
 SDL2/SDL.h
 -
@@ -27,4 +41,6 @@ gui_library.h
 /home/dylan/Desktop/SDL_Dashboard/gui_library.h
 unistd.h
 -
+dataCommunication_mega2560.h
+/home/dylan/Desktop/SDL_Dashboard/dataCommunication_mega2560.h
 

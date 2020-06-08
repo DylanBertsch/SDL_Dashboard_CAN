@@ -61,7 +61,11 @@ int main( int argc, char* args[] )
         int count = 0;
         Renderer RENDERER = Renderer(window,renderer);
         menuPage testPage = menuPage();
+        menuPage clickPage = menuPage();
         label RacemodeLabel = label("Test", 25, 5, 255);
+        RacemodeLabel.setonClick_NextPage(&clickPage);
+        label LABEL55 = label("HELLO",50,50,0);
+        clickPage.addWidget(&LABEL55);
         label systemStatus = label("SYSTEM OK",25,250,255);
         VerticalGraph oilGraph = VerticalGraph(0, 550, 75, 25,"OIL", "PSI");
         VerticalGraph voltageGraph = VerticalGraph(0, 300, 15,5, "BATT", "Volts");
@@ -72,6 +76,12 @@ int main( int argc, char* args[] )
         testPage.addWidget(&oilGraph);
         testPage.addWidget(&testConsole);
         testPage.addWidget(&voltageGraph);
+        BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/Gauge1_AME/Comp ",10000,15000);
+        BitmapWidget Coolant_Widget = BitmapWidget(600,490,300,300,"/home/dylan/Documents/airStyle_AME/Comp ",1000,3000);
+        testPage.addWidget(&RPM_Widget);
+        testPage.addWidget(&Coolant_Widget);
+        testPage.setTitle("TestPage");
+        clickPage.setTitle("ClickPage");
         RENDERER.addPage(&testPage);
 
 
@@ -90,8 +100,13 @@ int main( int argc, char* args[] )
                 }
                 if(keyboard_state_array[SDL_SCANCODE_E])
                 {
-                    int i = 0;
+                    testConsole.selectOption();
                 }
+                if(keyboard_state_array[SDL_SCANCODE_B])
+                {
+                    RENDERER.back();
+                }
+                /*
                 dataCommunication DATA = dataCommunication();
                     char* data = DATA.read_data();
                     if(data != (char*)-1)
@@ -102,6 +117,8 @@ int main( int argc, char* args[] )
                             oilGraph.setValue(numbers->at(0));
                         }
                     }
+                    */
+                std::cout << RENDERER.currentPage->title << std::endl;
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
                 SDL_RenderClear(renderer);
                 //Draw
@@ -111,9 +128,11 @@ int main( int argc, char* args[] )
                 //SDL_RenderDrawLine(renderer,0,0,200,200);
                 count = count + 1;
                 count = count % 6000;
+                RPM_Widget.setValue(count);
+                Coolant_Widget.setValue(count%1000);
                 //graph1.setValue(count%75);
-                drawCoolant(count%700);
-                drawRPM(count);
+                //drawCoolant(count%700);
+                //drawRPM(count);
                 SDL_RenderPresent(renderer);
                 usleep(30000);
             }

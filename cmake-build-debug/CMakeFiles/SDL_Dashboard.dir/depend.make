@@ -3,6 +3,7 @@
 
 CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o: ../gui_library.cpp
 
+CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../dataCommunication_mega2560.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../gui_library.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../main.cpp
 
