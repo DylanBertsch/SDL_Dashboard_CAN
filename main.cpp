@@ -64,8 +64,6 @@ int main( int argc, char* args[] )
         menuPage clickPage = menuPage();
         label RacemodeLabel = label("Test", 25, 5, 255);
         RacemodeLabel.setonClick_NextPage(&clickPage);
-        label LABEL55 = label("HELLO",50,50,0);
-        clickPage.addWidget(&LABEL55);
         label systemStatus = label("SYSTEM OK",25,250,255);
         VerticalGraph oilGraph = VerticalGraph(0, 550, 75, 25,"OIL", "PSI");
         VerticalGraph voltageGraph = VerticalGraph(0, 300, 15,5, "BATT", "Volts");
@@ -82,6 +80,8 @@ int main( int argc, char* args[] )
         testPage.addWidget(&Coolant_Widget);
         testPage.setTitle("TestPage");
         clickPage.setTitle("ClickPage");
+        pagePicker Drawer1 = pagePicker(0,25,600,500);
+        clickPage.addWidget(&Drawer1);
         RENDERER.addPage(&testPage);
 
 

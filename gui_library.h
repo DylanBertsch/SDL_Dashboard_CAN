@@ -14,6 +14,7 @@
 #define Widget_RPM 8
 #define Widget_CONSOLE 9
 #define Widget_BITMAP 10
+#define Widget_PagePicker 11
 
 class Widget{
 public:
@@ -145,6 +146,48 @@ public:
         SDL_FreeSurface(surfaceMessage);
     }
 
+};
+
+class pagePicker : public Widget
+{
+public: //Refer To Engineering Document, Section 1A
+    pagePicker(int x, int y, int width, int height) : Widget(x,y,width,height,"Drawer",Widget_PagePicker)
+    {
+
+    }
+    void onDraw(SDL_Renderer* renderer)
+    {
+        SDL_Rect rect;
+        //Draw upper menu graphic
+        rect.x = xpos;
+        rect.y = ypos;
+        rect.w = width;
+        rect.h = 100;
+        SDL_Surface *image = SDL_LoadBMP("/home/dylan/Desktop/Comp 10000.bmp");//Load Image
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
+        SDL_RenderCopy(renderer, texture, NULL, &rect);
+        SDL_DestroyTexture(texture);
+        SDL_FreeSurface(image);
+         //Draw outer Rectangle
+        rect.x = xpos;
+        rect.y = ypos;
+        rect.w = width;
+        rect.h = height;
+        SDL_SetRenderDrawColor(renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawRect(renderer,&rect);//Draw the outer rectangle of the console window
+        //Draw the 3x3 grid
+        for(int i = 1; i < 3; i++)//Vertical Lines
+        {
+            SDL_RenderDrawLine(renderer,i*200,rect.y+100,i*200,rect.y+height);
+        }
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+        for(int i = 0; i < 3; i++)//Horizontal Lines
+        {
+            SDL_RenderDrawLine(renderer,0,i*200+rect.y+100,rect.x+width,i*200+rect.y+100);
+        }
+
+
+    }
 };
 
 class label : public Widget
@@ -392,6 +435,12 @@ public:
                 {
                     BitmapWidget* bitmapWidget = (BitmapWidget*)widPTR;
                     bitmapWidget->onDraw(renderer);
+                    break;
+                }
+                case Widget_PagePicker:
+                {
+                    pagePicker* PagePICKER = (pagePicker*)widPTR;
+                    PagePICKER->onDraw(renderer);
                     break;
                 }
 
