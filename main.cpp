@@ -60,47 +60,50 @@ int main( int argc, char* args[] )
         renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
         int count = 0;
         Renderer RENDERER = Renderer(window,renderer);
+        menuPage mainPage = menuPage();
         menuPage testPage = menuPage();
-        menuPage clickPage = menuPage();
-        label RacemodeLabel = label("Test", 25, 5, 255);
-        RacemodeLabel.setonClick_NextPage(&clickPage);
-        label systemStatus = label("SYSTEM OK",25,250,255);
         VerticalGraph oilGraph = VerticalGraph(0, 550, 75, 25,"OIL", "PSI");
-        VerticalGraph voltageGraph = VerticalGraph(0, 300, 15,5, "BATT", "Volts");
-        consoleWidget testConsole = consoleWidget(250, 500, 300, 300);
-        testConsole.addWidget(&RacemodeLabel);
-        RacemodeLabel.setValue("->Race Logger");
-        testConsole.addWidget(&systemStatus);
-        testPage.addWidget(&oilGraph);
-        testPage.addWidget(&testConsole);
-        testPage.addWidget(&voltageGraph);
         BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/Gauge1_AME/Comp ",10000,15000);
-        BitmapWidget Coolant_Widget = BitmapWidget(600,490,300,300,"/home/dylan/Documents/airStyle_AME/Comp ",1000,3000);
-        testPage.addWidget(&RPM_Widget);
-        testPage.addWidget(&Coolant_Widget);
-        testPage.setTitle("TestPage");
-        clickPage.setTitle("ClickPage");
+        //mainPage.addWidget(&oilGraph);
+        //mainPage.addWidget(&RPM_Widget);
         pagePicker Drawer1 = pagePicker(0,25,600,500);
-        clickPage.addWidget(&Drawer1);
-        RENDERER.addPage(&testPage);
-
+        pagePicker::iconStruct icon1;
+        icon1.iconPath = "/home/dylan/Desktop/icon1.bmp";
+        icon1.onClickPagePointer = (menuPage*)&testPage;
+        Drawer1.addItem(icon1);
+        icon1.iconPath = "/home/dylan/Desktop/icon2.bmp";
+        Drawer1.addItem(icon1);
+        icon1.iconPath = "/home/dylan/Desktop/icon3.bmp";
+        Drawer1.addItem(icon1);
+        icon1.iconPath = "/home/dylan/Desktop/icon4.bmp";
+        Drawer1.addItem(icon1);
+        mainPage.addWidget(&Drawer1);
+        RENDERER.addPage(&mainPage);
+        testPage.addWidget(&oilGraph);
+        oilGraph.onClick(&RENDERER);
 
             while (true) {
                 SDL_Event event;
                 const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
                 SDL_WaitEventTimeout(&event,1);
-                printf("%d\n",testConsole.selectedIndex);
                 if(keyboard_state_array[SDL_SCANCODE_DOWN])
                 {
-                    testConsole.incrementSelectedIndex();
+                    Drawer1.incrementSelectedIcon();
+                    //testConsole.incrementSelectedIndex();
                 }
                 if(keyboard_state_array[SDL_SCANCODE_UP])
                 {
-                    testConsole.decrementSelectedIndex();
+                    Drawer1.decrementSelectedIcon();
+                    //testConsole.decrementSelectedIndex();
                 }
                 if(keyboard_state_array[SDL_SCANCODE_E])
                 {
-                    testConsole.selectOption();
+                    //Run onClick from currently selected widget
+                    Widget* selectedWidget = RENDERER.currentPage->widget_array[RENDERER.currentPage->selectedItem];
+                    selectedWidget->onClick(&RENDERER);
+                    //selectedWidget->onClick(&RENDERER);
+                    //RENDERER.loadPage(Drawer1.selectIcon());
+                    //testConsole.selectOption();
                 }
                 if(keyboard_state_array[SDL_SCANCODE_B])
                 {
@@ -117,23 +120,16 @@ int main( int argc, char* args[] )
                             oilGraph.setValue(numbers->at(0));
                         }
                     }
-                    */
-                std::cout << RENDERER.currentPage->title << std::endl;
+                */
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-                SDL_RenderClear(renderer);
-                //Draw
-                //oilGraph.setValue(count % 75);
-                voltageGraph.setValue(count%14);
-                RENDERER.render();
-                //SDL_RenderDrawLine(renderer,0,0,200,200);
                 count = count + 1;
                 count = count % 6000;
                 RPM_Widget.setValue(count);
-                Coolant_Widget.setValue(count%1000);
-                //graph1.setValue(count%75);
-                //drawCoolant(count%700);
-                //drawRPM(count);
+                oilGraph.setValue(count%14);
+                SDL_RenderClear(renderer);
+                RENDERER.render();
                 SDL_RenderPresent(renderer);
+
                 usleep(30000);
             }
         }
