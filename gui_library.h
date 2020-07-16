@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <math.h>
+#include <linux/can.h>
 #include <SDL2/SDL_ttf.h>
 #define Widget_OPTION 0
 #define Widget_BUTTON 1
@@ -15,11 +16,28 @@
 #define Widget_CONSOLE 9
 #define Widget_BITMAP 10
 #define Widget_PagePicker 11
+
+#define Window_Width 850
+#define Window_Height 850
+
 //Forward Declarations
 class Renderer;
 class Widget;
 class menuPage;
+
+struct Context{
+    Renderer* RENDERER;//Renderer being used to draw to the screen
+    SDL_Renderer* renderer;
+    menuPage* currentPage;//Page to which the widget belongs.
+};
+
+struct pagePickerData{
+    int selectedIconIndex = 0;
+};
+
 void loadPage(Renderer* renderer,menuPage* page);
+struct Context* getContext(Renderer* RENDERER);
+
 class Widget{
 public:
     int xpos;
@@ -28,6 +46,8 @@ public:
     int height;
     char widgetName[10];
     int widgetType = -1;
+    bool isSelected = false;
+    char auxillaryData[250];// Storage for widgets that need extra information; such as the pagepicker for icon selection
     Widget(int XPOS, int YPOS, int WIDTH, int HEIGHT, char WIDGET_NAME[10], int WIDGET_TYPE)
     {
         xpos = XPOS;
@@ -37,20 +57,20 @@ public:
         strcpy(widgetName, WIDGET_NAME);
         widgetType = WIDGET_TYPE;
     }
-    virtual void onDraw(SDL_Renderer* renderer) = 0;
+    virtual void onDraw(Renderer *RENDERER) = 0;
     virtual void onClick(Renderer* RENDERER) = 0;
 };
 
 class menuPage
 {
 public:
-    Widget* widget_array[5];
+    Widget* widget_array[10];
     char title[20];
     int widgetCount = 0;
     int selectedItem = 0;
     void* parentRenderer = nullptr;
-    void selectMoveDown();
-    void selectMoveUp();
+    void incrementSelectedWidget();
+    void decrementSelectedWidget();
     void addWidget(Widget* inputWidget);
     menuPage()
     {
@@ -68,6 +88,32 @@ void menuPage::addWidget(Widget *inputWidget) {
 
 void menuPage::setTitle(char *newTitle) {
     strcpy(title,newTitle);
+}
+
+void menuPage::incrementSelectedWidget() {
+    //If the page has a pagePicker direct these "increment requests" into the pagepicker widget so icons are selected accordingly
+    if(widgetCount == 1 && widget_array[0]->widgetType == Widget_PagePicker)
+    {
+        Widget* pagePicker = (Widget*)(widget_array[0]);
+        struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
+        pickerData->selectedIconIndex++;
+    }
+}
+
+void menuPage::decrementSelectedWidget() {
+    //If the page has a pagePicker direct these "decrement" requests" into the pagepicker widget so icons are selected accordingly
+    if(widgetCount == 1 && widget_array[0]->widgetType == Widget_PagePicker)
+    {
+        Widget* pagePicker = (Widget*)(widget_array[0]);
+        struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
+        if(pickerData->selectedIconIndex == 0)
+        {
+
+        } else
+        {
+            pickerData->selectedIconIndex--;
+        }
+    }
 }
 
 //////////////////////End menuPage functions//////////////////////
@@ -99,24 +145,25 @@ public:
 
     }
 
-    virtual void onDraw(SDL_Renderer* renderer)
+    virtual void onDraw(Renderer *RENDERER)
     {
+        Context* context = getContext(RENDERER);
         SDL_Rect rect;
         rect.x = xpos;
         rect.y = ypos;
         rect.w = width;
         rect.h = height;
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(context->renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
         //Draw Graph Name
         SDL_Color textColor = {255, 255, 0};
         SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-        SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+        SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
         SDL_Rect Message_rect; //create a rect
         Message_rect.x = xpos+(width/2)-25;
         Message_rect.y = ypos;
         Message_rect.w = 50; // controls the width of the rect
         Message_rect.h = 40; // controls the height of the rect
-        SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+        SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
         //Draw inner rectangle for bar value
@@ -124,14 +171,14 @@ public:
         rect.y = ypos + 50;
         rect.w = 25;
         rect.h = 150;
-        SDL_RenderDrawRect(renderer,&rect);
+        SDL_RenderDrawRect(context->renderer, &rect);
         //Draw Bar (Vertical)
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(context->renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
         rect.x = ((xpos + (width/2)) - (25/2))+2;
         rect.y = ypos + 52;
         rect.w = 21;
         rect.h = ((150)/(maxValue))*value;
-        SDL_RenderFillRect(renderer,&rect);
+        SDL_RenderFillRect(context->renderer, &rect);
         //Draw Tick Numbers
         textColor = {0, 255, 0};
         for(int index = 0; index < 4; index++)
@@ -142,8 +189,8 @@ public:
             rect.w = 25;
             rect.h = 30;
             SDL_Surface* surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, tickValue.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-            SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
-            SDL_RenderCopy(renderer, Message, NULL, &rect);
+            SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+            SDL_RenderCopy(context->renderer, Message, NULL, &rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
         }
@@ -155,8 +202,8 @@ public:
         rect.w = 100;
         rect.h = 40;
         surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, valueText.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-        Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
-        SDL_RenderCopy(renderer, Message, NULL, &rect);
+        Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+        SDL_RenderCopy(context->renderer, Message, NULL, &rect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
     }
@@ -215,29 +262,32 @@ public:
     virtual void onClick(Renderer* RENDERER)
     {
         int i = 0;
+
     }
 
-    virtual void onDraw(SDL_Renderer* renderer)
+    virtual void onDraw(Renderer *RENDERER)
     {
+        Context* context = getContext(RENDERER);
         int index = startIndex+(value);
         if(index > endIndex)
         {
-
+            index = endIndex;
         } else {
-            std::string Path = std::string(this->filePath) + std::to_string(index) + ".bmp";
-            SDL_Surface *image = SDL_LoadBMP(Path.c_str());
-            SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
-            SDL_Rect r;
-            r.x = xpos;
-            r.y = ypos;
-            r.w = width;
-            r.h = height;
-            SDL_RenderCopy(renderer, texture, NULL, &r);
-            SDL_DestroyTexture(texture);
-            SDL_FreeSurface(image);
-            ////////////////////////////
-            //SDL_RenderDrawRect(renderer,&r);
+
         }
+        std::string Path = std::string(this->filePath) + std::to_string(index) + ".bmp";
+        SDL_Surface *image = SDL_LoadBMP(Path.c_str());
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(context->renderer, image);
+        SDL_Rect r;
+        r.x = xpos;
+        r.y = ypos;
+        r.w = width;
+        r.h = height;
+        SDL_RenderCopy(context->renderer, texture, NULL, &r);
+        SDL_DestroyTexture(texture);
+        SDL_FreeSurface(image);
+        ////////////////////////////
+        //SDL_RenderDrawRect(renderer,&r);
     }
 
 };
@@ -250,48 +300,37 @@ public:
 
     struct iconStruct{
         char* iconPath;//File path for icon
-        char* iconName;//Name to be displayed under icon
+        char iconName[50];//Name to be displayed under icon
         menuPage* onClickPagePointer;//Page to load when button is clicked.
     };
-
     std::vector<struct iconStruct> iconVector;
+
+    pagePicker(int x, int y, int width, int height) : Widget(x,y,width,height,"Drawer",Widget_PagePicker)
+    {
+        struct pagePickerData pickerData;
+        pickerData.selectedIconIndex = 0;
+        memcpy(auxillaryData,&pickerData,sizeof(struct pagePickerData));
+    }
+
 
     void addItem(struct iconStruct inputSTRUCT)
     {
-        inputSTRUCT.iconName = "Settings";
         iconVector.push_back(inputSTRUCT);
-    }
-    void incrementSelectedIcon()
-    {
-        selectedIconCount++;
-    }
-
-    void decrementSelectedIcon()
-    {
-        if(selectedIconCount == 0)
-        {
-
-        } else
-        {
-            selectedIconCount--;
-        }
     }
 
     virtual void onClick(Renderer* RENDERER)//When an icon is selected, go to that page
     {
         //Get the current icon
-        iconStruct currentIcon = iconVector[selectedIconCount];
+        struct pagePickerData* pickerData = (struct pagePickerData*)(&auxillaryData[0]);
+        iconStruct currentIcon = iconVector[pickerData->selectedIconIndex];
         loadPage(RENDERER,currentIcon.onClickPagePointer);
         //Somehow get the renderer to change current page
         //RENDERER->loadPage(currentIcon.onClickPagePointer);
     }
 
-    pagePicker(int x, int y, int width, int height) : Widget(x,y,width,height,"Drawer",Widget_PagePicker)
+    void onDraw(Renderer *RENDERER)
     {
-
-    }
-    void onDraw(SDL_Renderer* renderer)
-    {
+        Context* context = (Context*)getContext(RENDERER);
         SDL_Rect rect;
         //Draw upper menu graphic
         rect.x = xpos;
@@ -299,8 +338,8 @@ public:
         rect.w = width;
         rect.h = 100;
         SDL_Surface *image = SDL_LoadBMP("/home/dylan/Desktop/Comp 10000.bmp");//Load Image, upper menu graphic
-        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
-        SDL_RenderCopy(renderer, texture, NULL, &rect);
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(context->renderer, image);
+        SDL_RenderCopy(context->renderer, texture, NULL, &rect);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(image);
         //Draw outer Rectangle
@@ -308,8 +347,9 @@ public:
         rect.y = ypos;
         rect.w = width;
         rect.h = height;
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawRect(renderer,&rect);//Draw the outer rectangle of the console window
+        SDL_SetRenderDrawColor(context->renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawRect(context->renderer, &rect);//Draw the outer rectangle of the console window
+        /*
         //Draw the 2x3 grid
         for(int i = 0; i < 3; i++)//Vertical Lines
         {
@@ -320,6 +360,7 @@ public:
         {
             SDL_RenderDrawLine(renderer,0,i*200+rect.y+100,rect.x+width,i*200+rect.y+100);
         }
+         */
         //Index the iconStruct vector
         int rowCount = 0;
         int colCount = 0;
@@ -333,31 +374,32 @@ public:
             struct iconStruct tempStruct = iconVector[index];
             //Draw the icons onto the grid
             SDL_Surface *image = SDL_LoadBMP(tempStruct.iconPath);//Load Image
-            SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, image);
+            SDL_Texture *texture = SDL_CreateTextureFromSurface(context->renderer, image);
             //Determine the rectangle for each grid square
             SDL_Rect gridRectangle;
             gridRectangle.x = colCount*200+50;
             gridRectangle.y = rowCount*200+rect.y+150;
             gridRectangle.w = 100;
             gridRectangle.h = 100;
-            SDL_RenderCopy(renderer, texture, NULL, &gridRectangle);
+            SDL_RenderCopy(context->renderer, texture, NULL, &gridRectangle);
             SDL_DestroyTexture(texture);
             SDL_FreeSurface(image);
             //*******Draw Text**********
             SDL_Color textColor = {255, 255, 0};
-            if(index == selectedIconCount)
+            struct pagePickerData* pickerData = (struct pagePickerData*)(&auxillaryData[0]);
+            if(index == pickerData->selectedIconIndex)
             {
                 textColor = {255, 0, 0};
             }
 
             SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, tempStruct.iconName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-            SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+            SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
             SDL_Rect Message_rect; //create a rect
             Message_rect.x = gridRectangle.x;
             Message_rect.y = gridRectangle.y + gridRectangle.h + 5;
             Message_rect.w = gridRectangle.w; // controls the width of the rect
             Message_rect.h = 40; // controls the height of the rect
-            SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+            SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
             //SDL_RenderDrawRect(renderer,&gridRectangle);
@@ -367,6 +409,72 @@ public:
     }
 };
 
+class Button : public Widget{
+public:
+    TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 75);
+    void (*onClick_functionPTR)(void);
+    Button(int x, int y, char* buttonName) : Widget(x,y,width,height,"Button",Widget_BUTTON)
+    {
+        strcpy(this->widgetName,buttonName);
+        width = 200;
+        height = 45;
+    }
+
+    void onDraw(Renderer *RENDERER)
+    {
+        Context* context = getContext(RENDERER);
+        int count = 0;
+        for(int i = 0; i < height; i++)//Draw the background for the button
+        {
+            SDL_RenderDrawLine(context->renderer, xpos, ypos + i, xpos + width, ypos + i);
+            SDL_SetRenderDrawColor(context->renderer, count, count, count, SDL_ALPHA_OPAQUE);
+            count+= 5;
+        }
+        //Draw Button Rectangle
+        SDL_Rect outline;
+        outline.x = xpos;
+        outline.y = ypos;
+        outline.h = height;
+        outline.w = width;
+        SDL_SetRenderDrawColor(context->renderer, 51, 51, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawRect(context->renderer, &outline);
+        //Draw the Button name
+        //Determine if button is selected
+        SDL_Color textColor;
+        if(this->isSelected == true)
+        {
+            textColor = {0, 255, 0};
+        } else
+        {
+            textColor = {255, 255, 255};
+        }
+
+        SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, this->widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+        SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+        SDL_Rect Message_rect; //create a rect
+        Message_rect.x = xpos+(width/2)-(75/2);
+        Message_rect.y = ypos;
+        Message_rect.w = 75; // controls the width of the rect
+        Message_rect.h = 35; // controls the height of the rect
+        SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+        SDL_DestroyTexture(Message);
+        SDL_FreeSurface(surfaceMessage);
+        //SDL_RenderDrawRect(renderer,&gridRectangle);
+    }
+
+    void setOnClickHandler(void(*function_pointer)(void))
+    {
+         onClick_functionPTR = function_pointer;
+    }
+
+    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
+    {
+        (*onClick_functionPTR)();//Do what needs to be done. TODO: have onClick return the value from onClick_functionPTR
+    }
+
+};
+
+
 
 
 ////End Widgets/////
@@ -374,12 +482,13 @@ class Renderer {
 private:
     //Define the SDL environment variables
     SDL_Window *window = NULL;
-    SDL_Renderer *renderer = NULL;
+
     TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
     TTF_Font *SansOilGaugeTicks = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
 public:
     int xCursor = 0;
     int yCursor = 100;
+    SDL_Renderer *renderer = NULL;
     menuPage *PAGES[5];
     menuPage *currentPage = NULL;
     menuPage *previousPage = NULL;
@@ -391,8 +500,14 @@ public:
         renderer = RENDERER;
     }
     void addPage(menuPage* inputPage);
-    void selectCurrentOption();
-    void moveSelectedItem(int DIRECTION);
+    void incrementSelectedWidget()
+    {
+        currentPage->incrementSelectedWidget();
+    }
+    void decrementSelectedWidget()
+    {
+        currentPage->decrementSelectedWidget();
+    }
     void back()
     {
         currentPage = previousPage;
@@ -417,16 +532,49 @@ void Renderer::addPage(menuPage *inputPage) {
     pageCount++;
 }
 
-void loadPage(Renderer* renderer,menuPage* page) {
+void loadPage(Renderer* renderer,menuPage* page) {//Helper function, loads and changes renderer current page.
     renderer->previousPage = renderer->currentPage;
     renderer->currentPage = page;
 }
 
+struct Context* getContext(Renderer* RENDERER)
+{
+    struct Context* tempContext = (struct Context*)malloc(sizeof(struct Context));
+    tempContext->RENDERER = RENDERER;
+    tempContext->currentPage = RENDERER->currentPage;
+    tempContext->renderer = RENDERER->renderer;
+    return tempContext;
+}
+
 void Renderer::render() {
+    //Draw the page Title
+    SDL_Color textColor = {255, 255, 255};
+    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, currentPage->title, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+    SDL_Rect Message_rect; //create a rect
+    Message_rect.x = 0+(Window_Width/2)-(150/2);
+    Message_rect.y = 25;
+    Message_rect.w = 150; // controls the width of the rect
+    Message_rect.h = 45; // controls the height of the rect
+    SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+    SDL_DestroyTexture(Message);
+    SDL_FreeSurface(surfaceMessage);
+    //SDL_RenderDrawRect(renderer,&gridRectangle);
+    //End page title drawing
+
     for(int index = 0; index < currentPage->widgetCount; index++)
     {
         Widget* widPTR = (Widget*)currentPage->widget_array[index];//Load the widget from the currentPage
-        widPTR->onDraw(renderer);
+        if(currentPage->selectedItem == index)
+        {
+            widPTR->isSelected = true; 
+        }
+        else
+        {
+            widPTR->isSelected = false;
+        }
+
+        widPTR->onDraw(this);
 
     }
 }
