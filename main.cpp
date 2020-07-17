@@ -1,121 +1,280 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2020)
-and may not be redistributed without written permission.*/
+/*
+    sdlgui/example1.cpp -- C++ version of an example application that shows
+    how to use the various widget classes.
 
-//Using SDL and standard IO
+    Based on NanoGUI by Wenzel Jakob <wenzel@inf.ethz.ch>.
+    Adaptation for SDL by Dalerank <dalerankn8@gmail.com>
+
+    All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE.txt file.
+*/
+
+#include <nanogui-sdl/sdlgui/screen.h>
+#include <nanogui-sdl/sdlgui/window.h>
+#include <nanogui-sdl/sdlgui/layout.h>
+#include <nanogui-sdl/sdlgui/label.h>
+#include <nanogui-sdl/sdlgui/checkbox.h>
+#include <nanogui-sdl/sdlgui/button.h>
+#include <nanogui-sdl/sdlgui/toolbutton.h>
+#include <nanogui-sdl/sdlgui/popupbutton.h>
+#include <nanogui-sdl/sdlgui/combobox.h>
+#include <nanogui-sdl/sdlgui/dropdownbox.h>
+#include <nanogui-sdl/sdlgui/progressbar.h>
+#include <nanogui-sdl/sdlgui/entypo.h>
+#include <nanogui-sdl/sdlgui/messagedialog.h>
+#include <nanogui-sdl/sdlgui/textbox.h>
+#include <nanogui-sdl/sdlgui/slider.h>
+#include <nanogui-sdl/sdlgui/imagepanel.h>
+#include <nanogui-sdl/sdlgui/imageview.h>
+#include <nanogui-sdl/sdlgui/vscrollpanel.h>
+#include <nanogui-sdl/sdlgui/colorwheel.h>
+#include <nanogui-sdl/sdlgui/graph.h>
+#include <nanogui-sdl/sdlgui/tabwidget.h>
+#include <nanogui-sdl/sdlgui/switchbox.h>
+#include <nanogui-sdl/sdlgui/formhelper.h>
+
+//Dashboard library
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include "gui_library.h"
 #include <unistd.h>
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-SDL_Window * window = NULL;
-SDL_Renderer* renderer = NULL;
 
-void testFunction()
+
+
+#include <memory>
+
+#if defined(_WIN32)
+#include <windows.h>
+#endif
+#include <iostream>
+
+#if defined(_WIN32)
+#include <SDL.h>
+#else
+#include <SDL2/SDL.h>
+#endif
+#if defined(_WIN32)
+#include <SDL_image.h>
+#else
+#include <SDL2/SDL_image.h>
+#endif
+
+using std::cout;
+using std::cerr;
+using std::endl;
+
+#undef main
+
+using namespace sdlgui;
+
+class TestWindow : public Screen
 {
-    int i = 0;
-}
+public:
+    TestWindow( SDL_Window* pwindow, int rwidth, int rheight )
+            : Screen( pwindow, Vector2i(rwidth, rheight), "SDL_gui Test")
+    {
+        auto& nwindow = window("Button demo", Vector2i{15, 15})
+                .withLayout<GroupLayout>();
+        nwindow.label("Push buttons", "sans-bold")._and()
+                .button("Plain button", [] { cout << "pushed!" << endl; })
+                .withTooltip("This is plain button tips");
 
-int main( int argc, char* args[] )
+        performLayout(mSDL_Renderer);
+    }
+
+    ~TestWindow() {
+    }
+
+    virtual void draw(SDL_Renderer* renderer)
+    {
+
+        Screen::draw(renderer);
+        //Do SDL calls here
+        SDL_SetRenderDrawColor(renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawLine(renderer,0,0,100,100);
+    }
+
+    virtual void drawContents()
+    {
+    }
+private:
+    std::vector<SDL_Texture*> mImagesData;
+    int mCurrentImage;
+};
+
+
+class Fps
 {
-    if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-        TTF_Init();
-        window = SDL_CreateWindow("SDL2 Window",
-                                  SDL_WINDOWPOS_CENTERED,
-                                  SDL_WINDOWPOS_CENTERED,
-                                  850, 850,
-                                  0);
-        renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_SOFTWARE);
-        int count = 0;
-        Renderer RENDERER = Renderer(window,renderer);
-        menuPage mainPage = menuPage();
-        menuPage dashPage = menuPage();
-        menuPage canBusPage = menuPage();
-        canBusPage.setTitle("Can Bus Settings");
-        VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
-        VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
-        BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/RPM_2_AME/Comp ",10000,10064);
-        //mainPage.addWidget(&oilGraph);
-        //mainPage.addWidget(&RPM_Widget);
-        pagePicker Drawer1 = pagePicker(0,25,600,500);
-        pagePicker::iconStruct icon1;
-        strcpy(icon1.iconName,"Main Dash");
-        icon1.iconPath = "/home/dylan/Desktop/icon1.bmp";
-        icon1.onClickPagePointer = (menuPage*)&dashPage;
-        Drawer1.addItem(icon1);
-        icon1.iconPath = "/home/dylan/Desktop/icon2.bmp";
-        icon1.onClickPagePointer = (menuPage*)&canBusPage;
-        strcpy(icon1.iconName,"Can Bus Info");
-        Drawer1.addItem(icon1);
-        strcpy(icon1.iconName,"");
-        icon1.iconPath = "/home/dylan/Desktop/icon3.bmp";
-        Drawer1.addItem(icon1);
-        icon1.iconPath = "/home/dylan/Desktop/icon4.bmp";
-        Drawer1.addItem(icon1);
-        mainPage.addWidget(&Drawer1);
-        RENDERER.addPage(&mainPage);
-        RENDERER.addPage(&canBusPage);
-        Button button = Button(50,150,"Start");
-        TextView textView = TextView(50,250,250,250);
-        textView.insertString("RPM: 250");
-        textView.insertString("BATT: 11.3");
-        textView.insertString("CTS 168");
-        
+public:
+    explicit Fps(int tickInterval = 30)
+            : m_tickInterval(tickInterval)
+            , m_nextTime(SDL_GetTicks() + tickInterval)
+    {
+    }
 
-        button.setOnClickHandler(testFunction);
-        canBusPage.addWidget(&button);
-        canBusPage.addWidget(&textView);
-        dashPage.addWidget(&oilGraph);
-        dashPage.addWidget(&RPM_Widget);
-        dashPage.addWidget(&batteryGraph);
-        oilGraph.onClick(&RENDERER);
+    void next()
+    {
+        SDL_Delay(getTicksToNextFrame());
 
-            while (true) {
-                SDL_Event event;
-                const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
-                SDL_WaitEventTimeout(&event,1);
-                if(keyboard_state_array[SDL_SCANCODE_DOWN])
-                {
-                    RENDERER.incrementSelectedWidget();
-                    //testConsole.incrementSelectedIndex();
-                }
-                if(keyboard_state_array[SDL_SCANCODE_UP])
-                {
-                    RENDERER.decrementSelectedWidget();
-                    //testConsole.decrementSelectedIndex();
-                }
-                if(keyboard_state_array[SDL_SCANCODE_E])
-                {
-                    //Run onClick from currently selected widget
-                    Widget* selectedWidget = RENDERER.currentPage->widget_array[RENDERER.currentPage->selectedItem];
-                    selectedWidget->onClick(&RENDERER);
-                }
-                if(keyboard_state_array[SDL_SCANCODE_B])
-                {
-                    RENDERER.back();
-                }
+        m_nextTime += m_tickInterval;
+    }
 
-                SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-                count = count + 1;
-                count = count % 6000;
-                RPM_Widget.setValue(count%60);
-                batteryGraph.setValue(10);
-                oilGraph.setValue(count%14);
-                SDL_RenderClear(renderer);
-                RENDERER.render();
-                SDL_RenderPresent(renderer);
+private:
+    const int m_tickInterval;
+    Uint32 m_nextTime;
 
-                usleep(30000);
+    Uint32 getTicksToNextFrame() const
+    {
+        Uint32 now = SDL_GetTicks();
+
+        return (m_nextTime <= now) ? 0 : m_nextTime - now;
+    }
+};
+
+
+int main(int /* argc */, char ** /* argv */)
+{
+    char rendername[256] = {0};
+    SDL_RendererInfo info;
+
+    SDL_Init(SDL_INIT_VIDEO);   // Initialize SDL2
+
+    SDL_Window *window;        // Declare a pointer to an SDL_Window
+
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+    int winWidth = 850;
+    int winHeight = 850;
+
+    // Create an application window with the following settings:
+    window = SDL_CreateWindow(
+            "An SDL2 window",         //    const char* title
+            SDL_WINDOWPOS_UNDEFINED,  //    int x: initial x position
+            SDL_WINDOWPOS_UNDEFINED,  //    int y: initial y position
+            winWidth,                      //    int w: width, in pixels
+            winHeight,                      //    int h: height, in pixels
+            SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN  | SDL_WINDOW_ALLOW_HIGHDPI        //    Uint32 flags: window options, see docs
+    );
+
+    // Check that the window was successfully made
+    if(window==NULL){
+        // In the event that the window could not be made...
+        std::cout << "Could not create window: " << SDL_GetError() << '\n';
+        SDL_Quit();
+        return 1;
+    }
+
+    auto context = SDL_GL_CreateContext(window);
+
+    for (int it = 0; it < SDL_GetNumRenderDrivers(); it++) {
+        SDL_GetRenderDriverInfo(it, &info);
+        strcat(rendername, info.name);
+        strcat(rendername, " ");
+    }
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+    TestWindow *screen = new TestWindow(window, winWidth, winHeight);
+
+    Fps fps;
+
+    Renderer RENDERER = Renderer((SDL_Window*)&window,renderer);
+    menuPage mainPage = menuPage();
+    menuPage dashPage = menuPage();
+    menuPage canBusPage = menuPage();
+    canBusPage.setTitle("Can Bus Settings");
+    VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
+    VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
+    BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/RPM_2_AME/Comp ",10000,10064);
+    //mainPage.addWidget(&oilGraph);
+    //mainPage.addWidget(&RPM_Widget);
+    pagePicker Drawer1 = pagePicker(0,25,600,500);
+    pagePicker::iconStruct icon1;
+    strcpy(icon1.iconName,"Main Dash");
+    icon1.iconPath = "/home/dylan/Desktop/icon1.bmp";
+    icon1.onClickPagePointer = (menuPage*)&dashPage;
+    Drawer1.addItem(icon1);
+    icon1.iconPath = "/home/dylan/Desktop/icon2.bmp";
+    icon1.onClickPagePointer = (menuPage*)&canBusPage;
+    strcpy(icon1.iconName,"Can Bus Info");
+    Drawer1.addItem(icon1);
+    strcpy(icon1.iconName,"");
+    icon1.iconPath = "/home/dylan/Desktop/icon3.bmp";
+    Drawer1.addItem(icon1);
+    icon1.iconPath = "/home/dylan/Desktop/icon4.bmp";
+    Drawer1.addItem(icon1);
+    mainPage.addWidget(&Drawer1);
+    RENDERER.addPage(&mainPage);
+    RENDERER.addPage(&canBusPage);
+    TextView textView = TextView(50,250,250,250);
+    textView.insertString("RPM: 250");
+    textView.insertString("BATT: 11.3");
+    textView.insertString("CTS 168");
+    canBusPage.addWidget(&textView);
+    dashPage.addWidget(&oilGraph);
+    dashPage.addWidget(&RPM_Widget);
+    dashPage.addWidget(&batteryGraph);
+    oilGraph.onClick(&RENDERER);
+
+    bool quit = false;
+    try
+    {
+        SDL_Event e;
+        while(true)
+        {
+            SDL_Event event;
+            const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
+            SDL_WaitEventTimeout(&event,1);
+            if(keyboard_state_array[SDL_SCANCODE_DOWN])
+            {
+                RENDERER.incrementSelectedWidget();
+                //testConsole.incrementSelectedIndex();
             }
-        }
+            if(keyboard_state_array[SDL_SCANCODE_UP])
+            {
+                RENDERER.decrementSelectedWidget();
+                //testConsole.decrementSelectedIndex();
+            }
+            if(keyboard_state_array[SDL_SCANCODE_E])
+            {
+                //Run onClick from currently selected widget
+                DashboardWidget* selectedWidget = RENDERER.currentPage->widget_array[RENDERER.currentPage->selectedItem];
+                selectedWidget->onClick(&RENDERER);
+            }
+            if(keyboard_state_array[SDL_SCANCODE_B])
+            {
+                RENDERER.back();
+            }
 
-        if (renderer) {
-            SDL_DestroyRenderer(renderer);
+            SDL_SetRenderDrawColor(renderer, 0xd3, 0xd3, 0xd3, 0xff );
+            SDL_RenderClear( renderer );
+            // Render the rect to the screen
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+            batteryGraph.setValue(10);
+            SDL_RenderClear(renderer);
+            RENDERER.render();
+            screen->drawAll();
+            SDL_RenderPresent(renderer);
+
+            fps.next();
         }
-        if (window) {
-            SDL_DestroyWindow(window);
-        }
-    SDL_Quit();
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::string error_msg = std::string("Caught a fatal error: ") + std::string(e.what());
+#if defined(_WIN32)
+        MessageBoxA(nullptr, error_msg.c_str(), NULL, MB_ICONERROR | MB_OK);
+#else
+        std::cerr << error_msg << endl;
+#endif
+        return -1;
+    }
     return 0;
 }
-#pragma clang diagnostic pop

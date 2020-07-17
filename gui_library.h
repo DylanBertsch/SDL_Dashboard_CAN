@@ -23,7 +23,7 @@
 
 //Forward Declarations
 class Renderer;
-class Widget;
+class DashboardWidget;
 class menuPage;
 
 struct Context{
@@ -39,7 +39,7 @@ struct pagePickerData{
 void loadPage(Renderer* renderer,menuPage* page);
 struct Context* getContext(Renderer* RENDERER);
 
-class Widget{
+class DashboardWidget{
 public:
     int xpos;
     int ypos;
@@ -49,7 +49,7 @@ public:
     int widgetType = -1;
     bool isSelected = false;
     char auxillaryData[250];// Storage for widgets that need extra information; such as the pagepicker for icon selection
-    Widget(int XPOS, int YPOS, int WIDTH, int HEIGHT, char WIDGET_NAME[10], int WIDGET_TYPE)
+    DashboardWidget(int XPOS, int YPOS, int WIDTH, int HEIGHT, char WIDGET_NAME[10], int WIDGET_TYPE)
     {
         xpos = XPOS;
         ypos = YPOS;
@@ -65,14 +65,14 @@ public:
 class menuPage
 {
 public:
-    Widget* widget_array[10];
+    DashboardWidget* widget_array[10];
     char title[20];
     int widgetCount = 0;
     int selectedItem = 0;
     void* parentRenderer = nullptr;
     void incrementSelectedWidget();
     void decrementSelectedWidget();
-    void addWidget(Widget* inputWidget);
+    void addWidget(DashboardWidget* inputWidget);
     menuPage()
     {
         memset(widget_array,0,sizeof(widget_array));
@@ -82,7 +82,7 @@ public:
 
 };
 
-void menuPage::addWidget(Widget *inputWidget) {
+void menuPage::addWidget(DashboardWidget *inputWidget) {
     widget_array[widgetCount] = inputWidget;
     widgetCount++;
 }
@@ -95,7 +95,7 @@ void menuPage::incrementSelectedWidget() {
     //If the page has a pagePicker direct these "increment requests" into the pagepicker widget so icons are selected accordingly
     if(widgetCount == 1 && widget_array[0]->widgetType == Widget_PagePicker)
     {
-        Widget* pagePicker = (Widget*)(widget_array[0]);
+        DashboardWidget* pagePicker = (DashboardWidget*)(widget_array[0]);
         struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         pickerData->selectedIconIndex++;
     }
@@ -105,7 +105,7 @@ void menuPage::decrementSelectedWidget() {
     //If the page has a pagePicker direct these "decrement" requests" into the pagepicker widget so icons are selected accordingly
     if(widgetCount == 1 && widget_array[0]->widgetType == Widget_PagePicker)
     {
-        Widget* pagePicker = (Widget*)(widget_array[0]);
+        DashboardWidget* pagePicker = (DashboardWidget*)(widget_array[0]);
         struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         if(pickerData->selectedIconIndex == 0)
         {
@@ -120,7 +120,7 @@ void menuPage::decrementSelectedWidget() {
 //////////////////////End menuPage functions//////////////////////
 
 //Widgets//
-class VerticalGraph : public Widget{
+class VerticalGraph : public DashboardWidget{
 public:
     float value = 0.0f;
     float maxValue = 0.0f;// Used to determine the scale of the graph
@@ -128,7 +128,7 @@ public:
     int tickDivision;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
     TTF_Font* SansOilGaugeTicks = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
-    VerticalGraph(int XPOS, int YPOS, float MAX_Value, int tickDIVISION, char* graphName, char* UNITNAME): Widget(XPOS,YPOS,125,250,graphName,Widget_VGRAPH)
+    VerticalGraph(int XPOS, int YPOS, float MAX_Value, int tickDIVISION, char* graphName, char* UNITNAME): DashboardWidget(XPOS, YPOS, 125, 250, graphName, Widget_VGRAPH)
     {
         maxValue = MAX_Value;
         tickDivision = tickDIVISION;
@@ -211,14 +211,14 @@ public:
 
 };
 
-class label : public Widget
+class label : public DashboardWidget
 {
 public:
     char labelValue[20];
     int labelColor = 0;
     menuPage* onClick_NextPage = nullptr;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
-    label(char labelName[], int x, int y, int Color) : Widget(x,y,250,45,labelName,Widget_Label)
+    label(char labelName[], int x, int y, int Color) : DashboardWidget(x, y, 250, 45, labelName, Widget_Label)
     {
         strcpy(labelValue,labelName);
         widgetType = Widget_Label;
@@ -241,14 +241,14 @@ public:
 
 };
 
-class BitmapWidget : public Widget{
+class BitmapWidget : public DashboardWidget{
 private:
     char filePath[250];
     int startIndex = 0;
     int endIndex = 0;
     int value = 0;
 public:
-    BitmapWidget(int XPOS, int YPOS, int Width, int Height, char* FILEPATH, int START_INDEX, int END_INDEX) : Widget(XPOS,YPOS,Width,Height,"BITMAPW",Widget_BITMAP)
+    BitmapWidget(int XPOS, int YPOS, int Width, int Height, char* FILEPATH, int START_INDEX, int END_INDEX) : DashboardWidget(XPOS, YPOS, Width, Height, "BITMAPW", Widget_BITMAP)
     {
         strcpy(filePath,FILEPATH);
         startIndex = START_INDEX;
@@ -293,7 +293,7 @@ public:
 
 };
 
-class pagePicker : public Widget
+class pagePicker : public DashboardWidget
 {
 public:
     int selectedIconCount = 0;
@@ -306,7 +306,7 @@ public:
     };
     std::vector<struct iconStruct> iconVector;
 
-    pagePicker(int x, int y, int width, int height) : Widget(x,y,width,height,"Drawer",Widget_PagePicker)
+    pagePicker(int x, int y, int width, int height) : DashboardWidget(x, y, width, height, "Drawer", Widget_PagePicker)
     {
         struct pagePickerData pickerData;
         pickerData.selectedIconIndex = 0;
@@ -410,12 +410,12 @@ public:
     }
 };
 
-class TextView : public Widget {
+class TextView : public DashboardWidget {
 public:
     TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 30);
     int stringCount = 0;
     std::vector<std::string> textStrings;
-    TextView(int x, int y, int width, int height) : Widget(x,y,width,height,"Button",Widget_TextView)
+    TextView(int x, int y, int width, int height) : DashboardWidget(x, y, width, height, "Button", Widget_TextView)
     {
         //initilize stringVector
         for(int i = 0; i < 10; i++)
@@ -473,11 +473,11 @@ public:
     }
 };
 
-class Button : public Widget{
+class Button : public DashboardWidget{
 public:
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 75);
     void (*onClick_functionPTR)(void);
-    Button(int x, int y, char* buttonName) : Widget(x,y,width,height,"Button",Widget_BUTTON)
+    Button(int x, int y, char* buttonName) : DashboardWidget(x, y, width, height, "Button", Widget_BUTTON)
     {
         strcpy(this->widgetName,buttonName);
         width = 200;
@@ -583,7 +583,7 @@ void Renderer::addPage(menuPage *inputPage) {
     //set the inputPage widgets parentRenderer property
     for(int index = 0; index < inputPage->widgetCount; index++)
     {
-        Widget* w = inputPage->widget_array[index];
+        DashboardWidget* w = inputPage->widget_array[index];
 
     }
     if(pageCount == 0)
@@ -627,7 +627,7 @@ void Renderer::render() {
 
     for(int index = 0; index < currentPage->widgetCount; index++)
     {
-        Widget* widPTR = (Widget*)currentPage->widget_array[index];//Load the widget from the currentPage
+        DashboardWidget* widPTR = (DashboardWidget*)currentPage->widget_array[index];//Load the widget from the currentPage
         if(currentPage->selectedItem == index)
         {
             widPTR->isSelected = true; 
