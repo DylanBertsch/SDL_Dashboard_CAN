@@ -5,7 +5,7 @@
 		<Option title="SDL_Dashboard"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\nanogui-sdl\;CMake Files\nanogui-sdl\cmake\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
@@ -29,11 +29,16 @@
 			</Target>
 			<Target title="SDL_Dashboard">
 				<Option output="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/SDL_Dashboard" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
+				<Option working_dir=""/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard/include"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -52,11 +57,16 @@
 			</Target>
 			<Target title="SDL_Dashboard/fast">
 				<Option output="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/SDL_Dashboard" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
+				<Option working_dir=""/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/include/SDL2"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard/include"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug"/>
+					<Add directory="/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -84,9 +94,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/dataCommunication_mega2560.h">
-			<Option target="SDL_Dashboard"/>
-		</Unit>
 		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/gui_library.cpp">
 			<Option target="SDL_Dashboard"/>
 		</Unit>
@@ -96,8 +103,197 @@
 		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/main.cpp">
 			<Option target="SDL_Dashboard"/>
 		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/button.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/button.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/checkbox.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/checkbox.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorpicker.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorpicker.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorwheel.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorwheel.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/combobox.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/combobox.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/common.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/common.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/dropdownbox.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/dropdownbox.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/graph.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/graph.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imagepanel.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imagepanel.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imageview.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imageview.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/label.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/label.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/layout.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/layout.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/loadimages.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/messagedialog.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/messagedialog.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/nanovg.c">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/nanovg.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/nanovg_rt.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popup.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popup.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popupbutton.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popupbutton.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/progressbar.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/progressbar.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/resources.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/resources.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/screen.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/screen.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/slider.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/slider.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/stackedwidget.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/stackedwidget.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/switchbox.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/switchbox.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabheader.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabheader.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabwidget.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabwidget.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/textbox.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/textbox.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/theme.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/theme.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/vscrollpanel.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/vscrollpanel.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/widget.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/widget.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/window.cpp">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/window.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
 		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/cmake/FindSDL2.cmake">
+			<Option virtualFolder="CMake Files\nanogui-sdl\cmake\"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/cmake/FindSDL2IMAGE.cmake">
+			<Option virtualFolder="CMake Files\nanogui-sdl\cmake\"/>
+		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/cmake/FindSDL2TTF.cmake">
+			<Option virtualFolder="CMake Files\nanogui-sdl\cmake\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -463,3 +463,61 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+Performing C++ SOURCE FILE Test HAS_CPP14_FLAG succeeded with the following output:
+Change Dir: /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_7da2f/fast && /usr/bin/gmake -f CMakeFiles/cmTC_7da2f.dir/build.make CMakeFiles/cmTC_7da2f.dir/build
+gmake[1]: Entering directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7da2f.dir/src.cxx.o
+/usr/bin/c++    -DHAS_CPP14_FLAG   -std=c++14 -o CMakeFiles/cmTC_7da2f.dir/src.cxx.o -c /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_7da2f
+/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7da2f.dir/link.txt --verbose=1
+/usr/bin/c++   -DHAS_CPP14_FLAG    -rdynamic CMakeFiles/cmTC_7da2f.dir/src.cxx.o  -o cmTC_7da2f 
+gmake[1]: Leaving directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAS_CPP11_FLAG succeeded with the following output:
+Change Dir: /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_5facd/fast && /usr/bin/gmake -f CMakeFiles/cmTC_5facd.dir/build.make CMakeFiles/cmTC_5facd.dir/build
+gmake[1]: Entering directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5facd.dir/src.cxx.o
+/usr/bin/c++    -DHAS_CPP11_FLAG   -std=c++11 -o CMakeFiles/cmTC_5facd.dir/src.cxx.o -c /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_5facd
+/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5facd.dir/link.txt --verbose=1
+/usr/bin/c++   -DHAS_CPP11_FLAG    -rdynamic CMakeFiles/cmTC_5facd.dir/src.cxx.o  -o cmTC_5facd 
+gmake[1]: Leaving directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_4bb43/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4bb43.dir/build.make CMakeFiles/cmTC_4bb43.dir/build
+gmake[1]: Entering directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4bb43.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_4bb43.dir/CheckIncludeFile.c.o   -c /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4bb43
+/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4bb43.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4bb43.dir/CheckIncludeFile.c.o  -o cmTC_4bb43 
+gmake[1]: Leaving directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_ef8fb/fast && /usr/bin/gmake -f CMakeFiles/cmTC_ef8fb.dir/build.make CMakeFiles/cmTC_ef8fb.dir/build
+gmake[1]: Entering directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ef8fb.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ef8fb.dir/CheckFunctionExists.c.o   -c /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ef8fb
+/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef8fb.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_ef8fb.dir/CheckFunctionExists.c.o  -o cmTC_ef8fb -lpthread 
+gmake[1]: Leaving directory '/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+

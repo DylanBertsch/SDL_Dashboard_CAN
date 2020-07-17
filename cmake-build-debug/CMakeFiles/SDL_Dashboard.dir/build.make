@@ -83,19 +83,475 @@ CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/gui_library.cpp -o CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.s
 
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o: ../nanogui-sdl/sdlgui/button.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/button.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/button.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/button.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o: ../nanogui-sdl/sdlgui/checkbox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/checkbox.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/checkbox.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/checkbox.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o: ../nanogui-sdl/sdlgui/colorpicker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorpicker.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorpicker.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorpicker.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o: ../nanogui-sdl/sdlgui/colorwheel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorwheel.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorwheel.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/colorwheel.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o: ../nanogui-sdl/sdlgui/combobox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/combobox.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/combobox.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/combobox.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o: ../nanogui-sdl/sdlgui/common.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/common.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/common.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/common.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o: ../nanogui-sdl/sdlgui/graph.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/graph.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/graph.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/graph.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o: ../nanogui-sdl/sdlgui/imagepanel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imagepanel.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imagepanel.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imagepanel.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o: ../nanogui-sdl/sdlgui/imageview.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imageview.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imageview.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/imageview.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o: ../nanogui-sdl/sdlgui/label.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/label.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/label.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/label.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o: ../nanogui-sdl/sdlgui/layout.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/layout.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/layout.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/layout.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o: ../nanogui-sdl/sdlgui/loadimages.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/loadimages.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/loadimages.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/loadimages.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o: ../nanogui-sdl/sdlgui/messagedialog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/messagedialog.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/messagedialog.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/messagedialog.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o: ../nanogui-sdl/sdlgui/resources.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/resources.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/resources.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/resources.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o: ../nanogui-sdl/sdlgui/popup.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popup.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popup.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popup.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o: ../nanogui-sdl/sdlgui/popupbutton.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popupbutton.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popupbutton.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/popupbutton.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o: ../nanogui-sdl/sdlgui/progressbar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/progressbar.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/progressbar.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/progressbar.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o: ../nanogui-sdl/sdlgui/screen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/screen.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/screen.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/screen.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o: ../nanogui-sdl/sdlgui/slider.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/slider.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/slider.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/slider.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o: ../nanogui-sdl/sdlgui/stackedwidget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/stackedwidget.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/stackedwidget.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/stackedwidget.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o: ../nanogui-sdl/sdlgui/tabheader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabheader.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabheader.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabheader.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o: ../nanogui-sdl/sdlgui/tabwidget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabwidget.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabwidget.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/tabwidget.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o: ../nanogui-sdl/sdlgui/textbox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/textbox.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/textbox.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/textbox.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o: ../nanogui-sdl/sdlgui/switchbox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/switchbox.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/switchbox.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/switchbox.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o: ../nanogui-sdl/sdlgui/dropdownbox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/dropdownbox.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/dropdownbox.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/dropdownbox.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o: ../nanogui-sdl/sdlgui/theme.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/theme.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/theme.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/theme.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o: ../nanogui-sdl/sdlgui/vscrollpanel.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/vscrollpanel.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/vscrollpanel.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/vscrollpanel.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o: ../nanogui-sdl/sdlgui/widget.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/widget.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/widget.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/widget.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o: ../nanogui-sdl/sdlgui/window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/window.cpp
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/window.cpp > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/window.cpp -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.s
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o: CMakeFiles/SDL_Dashboard.dir/flags.make
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o: ../nanogui-sdl/sdlgui/nanovg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o   -c /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/nanovg.c
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/nanovg.c > CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.i
+
+CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/nanovg.c -o CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.s
+
 # Object files for target SDL_Dashboard
 SDL_Dashboard_OBJECTS = \
 "CMakeFiles/SDL_Dashboard.dir/main.cpp.o" \
-"CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
+"CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o" \
+"CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o"
 
 # External object files for target SDL_Dashboard
 SDL_Dashboard_EXTERNAL_OBJECTS =
 
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/main.cpp.o
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o
+SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/build.make
+SDL_Dashboard: /usr/lib/x86_64-linux-gnu/libSDL2main.a
+SDL_Dashboard: /usr/lib/x86_64-linux-gnu/libSDL2.so
+SDL_Dashboard: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
+SDL_Dashboard: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
+SDL_Dashboard: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
+SDL_Dashboard: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 SDL_Dashboard: CMakeFiles/SDL_Dashboard.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SDL_Dashboard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Linking CXX executable SDL_Dashboard"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL_Dashboard.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

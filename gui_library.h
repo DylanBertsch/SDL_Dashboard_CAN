@@ -16,6 +16,7 @@
 #define Widget_CONSOLE 9
 #define Widget_BITMAP 10
 #define Widget_PagePicker 11
+#define Widget_TextView 12
 
 #define Window_Width 850
 #define Window_Height 850
@@ -409,6 +410,69 @@ public:
     }
 };
 
+class TextView : public Widget {
+public:
+    TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 30);
+    int stringCount = 0;
+    std::vector<std::string> textStrings;
+    TextView(int x, int y, int width, int height) : Widget(x,y,width,height,"Button",Widget_TextView)
+    {
+        //initilize stringVector
+        for(int i = 0; i < 10; i++)
+        {
+            textStrings.push_back("");
+        }
+    }
+
+    void insertString(std::string str)//Add String to textview. Text will loop over.
+    {
+        textStrings[stringCount] = str;
+        stringCount++;
+        stringCount = stringCount % 10;
+    }
+
+    void onDraw(Renderer *RENDERER) {
+    Context* context = getContext(RENDERER);
+    //Create the background rectangle (white)
+    SDL_Rect widgetRect;
+    widgetRect.x = xpos;
+    widgetRect.y = ypos;
+    widgetRect.w = width;
+    widgetRect.h = height;
+    SDL_SetRenderDrawColor(context->renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawRect(context->renderer,&widgetRect);
+        SDL_SetRenderDrawColor(context->renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+    //Draw grid (debugging)
+    SDL_Rect textRect;
+    SDL_Color textColor = {255,255,255};
+    int y = ypos;
+    for(int i = 0; i < textStrings.size(); i++)
+    {
+        int w,h;
+        TTF_SizeText(Sans,textStrings[i].c_str(),&w,&h);
+        textRect.x = xpos;
+        textRect.y = y;
+        textRect.w = w;
+        textRect.h = 25;
+        SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, textStrings[i].c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+        SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+        SDL_RenderCopy(context->renderer, Message, NULL, &textRect);
+        SDL_DestroyTexture(Message);
+        SDL_FreeSurface(surfaceMessage);
+        //SDL_RenderDrawRect(renderer,&gridRectangle);
+        //SDL_RenderDrawLine(context->renderer,xpos,y,xpos+width-1,y);
+        //SDL_RenderDrawRect(context->renderer, &textRect);
+        y = y + 25;
+    }
+
+    }
+
+    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
+    {
+
+    }
+};
+
 class Button : public Widget{
 public:
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 75);
@@ -448,7 +512,6 @@ public:
         {
             textColor = {255, 255, 255};
         }
-
         SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, this->widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
         SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
         SDL_Rect Message_rect; //create a rect

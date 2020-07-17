@@ -177,6 +177,816 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+nanogui-sdl/sdlgui/button.o: nanogui-sdl/sdlgui/button.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/button.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/button.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o
+.PHONY : nanogui-sdl/sdlgui/button.cpp.o
+
+nanogui-sdl/sdlgui/button.i: nanogui-sdl/sdlgui/button.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/button.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/button.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.i
+.PHONY : nanogui-sdl/sdlgui/button.cpp.i
+
+nanogui-sdl/sdlgui/button.s: nanogui-sdl/sdlgui/button.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/button.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/button.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.s
+.PHONY : nanogui-sdl/sdlgui/button.cpp.s
+
+nanogui-sdl/sdlgui/checkbox.o: nanogui-sdl/sdlgui/checkbox.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/checkbox.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/checkbox.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o
+.PHONY : nanogui-sdl/sdlgui/checkbox.cpp.o
+
+nanogui-sdl/sdlgui/checkbox.i: nanogui-sdl/sdlgui/checkbox.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/checkbox.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/checkbox.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.i
+.PHONY : nanogui-sdl/sdlgui/checkbox.cpp.i
+
+nanogui-sdl/sdlgui/checkbox.s: nanogui-sdl/sdlgui/checkbox.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/checkbox.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/checkbox.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.s
+.PHONY : nanogui-sdl/sdlgui/checkbox.cpp.s
+
+nanogui-sdl/sdlgui/colorpicker.o: nanogui-sdl/sdlgui/colorpicker.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/colorpicker.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/colorpicker.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o
+.PHONY : nanogui-sdl/sdlgui/colorpicker.cpp.o
+
+nanogui-sdl/sdlgui/colorpicker.i: nanogui-sdl/sdlgui/colorpicker.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/colorpicker.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/colorpicker.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.i
+.PHONY : nanogui-sdl/sdlgui/colorpicker.cpp.i
+
+nanogui-sdl/sdlgui/colorpicker.s: nanogui-sdl/sdlgui/colorpicker.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/colorpicker.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/colorpicker.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.s
+.PHONY : nanogui-sdl/sdlgui/colorpicker.cpp.s
+
+nanogui-sdl/sdlgui/colorwheel.o: nanogui-sdl/sdlgui/colorwheel.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/colorwheel.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/colorwheel.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o
+.PHONY : nanogui-sdl/sdlgui/colorwheel.cpp.o
+
+nanogui-sdl/sdlgui/colorwheel.i: nanogui-sdl/sdlgui/colorwheel.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/colorwheel.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/colorwheel.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.i
+.PHONY : nanogui-sdl/sdlgui/colorwheel.cpp.i
+
+nanogui-sdl/sdlgui/colorwheel.s: nanogui-sdl/sdlgui/colorwheel.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/colorwheel.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/colorwheel.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.s
+.PHONY : nanogui-sdl/sdlgui/colorwheel.cpp.s
+
+nanogui-sdl/sdlgui/combobox.o: nanogui-sdl/sdlgui/combobox.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/combobox.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/combobox.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o
+.PHONY : nanogui-sdl/sdlgui/combobox.cpp.o
+
+nanogui-sdl/sdlgui/combobox.i: nanogui-sdl/sdlgui/combobox.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/combobox.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/combobox.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.i
+.PHONY : nanogui-sdl/sdlgui/combobox.cpp.i
+
+nanogui-sdl/sdlgui/combobox.s: nanogui-sdl/sdlgui/combobox.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/combobox.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/combobox.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.s
+.PHONY : nanogui-sdl/sdlgui/combobox.cpp.s
+
+nanogui-sdl/sdlgui/common.o: nanogui-sdl/sdlgui/common.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/common.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/common.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o
+.PHONY : nanogui-sdl/sdlgui/common.cpp.o
+
+nanogui-sdl/sdlgui/common.i: nanogui-sdl/sdlgui/common.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/common.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/common.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.i
+.PHONY : nanogui-sdl/sdlgui/common.cpp.i
+
+nanogui-sdl/sdlgui/common.s: nanogui-sdl/sdlgui/common.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/common.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/common.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.s
+.PHONY : nanogui-sdl/sdlgui/common.cpp.s
+
+nanogui-sdl/sdlgui/dropdownbox.o: nanogui-sdl/sdlgui/dropdownbox.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/dropdownbox.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/dropdownbox.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o
+.PHONY : nanogui-sdl/sdlgui/dropdownbox.cpp.o
+
+nanogui-sdl/sdlgui/dropdownbox.i: nanogui-sdl/sdlgui/dropdownbox.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/dropdownbox.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/dropdownbox.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.i
+.PHONY : nanogui-sdl/sdlgui/dropdownbox.cpp.i
+
+nanogui-sdl/sdlgui/dropdownbox.s: nanogui-sdl/sdlgui/dropdownbox.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/dropdownbox.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/dropdownbox.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.s
+.PHONY : nanogui-sdl/sdlgui/dropdownbox.cpp.s
+
+nanogui-sdl/sdlgui/graph.o: nanogui-sdl/sdlgui/graph.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/graph.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/graph.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o
+.PHONY : nanogui-sdl/sdlgui/graph.cpp.o
+
+nanogui-sdl/sdlgui/graph.i: nanogui-sdl/sdlgui/graph.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/graph.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/graph.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.i
+.PHONY : nanogui-sdl/sdlgui/graph.cpp.i
+
+nanogui-sdl/sdlgui/graph.s: nanogui-sdl/sdlgui/graph.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/graph.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/graph.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.s
+.PHONY : nanogui-sdl/sdlgui/graph.cpp.s
+
+nanogui-sdl/sdlgui/imagepanel.o: nanogui-sdl/sdlgui/imagepanel.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/imagepanel.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/imagepanel.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o
+.PHONY : nanogui-sdl/sdlgui/imagepanel.cpp.o
+
+nanogui-sdl/sdlgui/imagepanel.i: nanogui-sdl/sdlgui/imagepanel.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/imagepanel.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/imagepanel.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.i
+.PHONY : nanogui-sdl/sdlgui/imagepanel.cpp.i
+
+nanogui-sdl/sdlgui/imagepanel.s: nanogui-sdl/sdlgui/imagepanel.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/imagepanel.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/imagepanel.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.s
+.PHONY : nanogui-sdl/sdlgui/imagepanel.cpp.s
+
+nanogui-sdl/sdlgui/imageview.o: nanogui-sdl/sdlgui/imageview.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/imageview.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/imageview.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o
+.PHONY : nanogui-sdl/sdlgui/imageview.cpp.o
+
+nanogui-sdl/sdlgui/imageview.i: nanogui-sdl/sdlgui/imageview.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/imageview.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/imageview.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.i
+.PHONY : nanogui-sdl/sdlgui/imageview.cpp.i
+
+nanogui-sdl/sdlgui/imageview.s: nanogui-sdl/sdlgui/imageview.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/imageview.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/imageview.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.s
+.PHONY : nanogui-sdl/sdlgui/imageview.cpp.s
+
+nanogui-sdl/sdlgui/label.o: nanogui-sdl/sdlgui/label.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/label.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/label.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o
+.PHONY : nanogui-sdl/sdlgui/label.cpp.o
+
+nanogui-sdl/sdlgui/label.i: nanogui-sdl/sdlgui/label.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/label.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/label.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.i
+.PHONY : nanogui-sdl/sdlgui/label.cpp.i
+
+nanogui-sdl/sdlgui/label.s: nanogui-sdl/sdlgui/label.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/label.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/label.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.s
+.PHONY : nanogui-sdl/sdlgui/label.cpp.s
+
+nanogui-sdl/sdlgui/layout.o: nanogui-sdl/sdlgui/layout.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/layout.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/layout.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o
+.PHONY : nanogui-sdl/sdlgui/layout.cpp.o
+
+nanogui-sdl/sdlgui/layout.i: nanogui-sdl/sdlgui/layout.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/layout.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/layout.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.i
+.PHONY : nanogui-sdl/sdlgui/layout.cpp.i
+
+nanogui-sdl/sdlgui/layout.s: nanogui-sdl/sdlgui/layout.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/layout.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/layout.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.s
+.PHONY : nanogui-sdl/sdlgui/layout.cpp.s
+
+nanogui-sdl/sdlgui/loadimages.o: nanogui-sdl/sdlgui/loadimages.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/loadimages.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/loadimages.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o
+.PHONY : nanogui-sdl/sdlgui/loadimages.cpp.o
+
+nanogui-sdl/sdlgui/loadimages.i: nanogui-sdl/sdlgui/loadimages.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/loadimages.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/loadimages.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.i
+.PHONY : nanogui-sdl/sdlgui/loadimages.cpp.i
+
+nanogui-sdl/sdlgui/loadimages.s: nanogui-sdl/sdlgui/loadimages.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/loadimages.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/loadimages.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.s
+.PHONY : nanogui-sdl/sdlgui/loadimages.cpp.s
+
+nanogui-sdl/sdlgui/messagedialog.o: nanogui-sdl/sdlgui/messagedialog.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/messagedialog.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/messagedialog.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o
+.PHONY : nanogui-sdl/sdlgui/messagedialog.cpp.o
+
+nanogui-sdl/sdlgui/messagedialog.i: nanogui-sdl/sdlgui/messagedialog.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/messagedialog.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/messagedialog.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.i
+.PHONY : nanogui-sdl/sdlgui/messagedialog.cpp.i
+
+nanogui-sdl/sdlgui/messagedialog.s: nanogui-sdl/sdlgui/messagedialog.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/messagedialog.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/messagedialog.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.s
+.PHONY : nanogui-sdl/sdlgui/messagedialog.cpp.s
+
+nanogui-sdl/sdlgui/nanovg.o: nanogui-sdl/sdlgui/nanovg.c.o
+
+.PHONY : nanogui-sdl/sdlgui/nanovg.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/nanovg.c.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o
+.PHONY : nanogui-sdl/sdlgui/nanovg.c.o
+
+nanogui-sdl/sdlgui/nanovg.i: nanogui-sdl/sdlgui/nanovg.c.i
+
+.PHONY : nanogui-sdl/sdlgui/nanovg.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/nanovg.c.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.i
+.PHONY : nanogui-sdl/sdlgui/nanovg.c.i
+
+nanogui-sdl/sdlgui/nanovg.s: nanogui-sdl/sdlgui/nanovg.c.s
+
+.PHONY : nanogui-sdl/sdlgui/nanovg.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/nanovg.c.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.s
+.PHONY : nanogui-sdl/sdlgui/nanovg.c.s
+
+nanogui-sdl/sdlgui/popup.o: nanogui-sdl/sdlgui/popup.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/popup.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/popup.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o
+.PHONY : nanogui-sdl/sdlgui/popup.cpp.o
+
+nanogui-sdl/sdlgui/popup.i: nanogui-sdl/sdlgui/popup.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/popup.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/popup.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.i
+.PHONY : nanogui-sdl/sdlgui/popup.cpp.i
+
+nanogui-sdl/sdlgui/popup.s: nanogui-sdl/sdlgui/popup.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/popup.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/popup.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.s
+.PHONY : nanogui-sdl/sdlgui/popup.cpp.s
+
+nanogui-sdl/sdlgui/popupbutton.o: nanogui-sdl/sdlgui/popupbutton.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/popupbutton.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/popupbutton.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o
+.PHONY : nanogui-sdl/sdlgui/popupbutton.cpp.o
+
+nanogui-sdl/sdlgui/popupbutton.i: nanogui-sdl/sdlgui/popupbutton.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/popupbutton.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/popupbutton.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.i
+.PHONY : nanogui-sdl/sdlgui/popupbutton.cpp.i
+
+nanogui-sdl/sdlgui/popupbutton.s: nanogui-sdl/sdlgui/popupbutton.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/popupbutton.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/popupbutton.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.s
+.PHONY : nanogui-sdl/sdlgui/popupbutton.cpp.s
+
+nanogui-sdl/sdlgui/progressbar.o: nanogui-sdl/sdlgui/progressbar.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/progressbar.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/progressbar.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o
+.PHONY : nanogui-sdl/sdlgui/progressbar.cpp.o
+
+nanogui-sdl/sdlgui/progressbar.i: nanogui-sdl/sdlgui/progressbar.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/progressbar.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/progressbar.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.i
+.PHONY : nanogui-sdl/sdlgui/progressbar.cpp.i
+
+nanogui-sdl/sdlgui/progressbar.s: nanogui-sdl/sdlgui/progressbar.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/progressbar.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/progressbar.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.s
+.PHONY : nanogui-sdl/sdlgui/progressbar.cpp.s
+
+nanogui-sdl/sdlgui/resources.o: nanogui-sdl/sdlgui/resources.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/resources.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/resources.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o
+.PHONY : nanogui-sdl/sdlgui/resources.cpp.o
+
+nanogui-sdl/sdlgui/resources.i: nanogui-sdl/sdlgui/resources.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/resources.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/resources.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.i
+.PHONY : nanogui-sdl/sdlgui/resources.cpp.i
+
+nanogui-sdl/sdlgui/resources.s: nanogui-sdl/sdlgui/resources.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/resources.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/resources.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.s
+.PHONY : nanogui-sdl/sdlgui/resources.cpp.s
+
+nanogui-sdl/sdlgui/screen.o: nanogui-sdl/sdlgui/screen.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/screen.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/screen.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o
+.PHONY : nanogui-sdl/sdlgui/screen.cpp.o
+
+nanogui-sdl/sdlgui/screen.i: nanogui-sdl/sdlgui/screen.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/screen.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/screen.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.i
+.PHONY : nanogui-sdl/sdlgui/screen.cpp.i
+
+nanogui-sdl/sdlgui/screen.s: nanogui-sdl/sdlgui/screen.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/screen.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/screen.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.s
+.PHONY : nanogui-sdl/sdlgui/screen.cpp.s
+
+nanogui-sdl/sdlgui/slider.o: nanogui-sdl/sdlgui/slider.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/slider.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/slider.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o
+.PHONY : nanogui-sdl/sdlgui/slider.cpp.o
+
+nanogui-sdl/sdlgui/slider.i: nanogui-sdl/sdlgui/slider.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/slider.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/slider.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.i
+.PHONY : nanogui-sdl/sdlgui/slider.cpp.i
+
+nanogui-sdl/sdlgui/slider.s: nanogui-sdl/sdlgui/slider.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/slider.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/slider.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.s
+.PHONY : nanogui-sdl/sdlgui/slider.cpp.s
+
+nanogui-sdl/sdlgui/stackedwidget.o: nanogui-sdl/sdlgui/stackedwidget.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/stackedwidget.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/stackedwidget.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o
+.PHONY : nanogui-sdl/sdlgui/stackedwidget.cpp.o
+
+nanogui-sdl/sdlgui/stackedwidget.i: nanogui-sdl/sdlgui/stackedwidget.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/stackedwidget.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/stackedwidget.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.i
+.PHONY : nanogui-sdl/sdlgui/stackedwidget.cpp.i
+
+nanogui-sdl/sdlgui/stackedwidget.s: nanogui-sdl/sdlgui/stackedwidget.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/stackedwidget.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/stackedwidget.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.s
+.PHONY : nanogui-sdl/sdlgui/stackedwidget.cpp.s
+
+nanogui-sdl/sdlgui/switchbox.o: nanogui-sdl/sdlgui/switchbox.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/switchbox.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/switchbox.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o
+.PHONY : nanogui-sdl/sdlgui/switchbox.cpp.o
+
+nanogui-sdl/sdlgui/switchbox.i: nanogui-sdl/sdlgui/switchbox.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/switchbox.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/switchbox.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.i
+.PHONY : nanogui-sdl/sdlgui/switchbox.cpp.i
+
+nanogui-sdl/sdlgui/switchbox.s: nanogui-sdl/sdlgui/switchbox.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/switchbox.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/switchbox.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.s
+.PHONY : nanogui-sdl/sdlgui/switchbox.cpp.s
+
+nanogui-sdl/sdlgui/tabheader.o: nanogui-sdl/sdlgui/tabheader.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/tabheader.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/tabheader.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o
+.PHONY : nanogui-sdl/sdlgui/tabheader.cpp.o
+
+nanogui-sdl/sdlgui/tabheader.i: nanogui-sdl/sdlgui/tabheader.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/tabheader.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/tabheader.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.i
+.PHONY : nanogui-sdl/sdlgui/tabheader.cpp.i
+
+nanogui-sdl/sdlgui/tabheader.s: nanogui-sdl/sdlgui/tabheader.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/tabheader.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/tabheader.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.s
+.PHONY : nanogui-sdl/sdlgui/tabheader.cpp.s
+
+nanogui-sdl/sdlgui/tabwidget.o: nanogui-sdl/sdlgui/tabwidget.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/tabwidget.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/tabwidget.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o
+.PHONY : nanogui-sdl/sdlgui/tabwidget.cpp.o
+
+nanogui-sdl/sdlgui/tabwidget.i: nanogui-sdl/sdlgui/tabwidget.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/tabwidget.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/tabwidget.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.i
+.PHONY : nanogui-sdl/sdlgui/tabwidget.cpp.i
+
+nanogui-sdl/sdlgui/tabwidget.s: nanogui-sdl/sdlgui/tabwidget.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/tabwidget.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/tabwidget.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.s
+.PHONY : nanogui-sdl/sdlgui/tabwidget.cpp.s
+
+nanogui-sdl/sdlgui/textbox.o: nanogui-sdl/sdlgui/textbox.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/textbox.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/textbox.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o
+.PHONY : nanogui-sdl/sdlgui/textbox.cpp.o
+
+nanogui-sdl/sdlgui/textbox.i: nanogui-sdl/sdlgui/textbox.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/textbox.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/textbox.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.i
+.PHONY : nanogui-sdl/sdlgui/textbox.cpp.i
+
+nanogui-sdl/sdlgui/textbox.s: nanogui-sdl/sdlgui/textbox.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/textbox.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/textbox.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.s
+.PHONY : nanogui-sdl/sdlgui/textbox.cpp.s
+
+nanogui-sdl/sdlgui/theme.o: nanogui-sdl/sdlgui/theme.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/theme.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/theme.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o
+.PHONY : nanogui-sdl/sdlgui/theme.cpp.o
+
+nanogui-sdl/sdlgui/theme.i: nanogui-sdl/sdlgui/theme.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/theme.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/theme.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.i
+.PHONY : nanogui-sdl/sdlgui/theme.cpp.i
+
+nanogui-sdl/sdlgui/theme.s: nanogui-sdl/sdlgui/theme.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/theme.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/theme.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.s
+.PHONY : nanogui-sdl/sdlgui/theme.cpp.s
+
+nanogui-sdl/sdlgui/vscrollpanel.o: nanogui-sdl/sdlgui/vscrollpanel.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/vscrollpanel.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/vscrollpanel.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o
+.PHONY : nanogui-sdl/sdlgui/vscrollpanel.cpp.o
+
+nanogui-sdl/sdlgui/vscrollpanel.i: nanogui-sdl/sdlgui/vscrollpanel.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/vscrollpanel.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/vscrollpanel.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.i
+.PHONY : nanogui-sdl/sdlgui/vscrollpanel.cpp.i
+
+nanogui-sdl/sdlgui/vscrollpanel.s: nanogui-sdl/sdlgui/vscrollpanel.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/vscrollpanel.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/vscrollpanel.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.s
+.PHONY : nanogui-sdl/sdlgui/vscrollpanel.cpp.s
+
+nanogui-sdl/sdlgui/widget.o: nanogui-sdl/sdlgui/widget.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/widget.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/widget.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o
+.PHONY : nanogui-sdl/sdlgui/widget.cpp.o
+
+nanogui-sdl/sdlgui/widget.i: nanogui-sdl/sdlgui/widget.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/widget.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/widget.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.i
+.PHONY : nanogui-sdl/sdlgui/widget.cpp.i
+
+nanogui-sdl/sdlgui/widget.s: nanogui-sdl/sdlgui/widget.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/widget.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/widget.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.s
+.PHONY : nanogui-sdl/sdlgui/widget.cpp.s
+
+nanogui-sdl/sdlgui/window.o: nanogui-sdl/sdlgui/window.cpp.o
+
+.PHONY : nanogui-sdl/sdlgui/window.o
+
+# target to build an object file
+nanogui-sdl/sdlgui/window.cpp.o:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o
+.PHONY : nanogui-sdl/sdlgui/window.cpp.o
+
+nanogui-sdl/sdlgui/window.i: nanogui-sdl/sdlgui/window.cpp.i
+
+.PHONY : nanogui-sdl/sdlgui/window.i
+
+# target to preprocess a source file
+nanogui-sdl/sdlgui/window.cpp.i:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.i
+.PHONY : nanogui-sdl/sdlgui/window.cpp.i
+
+nanogui-sdl/sdlgui/window.s: nanogui-sdl/sdlgui/window.cpp.s
+
+.PHONY : nanogui-sdl/sdlgui/window.s
+
+# target to generate assembly for a file
+nanogui-sdl/sdlgui/window.cpp.s:
+	$(MAKE) -f CMakeFiles/SDL_Dashboard.dir/build.make CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.s
+.PHONY : nanogui-sdl/sdlgui/window.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +1002,96 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... nanogui-sdl/sdlgui/button.o"
+	@echo "... nanogui-sdl/sdlgui/button.i"
+	@echo "... nanogui-sdl/sdlgui/button.s"
+	@echo "... nanogui-sdl/sdlgui/checkbox.o"
+	@echo "... nanogui-sdl/sdlgui/checkbox.i"
+	@echo "... nanogui-sdl/sdlgui/checkbox.s"
+	@echo "... nanogui-sdl/sdlgui/colorpicker.o"
+	@echo "... nanogui-sdl/sdlgui/colorpicker.i"
+	@echo "... nanogui-sdl/sdlgui/colorpicker.s"
+	@echo "... nanogui-sdl/sdlgui/colorwheel.o"
+	@echo "... nanogui-sdl/sdlgui/colorwheel.i"
+	@echo "... nanogui-sdl/sdlgui/colorwheel.s"
+	@echo "... nanogui-sdl/sdlgui/combobox.o"
+	@echo "... nanogui-sdl/sdlgui/combobox.i"
+	@echo "... nanogui-sdl/sdlgui/combobox.s"
+	@echo "... nanogui-sdl/sdlgui/common.o"
+	@echo "... nanogui-sdl/sdlgui/common.i"
+	@echo "... nanogui-sdl/sdlgui/common.s"
+	@echo "... nanogui-sdl/sdlgui/dropdownbox.o"
+	@echo "... nanogui-sdl/sdlgui/dropdownbox.i"
+	@echo "... nanogui-sdl/sdlgui/dropdownbox.s"
+	@echo "... nanogui-sdl/sdlgui/graph.o"
+	@echo "... nanogui-sdl/sdlgui/graph.i"
+	@echo "... nanogui-sdl/sdlgui/graph.s"
+	@echo "... nanogui-sdl/sdlgui/imagepanel.o"
+	@echo "... nanogui-sdl/sdlgui/imagepanel.i"
+	@echo "... nanogui-sdl/sdlgui/imagepanel.s"
+	@echo "... nanogui-sdl/sdlgui/imageview.o"
+	@echo "... nanogui-sdl/sdlgui/imageview.i"
+	@echo "... nanogui-sdl/sdlgui/imageview.s"
+	@echo "... nanogui-sdl/sdlgui/label.o"
+	@echo "... nanogui-sdl/sdlgui/label.i"
+	@echo "... nanogui-sdl/sdlgui/label.s"
+	@echo "... nanogui-sdl/sdlgui/layout.o"
+	@echo "... nanogui-sdl/sdlgui/layout.i"
+	@echo "... nanogui-sdl/sdlgui/layout.s"
+	@echo "... nanogui-sdl/sdlgui/loadimages.o"
+	@echo "... nanogui-sdl/sdlgui/loadimages.i"
+	@echo "... nanogui-sdl/sdlgui/loadimages.s"
+	@echo "... nanogui-sdl/sdlgui/messagedialog.o"
+	@echo "... nanogui-sdl/sdlgui/messagedialog.i"
+	@echo "... nanogui-sdl/sdlgui/messagedialog.s"
+	@echo "... nanogui-sdl/sdlgui/nanovg.o"
+	@echo "... nanogui-sdl/sdlgui/nanovg.i"
+	@echo "... nanogui-sdl/sdlgui/nanovg.s"
+	@echo "... nanogui-sdl/sdlgui/popup.o"
+	@echo "... nanogui-sdl/sdlgui/popup.i"
+	@echo "... nanogui-sdl/sdlgui/popup.s"
+	@echo "... nanogui-sdl/sdlgui/popupbutton.o"
+	@echo "... nanogui-sdl/sdlgui/popupbutton.i"
+	@echo "... nanogui-sdl/sdlgui/popupbutton.s"
+	@echo "... nanogui-sdl/sdlgui/progressbar.o"
+	@echo "... nanogui-sdl/sdlgui/progressbar.i"
+	@echo "... nanogui-sdl/sdlgui/progressbar.s"
+	@echo "... nanogui-sdl/sdlgui/resources.o"
+	@echo "... nanogui-sdl/sdlgui/resources.i"
+	@echo "... nanogui-sdl/sdlgui/resources.s"
+	@echo "... nanogui-sdl/sdlgui/screen.o"
+	@echo "... nanogui-sdl/sdlgui/screen.i"
+	@echo "... nanogui-sdl/sdlgui/screen.s"
+	@echo "... nanogui-sdl/sdlgui/slider.o"
+	@echo "... nanogui-sdl/sdlgui/slider.i"
+	@echo "... nanogui-sdl/sdlgui/slider.s"
+	@echo "... nanogui-sdl/sdlgui/stackedwidget.o"
+	@echo "... nanogui-sdl/sdlgui/stackedwidget.i"
+	@echo "... nanogui-sdl/sdlgui/stackedwidget.s"
+	@echo "... nanogui-sdl/sdlgui/switchbox.o"
+	@echo "... nanogui-sdl/sdlgui/switchbox.i"
+	@echo "... nanogui-sdl/sdlgui/switchbox.s"
+	@echo "... nanogui-sdl/sdlgui/tabheader.o"
+	@echo "... nanogui-sdl/sdlgui/tabheader.i"
+	@echo "... nanogui-sdl/sdlgui/tabheader.s"
+	@echo "... nanogui-sdl/sdlgui/tabwidget.o"
+	@echo "... nanogui-sdl/sdlgui/tabwidget.i"
+	@echo "... nanogui-sdl/sdlgui/tabwidget.s"
+	@echo "... nanogui-sdl/sdlgui/textbox.o"
+	@echo "... nanogui-sdl/sdlgui/textbox.i"
+	@echo "... nanogui-sdl/sdlgui/textbox.s"
+	@echo "... nanogui-sdl/sdlgui/theme.o"
+	@echo "... nanogui-sdl/sdlgui/theme.i"
+	@echo "... nanogui-sdl/sdlgui/theme.s"
+	@echo "... nanogui-sdl/sdlgui/vscrollpanel.o"
+	@echo "... nanogui-sdl/sdlgui/vscrollpanel.i"
+	@echo "... nanogui-sdl/sdlgui/vscrollpanel.s"
+	@echo "... nanogui-sdl/sdlgui/widget.o"
+	@echo "... nanogui-sdl/sdlgui/widget.i"
+	@echo "... nanogui-sdl/sdlgui/widget.s"
+	@echo "... nanogui-sdl/sdlgui/window.o"
+	@echo "... nanogui-sdl/sdlgui/window.i"
+	@echo "... nanogui-sdl/sdlgui/window.s"
 .PHONY : help
 
 

@@ -1,11 +1,41 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
   "CMakeFiles/SDL_Dashboard.dir/main.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/checkbox.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorpicker.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/colorwheel.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/combobox.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/common.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/dropdownbox.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/graph.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imagepanel.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/imageview.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/label.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/layout.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/loadimages.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/messagedialog.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popup.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/popupbutton.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/progressbar.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/resources.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/screen.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/slider.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/stackedwidget.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/switchbox.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabheader.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/tabwidget.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/textbox.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/theme.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/vscrollpanel.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/widget.cpp.o"
+  "CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/window.cpp.o"
   "SDL_Dashboard"
   "SDL_Dashboard.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/SDL_Dashboard.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

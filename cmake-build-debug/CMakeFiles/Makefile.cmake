@@ -18,10 +18,18 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CheckCXXCompilerFlag.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CheckCXXSourceCompiles.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CheckIncludeFile.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/CheckLibraryExists.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/GNU-C.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/GNU.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/FindPackageMessage.cmake"
+  "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/FindThreads.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Platform/Linux-GNU-C.cmake"
   "/home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/share/cmake-3.15/Modules/Platform/Linux-GNU-CXX.cmake"
@@ -33,6 +41,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.15.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.15.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.15.3/CMakeSystem.cmake"
+  "../nanogui-sdl/cmake/FindSDL2.cmake"
+  "../nanogui-sdl/cmake/FindSDL2IMAGE.cmake"
+  "../nanogui-sdl/cmake/FindSDL2TTF.cmake"
   )
 
 # The corresponding makefile is:

@@ -1,4 +1,11 @@
 /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.5662.56/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/dylan/Desktop/SDL_Dashboard
+SDL2_LIBRARY /usr/lib/x86_64-linux-gnu/libSDL2main.a;/usr/lib/x86_64-linux-gnu/libSDL2.so;-lpthread
+SDL2_INCLUDE_DIR /usr/include/SDL2
+SDL2_IMAGE_LIBRARY is /usr/lib/x86_64-linux-gnu/libSDL2_image.so
+SDL2_IMAGE_INCLUDE_DIR /usr/include/SDL2
+SDL2TTF_LIBRARY is /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so;/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so;-lpthread
+SDL2TTF_INCLUDE_DIR /usr/include/SDL2
+GLXxf86vmXrandrXineramaXcursorXiX11pthreaddlrt
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/dylan/Desktop/SDL_Dashboard/cmake-build-debug

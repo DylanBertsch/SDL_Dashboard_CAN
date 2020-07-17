@@ -6,7 +6,6 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "gui_library.h"
 #include <unistd.h>
-#include "dataCommunication_mega2560.h"
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 SDL_Window * window = NULL;
@@ -57,8 +56,15 @@ int main( int argc, char* args[] )
         RENDERER.addPage(&mainPage);
         RENDERER.addPage(&canBusPage);
         Button button = Button(50,150,"Start");
+        TextView textView = TextView(50,250,250,250);
+        textView.insertString("RPM: 250");
+        textView.insertString("BATT: 11.3");
+        textView.insertString("CTS 168");
+        
+
         button.setOnClickHandler(testFunction);
         canBusPage.addWidget(&button);
+        canBusPage.addWidget(&textView);
         dashPage.addWidget(&oilGraph);
         dashPage.addWidget(&RPM_Widget);
         dashPage.addWidget(&batteryGraph);
