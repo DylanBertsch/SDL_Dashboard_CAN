@@ -4,6 +4,37 @@
 #include <math.h>
 #include <linux/can.h>
 #include <SDL2/SDL_ttf.h>
+
+#include <nanogui-sdl/sdlgui/screen.h>
+#include <nanogui-sdl/sdlgui/window.h>
+#include <nanogui-sdl/sdlgui/layout.h>
+#include <nanogui-sdl/sdlgui/label.h>
+#include <nanogui-sdl/sdlgui/checkbox.h>
+#include <nanogui-sdl/sdlgui/button.h>
+#include <nanogui-sdl/sdlgui/toolbutton.h>
+#include <nanogui-sdl/sdlgui/popupbutton.h>
+#include <nanogui-sdl/sdlgui/combobox.h>
+#include <nanogui-sdl/sdlgui/dropdownbox.h>
+#include <nanogui-sdl/sdlgui/progressbar.h>
+#include <nanogui-sdl/sdlgui/entypo.h>
+#include <nanogui-sdl/sdlgui/messagedialog.h>
+#include <nanogui-sdl/sdlgui/textbox.h>
+#include <nanogui-sdl/sdlgui/slider.h>
+#include <nanogui-sdl/sdlgui/imagepanel.h>
+#include <nanogui-sdl/sdlgui/imageview.h>
+#include <nanogui-sdl/sdlgui/vscrollpanel.h>
+#include <nanogui-sdl/sdlgui/colorwheel.h>
+#include <nanogui-sdl/sdlgui/graph.h>
+#include <nanogui-sdl/sdlgui/tabwidget.h>
+#include <nanogui-sdl/sdlgui/switchbox.h>
+#include <nanogui-sdl/sdlgui/formhelper.h>
+
+
+
+
+
+
+
 #define Widget_OPTION 0
 #define Widget_BUTTON 1
 #define Widget_Label  2
@@ -20,6 +51,9 @@
 
 #define Window_Width 850
 #define Window_Height 850
+
+#define DASHBOARD_WIDGET 0
+#define SDL_WIDGET 1
 
 //Forward Declarations
 class Renderer;
@@ -61,11 +95,18 @@ public:
     virtual void onDraw(Renderer *RENDERER) = 0;
     virtual void onClick(Renderer* RENDERER) = 0;
 };
-
-class menuPage
+/*In order to integrate the sdlgui library with the dashboard library, each menupage must have a "screen" associated to it
+ * this will allow the mixture between sdlgui and dashboard widgets.
+ */
+using namespace sdlgui;
+class menuPage : public sdlgui::Screen
 {
+    struct widget_array_entry{
+        int widgetType;
+        void* widgetPTR;
+    };
 public:
-    DashboardWidget* widget_array[10];
+    widget_array_entry widget_array[10];
     char title[20];
     int widgetCount = 0;
     int selectedItem = 0;
@@ -73,7 +114,8 @@ public:
     void incrementSelectedWidget();
     void decrementSelectedWidget();
     void addWidget(DashboardWidget* inputWidget);
-    menuPage()
+    void addWidget(sdlgui::Widget* inputWidget);
+    menuPage(SDL_Window* pwindow) : Screen(pwindow,Vector2i(Window_Width,Window_Height),"SDL_GUI")
     {
         memset(widget_array,0,sizeof(widget_array));
     }
@@ -83,7 +125,18 @@ public:
 };
 
 void menuPage::addWidget(DashboardWidget *inputWidget) {
-    widget_array[widgetCount] = inputWidget;
+    struct widget_array_entry entry;
+    entry.widgetType = DASHBOARD_WIDGET;
+    entry.widgetPTR = inputWidget;
+    memcpy(&widget_array[widgetCount],&entry,sizeof(struct widget_array_entry));
+    widgetCount++;
+}
+
+void menuPage::addWidget(sdlgui::Widget *inputWidget) {
+    struct widget_array_entry entry;
+    entry.widgetType = SDL_WIDGET;
+    entry.widgetPTR = inputWidget;
+    memcpy(&widget_array[widgetCount],&entry,sizeof(struct widget_array_entry));
     widgetCount++;
 }
 
@@ -93,9 +146,10 @@ void menuPage::setTitle(char *newTitle) {
 
 void menuPage::incrementSelectedWidget() {
     //If the page has a pagePicker direct these "increment requests" into the pagepicker widget so icons are selected accordingly
-    if(widgetCount == 1 && widget_array[0]->widgetType == Widget_PagePicker)
+    DashboardWidget* widget = (DashboardWidget*)widget_array[0].widgetPTR;
+    if(widgetCount == 1 && widget->widgetType == Widget_PagePicker)
     {
-        DashboardWidget* pagePicker = (DashboardWidget*)(widget_array[0]);
+        DashboardWidget* pagePicker = widget;
         struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         pickerData->selectedIconIndex++;
     }
@@ -103,9 +157,10 @@ void menuPage::incrementSelectedWidget() {
 
 void menuPage::decrementSelectedWidget() {
     //If the page has a pagePicker direct these "decrement" requests" into the pagepicker widget so icons are selected accordingly
-    if(widgetCount == 1 && widget_array[0]->widgetType == Widget_PagePicker)
+    DashboardWidget* widget = (DashboardWidget*)widget_array[0].widgetPTR;
+    if(widgetCount == 1 && widget->widgetType == Widget_PagePicker)
     {
-        DashboardWidget* pagePicker = (DashboardWidget*)(widget_array[0]);
+        DashboardWidget* pagePicker = widget;
         struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         if(pickerData->selectedIconIndex == 0)
         {
@@ -473,69 +528,7 @@ public:
     }
 };
 
-class Button : public DashboardWidget{
-public:
-    TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 75);
-    void (*onClick_functionPTR)(void);
-    Button(int x, int y, char* buttonName) : DashboardWidget(x, y, width, height, "Button", Widget_BUTTON)
-    {
-        strcpy(this->widgetName,buttonName);
-        width = 200;
-        height = 45;
-    }
 
-    void onDraw(Renderer *RENDERER)
-    {
-        Context* context = getContext(RENDERER);
-        int count = 0;
-        for(int i = 0; i < height; i++)//Draw the background for the button
-        {
-            SDL_RenderDrawLine(context->renderer, xpos, ypos + i, xpos + width, ypos + i);
-            SDL_SetRenderDrawColor(context->renderer, count, count, count, SDL_ALPHA_OPAQUE);
-            count+= 5;
-        }
-        //Draw Button Rectangle
-        SDL_Rect outline;
-        outline.x = xpos;
-        outline.y = ypos;
-        outline.h = height;
-        outline.w = width;
-        SDL_SetRenderDrawColor(context->renderer, 51, 51, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawRect(context->renderer, &outline);
-        //Draw the Button name
-        //Determine if button is selected
-        SDL_Color textColor;
-        if(this->isSelected == true)
-        {
-            textColor = {0, 255, 0};
-        } else
-        {
-            textColor = {255, 255, 255};
-        }
-        SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, this->widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-        SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-        SDL_Rect Message_rect; //create a rect
-        Message_rect.x = xpos+(width/2)-(75/2);
-        Message_rect.y = ypos;
-        Message_rect.w = 75; // controls the width of the rect
-        Message_rect.h = 35; // controls the height of the rect
-        SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
-        SDL_DestroyTexture(Message);
-        SDL_FreeSurface(surfaceMessage);
-        //SDL_RenderDrawRect(renderer,&gridRectangle);
-    }
-
-    void setOnClickHandler(void(*function_pointer)(void))
-    {
-         onClick_functionPTR = function_pointer;
-    }
-
-    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
-    {
-        (*onClick_functionPTR)();//Do what needs to be done. TODO: have onClick return the value from onClick_functionPTR
-    }
-
-};
 
 
 
@@ -583,7 +576,7 @@ void Renderer::addPage(menuPage *inputPage) {
     //set the inputPage widgets parentRenderer property
     for(int index = 0; index < inputPage->widgetCount; index++)
     {
-        DashboardWidget* w = inputPage->widget_array[index];
+        DashboardWidget* w = (DashboardWidget*)inputPage->widget_array[index].widgetPTR;
 
     }
     if(pageCount == 0)
@@ -627,7 +620,7 @@ void Renderer::render() {
 
     for(int index = 0; index < currentPage->widgetCount; index++)
     {
-        DashboardWidget* widPTR = (DashboardWidget*)currentPage->widget_array[index];//Load the widget from the currentPage
+        DashboardWidget* widPTR = (DashboardWidget*)currentPage->widget_array[index].widgetPTR;//Load the widget from the currentPage
         if(currentPage->selectedItem == index)
         {
             widPTR->isSelected = true; 

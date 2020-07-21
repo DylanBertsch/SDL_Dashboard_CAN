@@ -9,29 +9,7 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui-sdl/sdlgui/screen.h>
-#include <nanogui-sdl/sdlgui/window.h>
-#include <nanogui-sdl/sdlgui/layout.h>
-#include <nanogui-sdl/sdlgui/label.h>
-#include <nanogui-sdl/sdlgui/checkbox.h>
-#include <nanogui-sdl/sdlgui/button.h>
-#include <nanogui-sdl/sdlgui/toolbutton.h>
-#include <nanogui-sdl/sdlgui/popupbutton.h>
-#include <nanogui-sdl/sdlgui/combobox.h>
-#include <nanogui-sdl/sdlgui/dropdownbox.h>
-#include <nanogui-sdl/sdlgui/progressbar.h>
-#include <nanogui-sdl/sdlgui/entypo.h>
-#include <nanogui-sdl/sdlgui/messagedialog.h>
-#include <nanogui-sdl/sdlgui/textbox.h>
-#include <nanogui-sdl/sdlgui/slider.h>
-#include <nanogui-sdl/sdlgui/imagepanel.h>
-#include <nanogui-sdl/sdlgui/imageview.h>
-#include <nanogui-sdl/sdlgui/vscrollpanel.h>
-#include <nanogui-sdl/sdlgui/colorwheel.h>
-#include <nanogui-sdl/sdlgui/graph.h>
-#include <nanogui-sdl/sdlgui/tabwidget.h>
-#include <nanogui-sdl/sdlgui/switchbox.h>
-#include <nanogui-sdl/sdlgui/formhelper.h>
+
 
 //Dashboard library
 #include <SDL2/SDL.h>
@@ -73,12 +51,13 @@ public:
     TestWindow( SDL_Window* pwindow, int rwidth, int rheight )
             : Screen( pwindow, Vector2i(rwidth, rheight), "SDL_gui Test")
     {
-        auto& nwindow = window("Button demo", Vector2i{15, 15})
-                .withLayout<GroupLayout>();
-        nwindow.label("Push buttons", "sans-bold")._and()
-                .button("Plain button", [] { cout << "pushed!" << endl; })
-                .withTooltip("This is plain button tips");
-
+        auto& nwindow = window("Button demo", Vector2i{0, 0}).withFixedSize(Vector2i{850,850});
+        auto& b1 = button("Test",[]{cout<<"ok"<<endl;}).withPosition(Vector2i{50,50});
+        nwindow.addChild(&b1);
+        sdlgui::Button* b = (sdlgui::Button*)&b1;
+        Color color(255,0,0,75);
+        b->setTextColor(color);
+        b1.mouseButtonEvent(Vector2i{0,0},SDL_BUTTON_LEFT,0,1);
         performLayout(mSDL_Renderer);
     }
 
@@ -90,8 +69,6 @@ public:
 
         Screen::draw(renderer);
         //Do SDL calls here
-        SDL_SetRenderDrawColor(renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawLine(renderer,0,0,100,100);
     }
 
     virtual void drawContents()
@@ -101,36 +78,6 @@ private:
     std::vector<SDL_Texture*> mImagesData;
     int mCurrentImage;
 };
-
-
-class Fps
-{
-public:
-    explicit Fps(int tickInterval = 30)
-            : m_tickInterval(tickInterval)
-            , m_nextTime(SDL_GetTicks() + tickInterval)
-    {
-    }
-
-    void next()
-    {
-        SDL_Delay(getTicksToNextFrame());
-
-        m_nextTime += m_tickInterval;
-    }
-
-private:
-    const int m_tickInterval;
-    Uint32 m_nextTime;
-
-    Uint32 getTicksToNextFrame() const
-    {
-        Uint32 now = SDL_GetTicks();
-
-        return (m_nextTime <= now) ? 0 : m_nextTime - now;
-    }
-};
-
 
 int main(int /* argc */, char ** /* argv */)
 {
@@ -183,13 +130,14 @@ int main(int /* argc */, char ** /* argv */)
 
     TestWindow *screen = new TestWindow(window, winWidth, winHeight);
 
-    Fps fps;
-
     Renderer RENDERER = Renderer((SDL_Window*)&window,renderer);
-    menuPage mainPage = menuPage();
-    menuPage dashPage = menuPage();
-    menuPage canBusPage = menuPage();
+    menuPage mainPage = menuPage(window);
+    menuPage dashPage = menuPage(window);
+    menuPage canBusPage = menuPage(window);
     canBusPage.setTitle("Can Bus Settings");
+    //Integrate sdlgui with our gui widgets???
+
+
     VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
     VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
     BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/RPM_2_AME/Comp ",10000,10064);
@@ -230,29 +178,37 @@ int main(int /* argc */, char ** /* argv */)
         while(true)
         {
             SDL_Event event;
-            const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
-            SDL_WaitEventTimeout(&event,1);
-            if(keyboard_state_array[SDL_SCANCODE_DOWN])
+            while( SDL_PollEvent( &e ) != 0 )
             {
-                RENDERER.incrementSelectedWidget();
-                //testConsole.incrementSelectedIndex();
+                const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
+                //SDL_WaitEventTimeout(&event,50);
+                if(keyboard_state_array[SDL_SCANCODE_DOWN])
+                {
+                    RENDERER.incrementSelectedWidget();
+                    //testConsole.incrementSelectedIndex();
+                }
+                if(keyboard_state_array[SDL_SCANCODE_UP])
+                {
+                    RENDERER.decrementSelectedWidget();
+                    //testConsole.decrementSelectedIndex();
+                }
+                if(keyboard_state_array[SDL_SCANCODE_E])
+                {
+                    //Run onClick from currently selected widget
+                    DashboardWidget* selectedWidget = (DashboardWidget*)RENDERER.currentPage->widget_array[RENDERER.currentPage->selectedItem].widgetPTR;
+                    selectedWidget->onClick(&RENDERER);
+                }
+                if(keyboard_state_array[SDL_SCANCODE_B])
+                {
+                    RENDERER.back();
+                }
+                //User requests quit
+                if( e.type == SDL_QUIT )
+                {
+                    quit = true;
+                }
+                screen->onEvent( e );
             }
-            if(keyboard_state_array[SDL_SCANCODE_UP])
-            {
-                RENDERER.decrementSelectedWidget();
-                //testConsole.decrementSelectedIndex();
-            }
-            if(keyboard_state_array[SDL_SCANCODE_E])
-            {
-                //Run onClick from currently selected widget
-                DashboardWidget* selectedWidget = RENDERER.currentPage->widget_array[RENDERER.currentPage->selectedItem];
-                selectedWidget->onClick(&RENDERER);
-            }
-            if(keyboard_state_array[SDL_SCANCODE_B])
-            {
-                RENDERER.back();
-            }
-
             SDL_SetRenderDrawColor(renderer, 0xd3, 0xd3, 0xd3, 0xff );
             SDL_RenderClear( renderer );
             // Render the rect to the screen
@@ -260,10 +216,14 @@ int main(int /* argc */, char ** /* argv */)
             batteryGraph.setValue(10);
             SDL_RenderClear(renderer);
             RENDERER.render();
-            screen->drawAll();
+
+            if(RENDERER.currentPage == &canBusPage)
+            {
+                screen->drawAll();
+            }
+
             SDL_RenderPresent(renderer);
 
-            fps.next();
         }
     }
     catch (const std::runtime_error &e)
