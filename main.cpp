@@ -85,7 +85,7 @@ int main(int /* argc */, char ** /* argv */)
     SDL_RendererInfo info;
 
     SDL_Init(SDL_INIT_VIDEO);   // Initialize SDL2
-
+    TTF_Init();
     SDL_Window *window;        // Declare a pointer to an SDL_Window
 
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
@@ -128,7 +128,7 @@ int main(int /* argc */, char ** /* argv */)
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-    TestWindow *screen = new TestWindow(window, winWidth, winHeight);
+    //TestWindow *screen = new TestWindow(window, winWidth, winHeight);
 
     Renderer RENDERER = Renderer((SDL_Window*)&window,renderer);
     menuPage mainPage = menuPage(window);
@@ -136,7 +136,18 @@ int main(int /* argc */, char ** /* argv */)
     menuPage canBusPage = menuPage(window);
     canBusPage.setTitle("Can Bus Settings");
     //Integrate sdlgui with our gui widgets???
-
+    auto& b1 = canBusPage.button("Test",[]{cout<<"ok"<<endl;}).withPosition(Vector2i{50,50});
+    sdlgui::Button* b = (sdlgui::Button*)&b1;
+    auto& b2 = canBusPage.button("HMM",[]{cout<<"ok"<<endl;}).withPosition(Vector2i{50,100});
+    auto& t1 = canBusPage.textbox().withPosition(Vector2i{50,150}).withFixedSize(Vector2i{250,25});
+    sdlgui::TextBox* t2 = (sdlgui::TextBox*)&t1;
+    t2->setEditable(true);
+    t2->setValue("Hello");
+    t2->setAlignment(sdlgui::TextBox::Alignment::Left);
+    Color color(255,0,0,75);
+    b->setTextColor(color);
+    b1.mouseButtonEvent(Vector2i{0,0},SDL_BUTTON_LEFT,0,1);
+    canBusPage.performLayout(renderer);
 
     VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
     VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
@@ -161,10 +172,11 @@ int main(int /* argc */, char ** /* argv */)
     mainPage.addWidget(&Drawer1);
     RENDERER.addPage(&mainPage);
     RENDERER.addPage(&canBusPage);
-    TextView textView = TextView(50,250,250,250);
+    TextView textView = TextView(50,250,500,500);
     textView.insertString("RPM: 250");
     textView.insertString("BATT: 11.3");
-    textView.insertString("CTS 168");
+    textView.insertString("This is a test of the dfljksljsdfljksdf");
+    textView.insertString("Canbus test successful");
     canBusPage.addWidget(&textView);
     dashPage.addWidget(&oilGraph);
     dashPage.addWidget(&RPM_Widget);
@@ -207,7 +219,7 @@ int main(int /* argc */, char ** /* argv */)
                 {
                     quit = true;
                 }
-                screen->onEvent( e );
+                canBusPage.onEvent( e );
             }
             SDL_SetRenderDrawColor(renderer, 0xd3, 0xd3, 0xd3, 0xff );
             SDL_RenderClear( renderer );
@@ -219,7 +231,7 @@ int main(int /* argc */, char ** /* argv */)
 
             if(RENDERER.currentPage == &canBusPage)
             {
-                screen->drawAll();
+                //screen->drawAll();
             }
 
             SDL_RenderPresent(renderer);

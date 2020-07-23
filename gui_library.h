@@ -28,11 +28,7 @@
 #include <nanogui-sdl/sdlgui/tabwidget.h>
 #include <nanogui-sdl/sdlgui/switchbox.h>
 #include <nanogui-sdl/sdlgui/formhelper.h>
-
-
-
-
-
+#include <iostream>
 
 
 #define Widget_OPTION 0
@@ -99,7 +95,7 @@ public:
  * this will allow the mixture between sdlgui and dashboard widgets.
  */
 using namespace sdlgui;
-class menuPage : public sdlgui::Screen
+class menuPage : public Screen
 {
     struct widget_array_entry{
         int widgetType;
@@ -115,13 +111,18 @@ public:
     void decrementSelectedWidget();
     void addWidget(DashboardWidget* inputWidget);
     void addWidget(sdlgui::Widget* inputWidget);
-    menuPage(SDL_Window* pwindow) : Screen(pwindow,Vector2i(Window_Width,Window_Height),"SDL_GUI")
+    menuPage(SDL_Window* pwindow) : Screen(pwindow,Vector2i(0,0),"SDL_GUI")
     {
         memset(widget_array,0,sizeof(widget_array));
     }
 
     void setTitle(char* newTitle);
+    virtual void draw(SDL_Renderer* renderer)
+    {
 
+        Screen::draw(renderer);
+        //Do SDL calls here
+    }
 };
 
 void menuPage::addWidget(DashboardWidget *inputWidget) {
@@ -152,6 +153,9 @@ void menuPage::incrementSelectedWidget() {
         DashboardWidget* pagePicker = widget;
         struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         pickerData->selectedIconIndex++;
+    } else
+    {
+        selectedItem++;
     }
 }
 
@@ -169,6 +173,10 @@ void menuPage::decrementSelectedWidget() {
         {
             pickerData->selectedIconIndex--;
         }
+    }
+    else
+    {
+        selectedItem--;
     }
 }
 
@@ -467,23 +475,34 @@ public:
 
 class TextView : public DashboardWidget {
 public:
-    TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 30);
+    TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 40);
     int stringCount = 0;
     std::vector<std::string> textStrings;
+    TTF_Font *Font_Sizes[50];//from 1-49 point size
     TextView(int x, int y, int width, int height) : DashboardWidget(x, y, width, height, "Button", Widget_TextView)
     {
         //initilize stringVector
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 100; i++)
         {
             textStrings.push_back("");
         }
+        //initialize Fonts
+        for(int i = 0; i <50; i++)
+        {
+            Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", i+1);
+        }
+    }
+
+    TTF_Font* getFont(int pointSize)
+    {
+        return Font_Sizes[pointSize+1];
     }
 
     void insertString(std::string str)//Add String to textview. Text will loop over.
     {
         textStrings[stringCount] = str;
         stringCount++;
-        stringCount = stringCount % 10;
+        stringCount = stringCount % (height/40);
     }
 
     void onDraw(Renderer *RENDERER) {
@@ -501,14 +520,27 @@ public:
     SDL_Rect textRect;
     SDL_Color textColor = {255,255,255};
     int y = ypos;
+    int size = 40;
+    Sans = getFont(size);
     for(int i = 0; i < textStrings.size(); i++)
     {
         int w,h;
         TTF_SizeText(Sans,textStrings[i].c_str(),&w,&h);
+        //if the text width exceeds the width of the textview scale down.
+        if(w > width)
+        {
+            std::string str = textStrings[i];
+            while(w > width)
+            {
+                Sans = getFont(size);
+                TTF_SizeText(Sans,textStrings[i].c_str(),&w,&h);
+                size--;
+            }
+        }
         textRect.x = xpos;
         textRect.y = y;
         textRect.w = w;
-        textRect.h = 25;
+        textRect.h = size+7;
         SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, textStrings[i].c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
         SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
         SDL_RenderCopy(context->renderer, Message, NULL, &textRect);
@@ -517,7 +549,7 @@ public:
         //SDL_RenderDrawRect(renderer,&gridRectangle);
         //SDL_RenderDrawLine(context->renderer,xpos,y,xpos+width-1,y);
         //SDL_RenderDrawRect(context->renderer, &textRect);
-        y = y + 25;
+        y = y + size + 5;
     }
 
     }
@@ -631,7 +663,29 @@ void Renderer::render() {
         }
 
         widPTR->onDraw(this);
-
     }
+    int index = 0;
+    std::cout << currentPage->selectedItem<< std::endl;
+    //Draw sdlWidgets
+    for (auto child : currentPage->mChildren)
+    {
+        if (child->visible())
+        {
+            if(currentPage->selectedItem == index)
+            {
+                child->isSelected = true;
+            }
+            else
+            {
+                child->isSelected = false;
+            }
+            child->draw(renderer);
+
+        }
+        index++;
+    }
+
+    //currentPage->draw(renderer);
+
 }
 ///////////////////End Renderer Functions////////////////////////
