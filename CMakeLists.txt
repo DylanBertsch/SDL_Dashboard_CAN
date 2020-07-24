@@ -90,7 +90,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
 
 message(${NNGUI_EXTRA_LIBS})
 
-set(NNGUI_BASIC_SOURCE "")
+set(NNGUI_BASIC_SOURCE "" canBus_Comms.h)
 list(APPEND NNGUI_BASIC_SOURCE
      nanogui-sdl/sdlgui/button.h
         nanogui-sdl/sdlgui/checkbox.h

@@ -6,6 +6,30 @@
 
 #IncludeRegexTransform: 
 
+/home/dylan/Desktop/SDL_Dashboard/canBus_Comms.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+net/if.h
+-
+sys/ioctl.h
+-
+sys/socket.h
+-
+linux/can.h
+-
+linux/can/raw.h
+-
+iostream
+-
+thread
+-
+
 /home/dylan/Desktop/SDL_Dashboard/gui_library.h
 SDL2/SDL.h
 -
@@ -29,6 +53,8 @@ stdio.h
 -
 gui_library.h
 /home/dylan/Desktop/SDL_Dashboard/gui_library.h
+canBus_Comms.h
+/home/dylan/Desktop/SDL_Dashboard/canBus_Comms.h
 unistd.h
 -
 memory

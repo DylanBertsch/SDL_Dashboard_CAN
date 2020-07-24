@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include "gui_library.h"
+#include "canBus_Comms.h"
 #include <unistd.h>
 
 
@@ -25,6 +26,7 @@
 #endif
 int count = 0;
 void testFunction();
+CanBus_Comms canbus_comms;
 TextView* textView;
 int main(int /* argc */, char ** /* argv */)
 {
@@ -181,5 +183,7 @@ int main(int /* argc */, char ** /* argv */)
 
 void testFunction()
 {
-    textView->insertString("Canbus test successful");
+    canbus_comms.readFrame();
+    std::string output = std::to_string(canbus_comms.frame.data[0]);
+    textView->insertString(output.c_str());
 }
