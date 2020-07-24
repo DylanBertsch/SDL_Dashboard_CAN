@@ -9,34 +9,6 @@ CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/nanovg.c.o: ../nanogui-sdl/sdlgu
 
 CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o: ../gui_library.cpp
 
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/button.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/checkbox.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/colorpicker.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/colorwheel.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/combobox.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/common.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/dropdownbox.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/entypo.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/formhelper.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/graph.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/imagepanel.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/imageview.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/label.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/layout.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/messagedialog.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/popup.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/popupbutton.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/progressbar.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/screen.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/slider.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/switchbox.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/tabwidget.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/textbox.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/theme.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/toolbutton.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/vscrollpanel.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/widget.h
-CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../nanogui-sdl/sdlgui/window.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../gui_library.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../main.cpp
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL.h
