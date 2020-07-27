@@ -20,6 +20,7 @@
 #define Widget_BITMAP 10
 #define Widget_PagePicker 11
 #define Widget_TextView 12
+#define Widget_Table 13
 
 #define Window_Width 850
 #define Window_Height 850
@@ -310,7 +311,7 @@ public:
         SDL_RenderCopy(context->renderer, texture, NULL, &r);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(image);
-        ////////////////////////////
+        ////////return addr.can_addr;////////////////////
         //SDL_RenderDrawRect(renderer,&r);
     }
 
@@ -519,6 +520,97 @@ public:
 
     }
 };
+/*
+ * Simple table for displaying information
+ */
+class Table : public DashboardWidget{
+public:
+    struct item{
+        char name[10];
+        char value[10];
+    };
+    TTF_Font *Font_Sizes[50];//from 1-49 point size
+    std::vector<struct item> items;
+
+    Table(int x, int y,int width, int height) : DashboardWidget(x,y,width,height,"Table",Widget_Table)
+    {
+        //initialize Fonts
+        for(int i = 0; i <50; i++)
+        {
+            Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", i+1);
+        }
+        //initialize items
+        struct item emptyStruct;
+        strcpy(emptyStruct.name,"");
+        for(int i = 0; i < 5; i++)
+        {
+            items.push_back(emptyStruct);
+        }
+    }
+
+    void setValue(int index, char* name, char* value)
+    {
+        strcpy(items[index].name,name);
+        strcpy(items[index].value,value);
+
+    }
+
+    TTF_Font* getFont(int pointSize)
+    {
+        return Font_Sizes[pointSize+1];
+    }
+
+    void onDraw(Renderer *RENDERER) {
+        Context *context = getContext(RENDERER);
+        SDL_Rect rect;
+        rect.x = xpos;
+        rect.y = ypos;
+        rect.w = width;
+        rect.h = height;
+        SDL_RenderDrawRect(context->renderer,&rect);
+        //Draw values
+        int y = ypos;
+        int index = 0;
+        while(y < ypos+height)
+        {
+            SDL_Color textColor = {255,255,0};
+            SDL_Surface* surfaceMessage = TTF_RenderText_Solid(getFont(20), items[index].name, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+            SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+            SDL_Rect Message_rect; //create a rect
+            Message_rect.x = xpos+(width*.05);
+            Message_rect.y = y;
+            Message_rect.w = width*.40;
+            Message_rect.h = 45;
+            SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+            SDL_DestroyTexture(Message);
+            SDL_FreeSurface(surfaceMessage);
+
+            textColor = {255,255,0};
+            surfaceMessage = TTF_RenderText_Solid(getFont(20), items[index].value, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+            Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+            Message_rect.x = xpos+width*.55;
+            Message_rect.y = y;
+            Message_rect.w = width*.40;
+            Message_rect.h = 45;
+            SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+            SDL_DestroyTexture(Message);
+            SDL_FreeSurface(surfaceMessage);
+
+            y = y + 50;
+            index++;
+        }
+
+
+        SDL_RenderDrawLine(context->renderer,xpos+(width/2),ypos,xpos+(width/2),ypos+height);
+
+    }
+
+    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
+    {
+
+    }
+
+};
 
 class Button : public DashboardWidget{
 public:
@@ -563,9 +655,9 @@ public:
         SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, this->widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
         SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
         SDL_Rect Message_rect; //create a rect
-        Message_rect.x = xpos+(width/2)-(75/2);
-        Message_rect.y = ypos;
-        Message_rect.w = 75; // controls the width of the rect
+        Message_rect.x = xpos+(width/2)-(100/2);
+        Message_rect.y = ypos+5;
+        Message_rect.w = 100; // controls the width of the rect
         Message_rect.h = 35; // controls the height of the rect
         SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
         SDL_DestroyTexture(Message);
@@ -661,9 +753,9 @@ void Renderer::render() {
     SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, currentPage->title, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
     SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
     SDL_Rect Message_rect; //create a rect
-    Message_rect.x = 0+(Window_Width/2)-(150/2);
+    Message_rect.x = 0+(Window_Width/2)-(200/2);
     Message_rect.y = 25;
-    Message_rect.w = 150; // controls the width of the rect
+    Message_rect.w = 200; // controls the width of the rect
     Message_rect.h = 45; // controls the height of the rect
     SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
     SDL_DestroyTexture(Message);

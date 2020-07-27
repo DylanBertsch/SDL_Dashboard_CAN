@@ -23,9 +23,12 @@
 #include <SDL_image.h>
 #else
 #include <SDL2/SDL_image.h>
+#include <GLES/gl.h>
+#include <SDL_opengl.h>
+
 #endif
 int count = 0;
-void testFunction();
+void testCanBusRead();
 CanBus_Comms canbus_comms;
 TextView* textView;
 int main(int /* argc */, char ** /* argv */)
@@ -57,7 +60,7 @@ int main(int /* argc */, char ** /* argv */)
             winHeight,                      //    int h: height, in pixels
             SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN  | SDL_WINDOW_ALLOW_HIGHDPI        //    Uint32 flags: window options, see docs
     );
-
+    auto context = SDL_GL_CreateContext(window);
     // Check that the window was successfully made
     if(window==NULL){
         // In the event that the window could not be made...
@@ -66,7 +69,7 @@ int main(int /* argc */, char ** /* argv */)
         return 1;
     }
 
-    auto context = SDL_GL_CreateContext(window);
+    auto Gl_Context = SDL_GL_CreateContext(window);
 
     for (int it = 0; it < SDL_GetNumRenderDrivers(); it++) {
         SDL_GetRenderDriverInfo(it, &info);
@@ -85,11 +88,15 @@ int main(int /* argc */, char ** /* argv */)
     menuPage canBusPage = menuPage(window);
     canBusPage.setTitle("Can Bus Settings");
     Button testBus_Button = Button(0, 150, "Test Bus");
-    testBus_Button.setOnClickHandler(testFunction);
+    testBus_Button.setOnClickHandler(testCanBusRead);
     VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
     VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
     BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/RPM_2_AME/Comp ",10000,10064);
+    BitmapWidget Coolant_Widget = BitmapWidget(600,540,300,300,"/home/dylan/Documents/airStyle_AME/Comp ",1000,3000);
+    Table table = Table(250,550,300,300);
     textView = new TextView(175,350,500,500);
+    table.setValue(0,"CTS:","150");
+    table.setValue(1,"Timing:","15.00");
     canBusPage.addWidget(&testBus_Button);
     //mainPage.addWidget(&oilGraph);
     //mainPage.addWidget(&RPM_Widget);
@@ -114,7 +121,9 @@ int main(int /* argc */, char ** /* argv */)
     canBusPage.addWidget(textView);
     dashPage.addWidget(&oilGraph);
     dashPage.addWidget(&RPM_Widget);
+    dashPage.addWidget(&Coolant_Widget);
     dashPage.addWidget(&batteryGraph);
+    dashPage.addWidget(&table);
     oilGraph.onClick(&RENDERER);
 
     bool quit = false;
@@ -159,8 +168,11 @@ int main(int /* argc */, char ** /* argv */)
             SDL_RenderClear( renderer );
             // Render the rect to the screen
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+            std::string str = std::to_string(count);
+            table.setValue(0,"CTS:",(char*)str.c_str());
             batteryGraph.setValue(10);
             RPM_Widget.setValue(count);
+            Coolant_Widget.setValue(count);
             SDL_RenderClear(renderer);
             RENDERER.render();
             SDL_RenderPresent(renderer);
@@ -181,9 +193,17 @@ int main(int /* argc */, char ** /* argv */)
     return 0;
 }
 
-void testFunction()
+void testCanBusRead()
 {
-    canbus_comms.readFrame();
-    std::string output = std::to_string(canbus_comms.frame.data[0]);
-    textView->insertString(output.c_str());
+    std::string output;
+    if(canbus_comms.getStatus() == 0)
+    {
+        output = "Can Bus Error.";
+        textView->insertString(output.c_str());
+    }
+    else {
+        canbus_comms.readFrame();
+        output = std::to_string(canbus_comms.frame.data[0]);
+        textView->insertString(output.c_str());
+    }
 }

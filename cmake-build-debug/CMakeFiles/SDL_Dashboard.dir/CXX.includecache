@@ -71,6 +71,10 @@ SDL_image.h
 -
 SDL2/SDL_image.h
 -
+GLES/gl.h
+-
+SDL_opengl.h
+-
 
 /usr/include/SDL2/SDL.h
 SDL_main.h
@@ -429,6 +433,34 @@ begin_code.h
 /usr/include/SDL2/begin_code.h
 close_code.h
 /usr/include/SDL2/close_code.h
+
+/usr/include/SDL2/SDL_opengl.h
+SDL_config.h
+/usr/include/SDL2/SDL_config.h
+gl_mangle.h
+/usr/include/SDL2/gl_mangle.h
+windows.h
+-
+SDL_opengl_glext.h
+/usr/include/SDL2/SDL_opengl_glext.h
+
+/usr/include/SDL2/SDL_opengl_glext.h
+windows.h
+-
+stddef.h
+-
+inttypes.h
+-
+inttypes.h
+-
+inttypes.h
+-
+stdint.h
+-
+stdint.h
+-
+inttypes.h
+-
 
 /usr/include/SDL2/SDL_pixels.h
 SDL_stdinc.h

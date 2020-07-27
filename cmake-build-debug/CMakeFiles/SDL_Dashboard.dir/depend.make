@@ -38,6 +38,8 @@ CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_main.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_messagebox.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_mouse.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_mutex.h
+CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_opengl.h
+CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_opengl_glext.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_pixels.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_platform.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_power.h

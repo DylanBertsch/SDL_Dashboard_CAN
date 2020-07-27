@@ -14,8 +14,19 @@
 
 using namespace std;
 
+struct SensorData{
+    float RPM;
+    float CTS;
+    float BATT;
+    float AFR;
+    float IgnitionTiming;
+};
+class CanBus_Comms;
+void dataThread_Function(CanBus_Comms* canBusCommsPTR);
+
 class CanBus_Comms{
 public:
+    int status = -1;
     int s, i;
     int nbytes;
     struct sockaddr_can addr;
@@ -24,20 +35,26 @@ public:
 
     CanBus_Comms()
     {
-        if ((s = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0) {
+        if ((status = socket(PF_CAN, SOCK_RAW, CAN_RAW)) < 0) {
             perror("Socket");
-            //return 1;
         }
-        strcpy(ifr.ifr_name, "can0" );
-        ioctl(s, SIOCGIFINDEX, &ifr);
+        strcpy(ifr.ifr_name, "can0");
+        ioctl(status, SIOCGIFINDEX, &ifr);
         memset(&addr, 0, sizeof(addr));
         addr.can_family = AF_CAN;
         addr.can_ifindex = ifr.ifr_ifindex;
-        if (bind(s, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
+        if (bind(status, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
             perror("Bind");
-            //return 1;
         }
+        if(getStatus() != 0)//Spawn Sensor Data thread
+        {
+            std::thread first(dataThread_Function,this);
+        }
+    }
 
+    int getStatus()
+    {
+        return addr.can_addr.j1939.name;
     }
 
     void readFrame()
@@ -52,3 +69,16 @@ public:
     }
 
 };
+
+void dataThread_Function(CanBus_Comms* CanBusPTR)//Listens for Can data and processes in a separate thread
+{
+    struct can_frame* frm = &CanBusPTR->frame;
+    while(true)
+    {
+        CanBusPTR->nbytes = read(CanBusPTR->status,frm, sizeof(struct can_frame));
+        if (CanBusPTR->nbytes < 0) {
+            perror("Read");
+            //return 1;
+        }
+    }
+}
