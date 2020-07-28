@@ -196,7 +196,7 @@ int main(int /* argc */, char ** /* argv */)
 void testCanBusRead()
 {
     std::string output;
-    if(canbus_comms.getStatus() == 0)
+    if(canbus_comms.getStatus() == -1)
     {
         output = "Can Bus Error.";
         textView->insertString(output.c_str());
