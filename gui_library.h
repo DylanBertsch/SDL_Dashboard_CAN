@@ -6,17 +6,9 @@
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
 
-
-#define Widget_OPTION 0
 #define Widget_BUTTON 1
 #define Widget_Label  2
 #define Widget_VGRAPH 3
-#define Widget_ROUNDGAUGE 4
-#define Widget_EDITOR_BUTTON 5
-#define Widget_EDITOR_LABEL 6 //Differs from label becuase this is an editLabel which will spawn a editor on the screen.
-#define Widget_CoordinatePlane 7
-#define Widget_RPM 8
-#define Widget_CONSOLE 9
 #define Widget_BITMAP 10
 #define Widget_PagePicker 11
 #define Widget_TextView 12
@@ -26,7 +18,6 @@
 #define Window_Height 850
 
 #define DASHBOARD_WIDGET 0
-#define SDL_WIDGET 1
 
 //Forward Declarations
 class Renderer;
@@ -537,7 +528,7 @@ public:
         //initialize Fonts
         for(int i = 0; i <50; i++)
         {
-            Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", i+1);
+            Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/Orbitron-Black.ttf", i+1);
         }
         //initialize items
         struct item emptyStruct;
@@ -567,10 +558,12 @@ public:
         rect.y = ypos;
         rect.w = width;
         rect.h = height;
-        SDL_RenderDrawRect(context->renderer,&rect);
+        SDL_SetRenderDrawColor(context->renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+        //SDL_RenderDrawRect(context->renderer,&rect);
         //Draw values
         int y = ypos;
         int index = 0;
+        int w,h;
         while(y < ypos+height)
         {
             SDL_Color textColor = {255,255,0};
@@ -590,7 +583,8 @@ public:
             Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
             Message_rect.x = xpos+width*.55;
             Message_rect.y = y;
-            Message_rect.w = width*.40;
+            TTF_SizeText(getFont(20),items[index].value,&w,&h);
+            Message_rect.w = w;//width*.40;
             Message_rect.h = 45;
             SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
             SDL_DestroyTexture(Message);
@@ -601,7 +595,7 @@ public:
         }
 
 
-        SDL_RenderDrawLine(context->renderer,xpos+(width/2),ypos,xpos+(width/2),ypos+height);
+        //SDL_RenderDrawLine(context->renderer,xpos+(width/2),ypos,xpos+(width/2),ypos+height);
 
     }
 

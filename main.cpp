@@ -92,8 +92,8 @@ int main(int /* argc */, char ** /* argv */)
     VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
     VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
     BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/RPM_2_AME/Comp ",10000,10064);
-    BitmapWidget Coolant_Widget = BitmapWidget(600,540,300,300,"/home/dylan/Documents/airStyle_AME/Comp ",1000,3000);
-    Table table = Table(250,550,300,300);
+    BitmapWidget Coolant_Widget = BitmapWidget(625,650,300,300,"/home/dylan/Documents/CoolantGauge_AME/Comp 1_",1000,1306);
+    Table table = Table(275,550,300,300);
     textView = new TextView(175,350,500,500);
     table.setValue(0,"CTS:","150");
     table.setValue(1,"Timing:","15.00");
@@ -125,7 +125,6 @@ int main(int /* argc */, char ** /* argv */)
     dashPage.addWidget(&batteryGraph);
     dashPage.addWidget(&table);
     oilGraph.onClick(&RENDERER);
-
     bool quit = false;
     try
     {
@@ -170,14 +169,16 @@ int main(int /* argc */, char ** /* argv */)
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
             std::string str = std::to_string(count);
             table.setValue(0,"CTS:",(char*)str.c_str());
+            table.setValue(2,"AFR:",(char*)str.c_str());
             batteryGraph.setValue(10);
             RPM_Widget.setValue(count);
-            Coolant_Widget.setValue(count);
+            Coolant_Widget.setValue(210);
             SDL_RenderClear(renderer);
             RENDERER.render();
             SDL_RenderPresent(renderer);
             count = count + 1;
             count = count % 15;
+            sleep(1);
         }
     }
     catch (const std::runtime_error &e)
@@ -203,7 +204,7 @@ void testCanBusRead()
     }
     else {
         canbus_comms.readFrame();
-        output = std::to_string(canbus_comms.frame.data[0]);
+        output = std::to_string(canbus_comms.sensorData.CTS);
         textView->insertString(output.c_str());
     }
 }
