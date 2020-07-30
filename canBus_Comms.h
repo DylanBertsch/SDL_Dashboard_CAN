@@ -19,7 +19,7 @@
 #include <thread>
 
 #define CAN_BATT_ADDRESS 0x1E08500A
-#define CAN_CTS_ADDRESS 1543//0x1E07D00A
+#define CAN_CTS_ADDRESS 0x1E07D00A
 #define CAN_RPM_ADDRESS 0x1E00500A
 #define CAN_AFR_ADDRESS 0x1E02100A
 #define CAN_TARGETAFR_ADDRESS 0x1E01500A
@@ -56,7 +56,7 @@ public:
         {
             //Do not continue
         }
-        output = "";exec("ifconfig can0 up");
+        output = "";//exec("ifconfig can0 up");
         if(output.length() > 0)
         {
             //Do not continue
@@ -139,8 +139,10 @@ public:
             frameData[i] = frame.data[count];
             count--;
         }
-        switch(frame.can_id)
+        cout << (frame.can_id & 0x1FFFFFFFU) << endl;
+        switch(frame.can_id & 0x1FFFFFFFU)
         {
+
             case CAN_CTS_ADDRESS: {
                 float *data = (float *) &(frameData[0]);
                 sensorData.CTS = *data;

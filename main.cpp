@@ -168,8 +168,9 @@ int main(int /* argc */, char ** /* argv */)
             // Render the rect to the screen
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
             std::string str = std::to_string(count);
-            table.setValue(0,"CTS:",(char*)str.c_str());
-            table.setValue(2,"AFR:",(char*)str.c_str());
+            std::string outputSTR = std::to_string(canbus_comms.sensorData.CTS);
+            table.setValue(0,"CTS:",(char*)outputSTR.c_str());
+            table.setValue(2,"AFR:",(char*)outputSTR.c_str());
             batteryGraph.setValue(10);
             RPM_Widget.setValue(count);
             Coolant_Widget.setValue(210);
@@ -178,7 +179,7 @@ int main(int /* argc */, char ** /* argv */)
             SDL_RenderPresent(renderer);
             count = count + 1;
             count = count % 15;
-            sleep(1);
+            canbus_comms.readFrame();
         }
     }
     catch (const std::runtime_error &e)
