@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <unistd.h>
 #include <cstdio>
 #include <iostream>
@@ -25,8 +25,6 @@
 #define CAN_TARGETAFR_ADDRESS 0x1E01500A
 #define CAN_IGNADV_ADDRESS 0x1E05900A
 
-#define DEBUGGING 1
-
 using namespace std;
 
 struct SensorData{
@@ -38,20 +36,20 @@ struct SensorData{
     float TargetAFR;
 };
 class CanBus_Comms;
-void canBusDataAcquireThread(CanBus_Comms* comms);
 
 class CanBus_Comms {
 public:
-    int s, i;
-    int nbytes;
-    struct sockaddr_can addr;
-    struct ifreq ifr;
-    struct can_frame frame;
-    SensorData sensorData;
+    int s = 0;
+    int i = 0;
+    int nbytes = 0;
+    struct sockaddr_can addr{};
+    struct ifreq ifr{};
+    struct can_frame frame{};
+    SensorData sensorData{};
     CanBus_Comms()
     {
         //Run command line commands to bring the can0 interface online.
-        std::string output = "";//exec("ip link set can0 up type can bitrate 1000000");
+        std::string output;//exec("ip link set can0 up type can bitrate 1000000");
         if(output.length() > 0)
         {
             //Do not continue
@@ -76,14 +74,14 @@ public:
         }
     }
 
-    std::string exec(char* cmd)
+     std::string exec(char* cmd)
     {
         char buffer[128];
-        std::string result = "";
+        std::string result;
         FILE* pipe = popen(cmd,"r");
         if(!pipe) throw std::runtime_error("popen() failed!");
         try{
-            while(fgets(buffer,sizeof buffer,pipe) != NULL)
+            while(fgets(buffer,sizeof buffer,pipe) != nullptr)
             {
                 result += buffer;
             }
@@ -107,22 +105,9 @@ public:
         }
     }
 
-    char* reverseEndianness(char* inputPTR, int byteSize)//Reverses a char array
-    {
-        char* outputArray = (char*)calloc(0,byteSize);
-        int count = 0;
-        for(int i = byteSize; i > 0; i--)
-        {
-            outputArray[count] = inputPTR[i];
-        }
-        return outputArray;
-    }
-
-    SensorData* getSensorData()
-    {
-        return &sensorData;
-    }
-    void readFrame()
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "hicpp-use-auto"
+  void readFrame()
     {
         nbytes = read(s, &frame, sizeof(struct can_frame));
 
@@ -134,9 +119,9 @@ public:
         //Generate a char array from the frame data
         char frameData[4];
         int count = 3;
-        for(int i = 0; i < 4; i++)
+        for(int index = 0; index < 4; index++) // NOLINT(modernize-loop-convert)
         {
-            frameData[i] = frame.data[count];
+            frameData[index] = frame.data[count];
             count--;
         }
         cout << (frame.can_id & 0x1FFFFFFFU) << endl;
@@ -176,4 +161,5 @@ public:
         }
         //
     }
+#pragma clang diagnostic pop
 };

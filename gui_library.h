@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include <string>
-#include <math.h>
+#include <cmath>
 #include <linux/can.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
@@ -18,6 +18,12 @@
 #define Window_Height 850
 
 #define DASHBOARD_WIDGET 0
+
+/* Notes
+ * Choose auto x when you want to work with copies.
+   Choose auto &x when you want to work with original items and may modify them.
+   Choose auto const &x when you want to work with original items and will not modify them.
+ */
 
 //Forward Declarations
 class Renderer;
@@ -43,10 +49,10 @@ public:
     int ypos;
     int width;
     int height;
-    char widgetName[10];
+    char widgetName[10]{};
     int widgetType = -1;
     bool isSelected = false;
-    char auxillaryData[250];// Storage for widgets that need extra information; such as the pagepicker for icon selection
+    char auxillaryData[250]{};// Storage for widgets that need extra information; such as the pagepicker for icon selection
     DashboardWidget(int XPOS, int YPOS, int WIDTH, int HEIGHT, char WIDGET_NAME[10], int WIDGET_TYPE)
     {
         xpos = XPOS;
@@ -59,9 +65,7 @@ public:
     virtual void onDraw(Renderer *RENDERER) = 0;
     virtual void onClick(Renderer* RENDERER) = 0;
 };
-/*In order to integrate the sdlgui library with the dashboard library, each menupage must have a "screen" associated to it
- * this will allow the mixture between sdlgui and dashboard widgets.
- */
+
 class menuPage
 {
 protected:
@@ -72,13 +76,12 @@ public:
         void* widgetPTR;
     };
     std::vector<widget_array_entry> widgetVector;
-    char title[20];
+    char title[20]{};
     int selectedItem = 0;
-    void* parentRenderer = nullptr;
-    void incrementSelectedWidget();
+  void incrementSelectedWidget();
     void decrementSelectedWidget();
     void addWidget(DashboardWidget* inputWidget);
-    menuPage(SDL_Window* pwindow)
+    explicit menuPage(SDL_Window* pwindow)
     {
 
     }
@@ -87,7 +90,7 @@ public:
 };
 
 void menuPage::addWidget(DashboardWidget *inputWidget) {
-    widget_array_entry entry;
+    widget_array_entry entry{};
     entry.widgetType = DASHBOARD_WIDGET;
     entry.widgetPTR = (void*)inputWidget;
     widgetVector.push_back(entry);
@@ -99,11 +102,11 @@ void menuPage::setTitle(char *newTitle) {
 
 void menuPage::incrementSelectedWidget() {
     //If the page has a pagePicker direct these "increment requests" into the pagepicker widget so icons are selected accordingly
-    DashboardWidget* widget = (DashboardWidget*)widgetVector[0].widgetPTR;
+    auto* widget = (DashboardWidget*)widgetVector[0].widgetPTR;
     if(widgetVector.size() == 1 && widget->widgetType == Widget_PagePicker)
     {
         DashboardWidget* pagePicker = widget;
-        struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
+        auto* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         pickerData->selectedIconIndex++;
     } else
     {
@@ -113,11 +116,11 @@ void menuPage::incrementSelectedWidget() {
 
 void menuPage::decrementSelectedWidget() {
     //If the page has a pagePicker direct these "decrement" requests" into the pagepicker widget so icons are selected accordingly
-    DashboardWidget* widget = (DashboardWidget*)widgetVector[0].widgetPTR;
+    auto* widget = (DashboardWidget*)widgetVector[0].widgetPTR;
     if(widgetVector.size() == 1 && widget->widgetType == Widget_PagePicker)
     {
         DashboardWidget* pagePicker = widget;
-        struct pagePickerData* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
+        auto* pickerData = (struct pagePickerData*)(pagePicker->auxillaryData);
         if(pickerData->selectedIconIndex == 0)
         {
 
@@ -139,7 +142,7 @@ class VerticalGraph : public DashboardWidget{
 public:
     float value = 0.0f;
     float maxValue = 0.0f;// Used to determine the scale of the graph
-    char unitName[10];
+    char unitName[10]{};
     int tickDivision;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
     TTF_Font* SansOilGaugeTicks = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
@@ -156,12 +159,12 @@ public:
         value = newValue;
     }
 
-    virtual void onClick(Renderer* RENDERER)
+    void onClick(Renderer* RENDERER) override
     {
 
     }
 
-    virtual void onDraw(Renderer *RENDERER)
+    void onDraw(Renderer *RENDERER) override
     {
         Context* context = getContext(RENDERER);
         SDL_Rect rect;
@@ -172,14 +175,18 @@ public:
         SDL_SetRenderDrawColor(context->renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
         //Draw Graph Name
         SDL_Color textColor = {255, 255, 0};
-        SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, widgetName, textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-        SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+      SDL_Surface *surfaceMessage;
+      surfaceMessage = TTF_RenderText_Solid(Sans,
+                                            widgetName,
+                                            textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+      SDL_Texture *Message;
+      Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
         SDL_Rect Message_rect; //create a rect
         Message_rect.x = xpos+(width/2)-25;
         Message_rect.y = ypos;
         Message_rect.w = 50; // controls the width of the rect
         Message_rect.h = 40; // controls the height of the rect
-        SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+        SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
         //Draw inner rectangle for bar value
@@ -193,7 +200,7 @@ public:
         rect.x = ((xpos + (width/2)) - (25/2))+2;
         rect.y = ypos + 52;
         rect.w = 21;
-        rect.h = ((150)/(maxValue))*value;
+        rect.h = (150 / (maxValue))*value; // NOLINT(cppcoreguidelines-narrowing-conversions,bugprone-narrowing-conversions)
         SDL_RenderFillRect(context->renderer, &rect);
         //Draw Tick Numbers
         textColor = {0, 255, 0};
@@ -204,9 +211,9 @@ public:
             rect.y = ypos+(index*40)+45;
             rect.w = 25;
             rect.h = 30;
-            SDL_Surface* surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, tickValue.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-            SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-            SDL_RenderCopy(context->renderer, Message, NULL, &rect);
+            surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, tickValue.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+            Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+            SDL_RenderCopy(context->renderer, Message, nullptr, &rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
         }
@@ -219,7 +226,7 @@ public:
         rect.h = 40;
         surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, valueText.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
         Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-        SDL_RenderCopy(context->renderer, Message, NULL, &rect);
+        SDL_RenderCopy(context->renderer, Message, nullptr, &rect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
     }
@@ -229,7 +236,7 @@ public:
 class label : public DashboardWidget
 {
 public:
-    char labelValue[20];
+    char labelValue[20]{};
     int labelColor = 0;
     menuPage* onClick_NextPage = nullptr;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
@@ -239,17 +246,8 @@ public:
         widgetType = Widget_Label;
         labelColor = Color;
     }
-    void setValue(char* newValue)
-    {
-        strcpy(labelValue,newValue);
-    }
 
-    void setOnClickPage(menuPage* nextPage)
-    {
-        onClick_NextPage = nextPage;
-    }
-
-    virtual void onClick(Renderer* RENDERER)
+  void onClick(Renderer* RENDERER) override
     {
 
     }
@@ -258,12 +256,12 @@ public:
 
 class BitmapWidget : public DashboardWidget{
 private:
-    char filePath[250];
+    char filePath[250]{};
     int startIndex = 0;
     int endIndex = 0;
     int value = 0;
 public:
-    BitmapWidget(int XPOS, int YPOS, int Width, int Height, char* FILEPATH, int START_INDEX, int END_INDEX) : DashboardWidget(XPOS, YPOS, Width, Height, "BITMAPW", Widget_BITMAP)
+    BitmapWidget(int XPOS, int YPOS, int Width, int Height, char* FILEPATH, int START_INDEX, int END_INDEX) : DashboardWidget(XPOS, YPOS, Width, Height, (char*)"BITMAPW", Widget_BITMAP)
     {
         strcpy(filePath,FILEPATH);
         startIndex = START_INDEX;
@@ -275,13 +273,13 @@ public:
         value = newValue;
     }
 
-    virtual void onClick(Renderer* RENDERER)
+    void onClick(Renderer* RENDERER) override
     {
         int i = 0;
 
     }
 
-    virtual void onDraw(Renderer *RENDERER)
+    void onDraw(Renderer *RENDERER) override
     {
         Context* context = getContext(RENDERER);
         int index = startIndex+(value);
@@ -299,7 +297,7 @@ public:
         r.y = ypos;
         r.w = width;
         r.h = height;
-        SDL_RenderCopy(context->renderer, texture, NULL, &r);
+        SDL_RenderCopy(context->renderer, texture, nullptr, &r);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(image);
         ////////return addr.can_addr;////////////////////
@@ -311,7 +309,6 @@ public:
 class pagePicker : public DashboardWidget
 {
 public:
-    int selectedIconCount = 0;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 50);
 
     struct iconStruct{
@@ -334,19 +331,19 @@ public:
         iconVector.push_back(inputSTRUCT);
     }
 
-    virtual void onClick(Renderer* RENDERER)//When an icon is selected, go to that page
+    void onClick(Renderer* RENDERER) override//When an icon is selected, go to that page
     {
         //Get the current icon
-        struct pagePickerData* pickerData = (struct pagePickerData*)(&auxillaryData[0]);
+        auto* pickerData = (struct pagePickerData*)(&auxillaryData[0]);
         iconStruct currentIcon = iconVector[pickerData->selectedIconIndex];
         loadPage(RENDERER,currentIcon.onClickPagePointer);
         //Somehow get the renderer to change current page
         //RENDERER->loadPage(currentIcon.onClickPagePointer);
     }
 
-    void onDraw(Renderer *RENDERER)
+    void onDraw(Renderer *RENDERER) override
     {
-        Context* context = (Context*)getContext(RENDERER);
+        auto* context = (Context*)getContext(RENDERER);
         SDL_Rect rect;
         //Draw upper menu graphic
         rect.x = xpos;
@@ -355,7 +352,7 @@ public:
         rect.h = 100;
         SDL_Surface *image = SDL_LoadBMP("/home/dylan/Desktop/Comp 10000.bmp");//Load Image, upper menu graphic
         SDL_Texture *texture = SDL_CreateTextureFromSurface(context->renderer, image);
-        SDL_RenderCopy(context->renderer, texture, NULL, &rect);
+        SDL_RenderCopy(context->renderer, texture, nullptr, &rect);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(image);
         //Draw outer Rectangle
@@ -389,20 +386,20 @@ public:
             colCount = index % 3;
             struct iconStruct tempStruct = iconVector[index];
             //Draw the icons onto the grid
-            SDL_Surface *image = SDL_LoadBMP(tempStruct.iconPath);//Load Image
-            SDL_Texture *texture = SDL_CreateTextureFromSurface(context->renderer, image);
+            image = SDL_LoadBMP(tempStruct.iconPath);//Load Image
+            texture = SDL_CreateTextureFromSurface(context->renderer, image);
             //Determine the rectangle for each grid square
             SDL_Rect gridRectangle;
             gridRectangle.x = colCount*200+50;
             gridRectangle.y = rowCount*200+rect.y+150;
             gridRectangle.w = 100;
             gridRectangle.h = 100;
-            SDL_RenderCopy(context->renderer, texture, NULL, &gridRectangle);
+            SDL_RenderCopy(context->renderer, texture, nullptr, &gridRectangle);
             SDL_DestroyTexture(texture);
             SDL_FreeSurface(image);
             //*******Draw Text**********
             SDL_Color textColor = {255, 255, 0};
-            struct pagePickerData* pickerData = (struct pagePickerData*)(&auxillaryData[0]);
+            auto* pickerData = (struct pagePickerData*)(&auxillaryData[0]);
             if(index == pickerData->selectedIconIndex)
             {
                 textColor = {255, 0, 0};
@@ -415,10 +412,9 @@ public:
             Message_rect.y = gridRectangle.y + gridRectangle.h + 5;
             Message_rect.w = gridRectangle.w; // controls the width of the rect
             Message_rect.h = 40; // controls the height of the rect
-            SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+            SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
-            //SDL_RenderDrawRect(renderer,&gridRectangle);
         }
         //End of for loop
 
@@ -430,8 +426,8 @@ public:
     TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 40);
     int stringCount = 0;
     std::vector<std::string> textStrings;
-    TTF_Font *Font_Sizes[50];//from 1-49 point size
-    TextView(int x, int y, int width, int height) : DashboardWidget(x, y, width, height, "Button", Widget_TextView)
+    TTF_Font *Font_Sizes[50]{};//from 1-49 point size
+    TextView(int x, int y, int width, int height) : DashboardWidget(x, y, width, height, (char*)"Button", Widget_TextView)
     {
         //initilize stringVector
         for(int i = 0; i < 100; i++)
@@ -457,7 +453,7 @@ public:
         stringCount = stringCount % (height/40);
     }
 
-    void onDraw(Renderer *RENDERER) {
+    void onDraw(Renderer *RENDERER) override {
     Context* context = getContext(RENDERER);
     //Create the background rectangle (white)
     SDL_Rect widgetRect;
@@ -474,18 +470,18 @@ public:
     int y = ypos;
     int size = 40;
     Sans = getFont(size);
-    for(int i = 0; i < textStrings.size(); i++)
+    for(auto & textString : textStrings)
     {
         int w,h;
-        TTF_SizeText(Sans,textStrings[i].c_str(),&w,&h);
+        TTF_SizeText(Sans,textString.c_str(),&w,&h);
         //if the text width exceeds the width of the textview scale down.
         if(w > width)
         {
-            std::string str = textStrings[i];
+            std::string str = textString;
             while(w > width)
             {
                 Sans = getFont(size);
-                TTF_SizeText(Sans,textStrings[i].c_str(),&w,&h);
+                TTF_SizeText(Sans,textString.c_str(),&w,&h);
                 size--;
             }
         }
@@ -493,20 +489,17 @@ public:
         textRect.y = y;
         textRect.w = w;
         textRect.h = size+7;
-        SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, textStrings[i].c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+        SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, textString.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
         SDL_Texture* Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-        SDL_RenderCopy(context->renderer, Message, NULL, &textRect);
+        SDL_RenderCopy(context->renderer, Message, nullptr, &textRect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
-        //SDL_RenderDrawRect(renderer,&gridRectangle);
-        //SDL_RenderDrawLine(context->renderer,xpos,y,xpos+width-1,y);
-        //SDL_RenderDrawRect(context->renderer, &textRect);
         y = y + size + 5;
     }
 
     }
 
-    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
+    void onClick(Renderer* RENDERER) override//When button is selected, run the click handler
     {
 
     }
@@ -520,7 +513,7 @@ public:
         char name[10];
         char value[10];
     };
-    TTF_Font *Font_Sizes[50];//from 1-49 point size
+    TTF_Font *Font_Sizes[50]{};//from 1-49 point size
     std::vector<struct item> items;
 
     Table(int x, int y,int width, int height) : DashboardWidget(x,y,width,height,"Table",Widget_Table)
@@ -531,7 +524,7 @@ public:
             Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/Orbitron-Black.ttf", i+1);
         }
         //initialize items
-        struct item emptyStruct;
+        struct item emptyStruct{};
         strcpy(emptyStruct.name,"");
         for(int i = 0; i < 5; i++)
         {
@@ -551,7 +544,7 @@ public:
         return Font_Sizes[pointSize+1];
     }
 
-    void onDraw(Renderer *RENDERER) {
+    void onDraw(Renderer *RENDERER) override {
         Context *context = getContext(RENDERER);
         SDL_Rect rect;
         rect.x = xpos;
@@ -574,7 +567,7 @@ public:
             Message_rect.y = y;
             Message_rect.w = width*.40;
             Message_rect.h = 45;
-            SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+            SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
 
@@ -586,7 +579,7 @@ public:
             TTF_SizeText(getFont(20),items[index].value,&w,&h);
             Message_rect.w = w;//width*.40;
             Message_rect.h = 45;
-            SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+            SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
             SDL_DestroyTexture(Message);
             SDL_FreeSurface(surfaceMessage);
 
@@ -599,7 +592,7 @@ public:
 
     }
 
-    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
+    void onClick(Renderer* RENDERER) override//When button is selected, run the click handler
     {
 
     }
@@ -609,15 +602,15 @@ public:
 class Button : public DashboardWidget{
 public:
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 75);
-    void (*onClick_functionPTR)(void) = nullptr;
-    Button(int x, int y, char* buttonName) : DashboardWidget(x,y,width,height,"Button",Widget_BUTTON)
+    void (*onClick_functionPTR)() = nullptr;
+    Button(int x, int y, char* buttonName) : DashboardWidget(x,y,width,height,(char*)"Button",Widget_BUTTON)
     {
         strcpy(this->widgetName,buttonName);
         width = 200;
         height = 45;
     }
 
-    void onDraw(Renderer *RENDERER)
+    void onDraw(Renderer *RENDERER) override
     {
         Context* context = getContext(RENDERER);
         int count = 0;
@@ -638,7 +631,7 @@ public:
         //Draw the Button name
         //Determine if button is selected
         SDL_Color textColor;
-        if(this->isSelected == true)
+        if(this->isSelected)
         {
             textColor = {0, 255, 0};
         } else
@@ -653,18 +646,17 @@ public:
         Message_rect.y = ypos+5;
         Message_rect.w = 100; // controls the width of the rect
         Message_rect.h = 35; // controls the height of the rect
-        SDL_RenderCopy(context->renderer, Message, NULL, &Message_rect);
+        SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
-        //SDL_RenderDrawRect(renderer,&gridRectangle);
     }
 
-    void setOnClickHandler(void(*function_pointer)(void))
+    void setOnClickHandler(void(*function_pointer)())
     {
         onClick_functionPTR = function_pointer;
     }
 
-    virtual void onClick(Renderer* RENDERER)//When button is selected, run the click handler
+    void onClick(Renderer* RENDERER) override//When button is selected, run the click handler
     {
         if(onClick_functionPTR != nullptr) {
             (*onClick_functionPTR)();//Do what needs to be done. TODO: have onClick return the value from onClick_functionPTR
@@ -680,17 +672,15 @@ public:
 class Renderer {
 private:
     //Define the SDL environment variables
-    SDL_Window *window = NULL;
+    SDL_Window *window = nullptr;
 
     TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
     TTF_Font *SansOilGaugeTicks = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
 public:
-    int xCursor = 0;
-    int yCursor = 100;
-    SDL_Renderer *renderer = NULL;
-    menuPage *PAGES[5];
-    menuPage *currentPage = NULL;
-    menuPage *previousPage = NULL;
+    SDL_Renderer *renderer = nullptr;
+    menuPage *PAGES[5]{};
+    menuPage *currentPage = nullptr;
+    menuPage *previousPage = nullptr;
 //    editPage EDITOR = editPage();
     int pageCount = 0;
 
@@ -699,7 +689,6 @@ public:
         renderer = RENDERER;
     }
     void addPage(menuPage* inputPage);
-    void onClick();//Run the currently selected widgets onClick;
     void incrementSelectedWidget()
     {
         currentPage->incrementSelectedWidget();
@@ -713,7 +702,6 @@ public:
         currentPage = previousPage;
     }
     void render();
-    friend void loadPage(menuPage);
 };
 
 void Renderer::addPage(menuPage *inputPage) {
@@ -723,8 +711,7 @@ void Renderer::addPage(menuPage *inputPage) {
         currentPage = inputPage;
     }
     PAGES[pageCount] = inputPage;
-    inputPage->parentRenderer = this;
-    pageCount++;
+  pageCount++;
 }
 
 void loadPage(Renderer* renderer,menuPage* page) {//Helper function, loads and changes renderer current page.
@@ -734,7 +721,7 @@ void loadPage(Renderer* renderer,menuPage* page) {//Helper function, loads and c
 
 struct Context* getContext(Renderer* RENDERER)
 {
-    struct Context* tempContext = (struct Context*)malloc(sizeof(struct Context));
+    auto* tempContext = (struct Context*)malloc(sizeof(struct Context));
     tempContext->RENDERER = RENDERER;
     tempContext->currentPage = RENDERER->currentPage;
     tempContext->renderer = RENDERER->renderer;
@@ -760,7 +747,7 @@ void Renderer::render() {
     {
         if(currentPage->widgetVector[index].widgetType == DASHBOARD_WIDGET)
         {
-            DashboardWidget* widPTR = (DashboardWidget*)currentPage->widgetVector[index].widgetPTR;//Load the widget from the currentPage
+            auto* widPTR = (DashboardWidget*)currentPage->widgetVector[index].widgetPTR;//Load the widget from the currentPage
             if(currentPage->selectedItem == index)
             {
                 widPTR->isSelected = true;
