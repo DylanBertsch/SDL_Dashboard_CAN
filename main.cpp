@@ -91,8 +91,20 @@ int main(int /* argc */, char ** /* argv */)
     testBus_Button.setOnClickHandler(testCanBusRead);
     VerticalGraph oilGraph = VerticalGraph(0, 600, 75, 25,"OIL", "PSI");
     VerticalGraph batteryGraph = VerticalGraph(0,350,14,5,"Batt","Volt");
-    BitmapWidget RPM_Widget = BitmapWidget(150,0,500,500,"/home/dylan/Documents/RPM_2_AME/Comp ",10000,10064);
-    BitmapWidget Coolant_Widget = BitmapWidget(625,650,300,300,"/home/dylan/Documents/CoolantGauge_AME/Comp 1_",1000,1306);
+    BitmapWidget RPM_Widget = BitmapWidget(150,
+                                           0,
+                                           500,
+                                           500,
+                                           "/home/dylan/Documents/RPM_2_AME/Comp ",
+                                           10000,
+                                           10064);
+    BitmapWidget Coolant_Widget = BitmapWidget(625,
+                                               650,
+                                               300,
+                                               300,
+                                               "/home/dylan/Documents/CoolantGauge_AME/Comp 1_",
+                                               1000,
+                                               1306);
     Table table = Table(275,550,300,300);
     textView = new TextView(175,350,500,500);
     table.setValue(0,"CTS:","150");
@@ -125,6 +137,8 @@ int main(int /* argc */, char ** /* argv */)
     dashPage.addWidget(&batteryGraph);
     dashPage.addWidget(&table);
     oilGraph.onClick(&RENDERER);
+    Coolant_Widget.setInitalConditions(150,1000,175,1099);
+    RPM_Widget.setInitalConditions(0,10000,1000,10009);
     bool quit = false;
     try
     {
@@ -170,15 +184,19 @@ int main(int /* argc */, char ** /* argv */)
             std::string str = std::to_string(count);
             std::string outputSTR = std::to_string(canbus_comms.sensorData.CTS);
             table.setValue(0,"CTS:",(char*)outputSTR.c_str());
+            outputSTR = std::to_string(canbus_comms.sensorData.IgnitionTiming);
+            table.setValue(1,"Timing:",(char*)outputSTR.c_str());
+            outputSTR = std::to_string(canbus_comms.sensorData.AFR);
             table.setValue(2,"AFR:",(char*)outputSTR.c_str());
             batteryGraph.setValue(10);
             RPM_Widget.setValue(count);
-            Coolant_Widget.setValue(210);
+            std::cout << count << std::endl;
+            Coolant_Widget.setValue(count+150);
             SDL_RenderClear(renderer);
             RENDERER.render();
             SDL_RenderPresent(renderer);
-            count = count + 1;
-            count = count % 15;
+            count = count + 10;
+
             canbus_comms.readFrame();
         }
     }

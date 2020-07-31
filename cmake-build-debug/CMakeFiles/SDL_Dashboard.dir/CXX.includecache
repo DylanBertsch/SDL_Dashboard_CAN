@@ -7,11 +7,11 @@
 #IncludeRegexTransform: 
 
 /home/dylan/Desktop/SDL_Dashboard/canBus_Comms.h
-stdio.h
+cstdio
 -
-stdlib.h
+cstdlib
 -
-string.h
+cstring
 -
 unistd.h
 -
@@ -49,7 +49,7 @@ vector
 -
 string
 -
-math.h
+cmath
 -
 linux/can.h
 -

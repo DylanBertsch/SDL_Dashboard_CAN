@@ -260,36 +260,58 @@ private:
     int startIndex = 0;
     int endIndex = 0;
     int value = 0;
+    float slope = 0;
+    float B = 0;
 public:
-    BitmapWidget(int XPOS, int YPOS, int Width, int Height, char* FILEPATH, int START_INDEX, int END_INDEX) : DashboardWidget(XPOS, YPOS, Width, Height, (char*)"BITMAPW", Widget_BITMAP)
+    BitmapWidget(int XPOS,
+                 int YPOS,
+                 int Width,
+                 int Height,
+                 char *FILEPATH,
+                 int START_INDEX,
+                 int END_INDEX) : DashboardWidget(XPOS, YPOS, Width, Height, (char*)"BITMAPW", Widget_BITMAP)
     {
         strcpy(filePath,FILEPATH);
         startIndex = START_INDEX;
         endIndex = END_INDEX;
     }
-
-    void setValue(int newValue)
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+#pragma ide diagnostic ignored "bugprone-narrowing-conversions"
+    /*Provide initial conditions to compute correct bitmap indexing (linear regression method)
+     * For example, provide a gauge value as input, and then provide its corresponding index#
+     * if the gauge says, 55, its corresponding bitmap is at index 1005; or something like that.
+     */
+    void setInitalConditions(float input1, float actualGaugeIndex1, float input2, float actualGaugeIndex2)
     {
-        value = newValue;
+      slope = (actualGaugeIndex2-actualGaugeIndex1)/(input2-input1);
+      B = (actualGaugeIndex2 - slope*input2);
+    }
+#pragma clang diagnostic pop
+
+    void setValue(float newValue)
+    {
+        if(slope != 0)
+        {
+          value = (int)(slope*newValue+B);
+        }
     }
 
     void onClick(Renderer* RENDERER) override
     {
         int i = 0;
-
     }
 
     void onDraw(Renderer *RENDERER) override
     {
         Context* context = getContext(RENDERER);
-        int index = startIndex+(value);
-        if(index > endIndex)
+        if(value > endIndex)
         {
-            index = endIndex;
+            value = endIndex;
         } else {
 
         }
-        std::string Path = std::string(this->filePath) + std::to_string(index) + ".bmp";
+        std::string Path = std::string(this->filePath) + std::to_string(value) + ".bmp";
         SDL_Surface *image = SDL_LoadBMP(Path.c_str());
         SDL_Texture *texture = SDL_CreateTextureFromSurface(context->renderer, image);
         SDL_Rect r;

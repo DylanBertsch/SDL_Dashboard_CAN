@@ -124,7 +124,7 @@ public:
             frameData[index] = frame.data[count];
             count--;
         }
-        cout << (frame.can_id & 0x1FFFFFFFU) << endl;
+        //cout << (frame.can_id & 0x1FFFFFFFU) << endl;
         switch(frame.can_id & 0x1FFFFFFFU)
         {
 
