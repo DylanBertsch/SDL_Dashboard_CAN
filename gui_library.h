@@ -259,14 +259,27 @@ class Grapher : public DashboardWidget{
 
  public:
   int xmin,ymin,xmax,ymax;
-
+  int xPrime = xpos+100;//X position of coordinate plane
+  int yPrime = ypos+(height-150);//Y position of coordinate plane
+  int coordinatePlaneXOffset = 100;
+  int coordinatePlaneYOffset = 150;
+  TTF_Font *Font_Sizes[50]{};//from 1-49 point size
   Grapher(int XPOS, int YPOS, int Width, int Height) : DashboardWidget(XPOS,YPOS,Width,Height,(char*)"Grapher",Widget_Grapher)
   {
-
+    //initialize Fonts
+    for(int i = 0; i <50; i++)
+    {
+      Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/Orbitron-Black.ttf", i+1);
+    }
   }
   void onClick(Renderer* RENDERER) override
   {
     int i = 0;
+  }
+
+  TTF_Font* getFont(int pointSize)
+  {
+    return Font_Sizes[pointSize+1];
   }
 
   int drawPointCoordinatePlane(SDL_Renderer* renderer, float x, float y)
@@ -275,10 +288,8 @@ class Grapher : public DashboardWidget{
     {
       return -1;
     }
-    int xPrime = xpos+100;//X position of coordinate plane
-    int yPrime = ypos+(height-150);//Y position of coordinate plane
     //Compute the offset from the prime coordinates.
-    float scaledXCoordinate = (((width-100)*x)/(xmax-xmin))-((xmin*(width-100))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
+    float scaledXCoordinate = (((width-coordinatePlaneXOffset)*x)/(xmax-xmin))-((xmin*(width-coordinatePlaneXOffset))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
     float scaledYCoordinate = ((y*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
     SDL_RenderDrawPointF(renderer,scaledXCoordinate,scaledYCoordinate);
 
@@ -306,16 +317,16 @@ class Grapher : public DashboardWidget{
     SDL_SetRenderDrawColor(context->renderer,0,255,0,255);
     //Draw coordinate plane(horizontal)
     int y = ypos;
-    while(y < ypos + height-100)
+    while(y < ypos + height-125)
     {
       for(int x = xpos+100; x < xpos + width; x++)
       {
         SDL_RenderDrawPoint(context->renderer,x,y);
         SDL_RenderDrawPoint(context->renderer,x,y+1);
       }
-      y = y + 50;
+      y = y + 45;
     }
-    //Draw coordinate plate(vertical)
+    //Draw coordinate plane(vertical)
     int x = xpos+100;
     while(x < xpos + width-2)
     {
@@ -326,12 +337,64 @@ class Grapher : public DashboardWidget{
       }
       x = x + 50;
     }
+    //Draw axis numbers
+    SDL_Color textColor = {255, 255, 0};
+    int xIndex = 0;
+    int count = 0;
+    while(xIndex < xmax)//Draw x-axis tick markers
+    {
+      std::string value = std::to_string(count);
+      SDL_Surface *surfaceMessage;
+      surfaceMessage = TTF_RenderText_Solid(getFont(20),
+                                            value.c_str(),
+                                            textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+      SDL_Texture *Message;
+      Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+      SDL_Rect Message_rect; //create a rect
+      float scaledXCoordinate = (((width-coordinatePlaneXOffset)*xIndex)/(xmax-xmin))-((xmin*(width-coordinatePlaneXOffset))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
+      float scaledYCoordinate = ((y*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
+      Message_rect.x = scaledXCoordinate-(25/2);
+      Message_rect.y = yPrime;
+      Message_rect.w = 25; // controls the width of the rect
+      Message_rect.h = 25; // controls the height of the rect
+      SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
+      SDL_DestroyTexture(Message);
+      SDL_FreeSurface(surfaceMessage);
+      xIndex = xIndex + 10;
+      count = count + 10;
+    }
+    int yIndex = 10;
+    count = 10;
+    while(yIndex < ymax)
+    {
+      std::string value = std::to_string(count);
+      SDL_Surface *surfaceMessage;
+      surfaceMessage = TTF_RenderText_Solid(getFont(20),
+                                            value.c_str(),
+                                            textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+      SDL_Texture *Message;
+      Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+      SDL_Rect Message_rect; //create a rect
+      float scaledXCoordinate = (((width-coordinatePlaneXOffset)*xIndex)/(xmax-xmin))-((xmin*(width-coordinatePlaneXOffset))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
+      float scaledYCoordinate = ((yIndex*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
+      Message_rect.x = xPrime-25;
+      Message_rect.y = scaledYCoordinate-(25/2);
+      Message_rect.w = 25; // controls the width of the rect
+      Message_rect.h = 25; // controls the height of the rect
+      SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
+      SDL_DestroyTexture(Message);
+      SDL_FreeSurface(surfaceMessage);
+      yIndex = yIndex + 10;
+      count = count + 10;
+    }
+
+
     setScale(0,0,100,100);
     //Draw test
     SDL_SetRenderDrawColor(context->renderer,255,0,0,255);
-    for(float i = 0; i < 150; i = i + 0.01)
+    for(float i = 0; i < 150; i = i + 0.001)
     {
-      drawPointCoordinatePlane(context->renderer, i, i);
+      drawPointCoordinatePlane(context->renderer, i, 10*(1/cos(i)));
     }
   }
 
