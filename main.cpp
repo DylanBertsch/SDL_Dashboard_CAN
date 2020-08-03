@@ -86,6 +86,8 @@ int main(int /* argc */, char ** /* argv */)
     menuPage mainPage = menuPage(window);
     menuPage dashPage = menuPage(window);
     menuPage canBusPage = menuPage(window);
+    menuPage graphPage = menuPage(window);
+    graphPage.setTitle("Graphing");
     canBusPage.setTitle("Can Bus Settings");
     Button testBus_Button = Button(0, 150, "Test Bus");
     testBus_Button.setOnClickHandler(testCanBusRead);
@@ -122,7 +124,8 @@ int main(int /* argc */, char ** /* argv */)
     icon1.onClickPagePointer = (menuPage*)&canBusPage;
     strcpy(icon1.iconName,"Can Bus Info");
     Drawer1.addItem(icon1);
-    strcpy(icon1.iconName,"");
+    strcpy(icon1.iconName,"Graphing");
+    icon1.onClickPagePointer = &graphPage;
     icon1.iconPath = "/home/dylan/Desktop/icon3.bmp";
     Drawer1.addItem(icon1);
     icon1.iconPath = "/home/dylan/Desktop/icon4.bmp";
@@ -139,6 +142,8 @@ int main(int /* argc */, char ** /* argv */)
     oilGraph.onClick(&RENDERER);
     Coolant_Widget.setInitalConditions(150,1000,175,1099);
     RPM_Widget.setInitalConditions(0,10000,1000,10009);
+    Grapher grapher = Grapher(25,150,600,600);
+    graphPage.addWidget(&grapher);
     bool quit = false;
     try
     {
@@ -197,7 +202,7 @@ int main(int /* argc */, char ** /* argv */)
             SDL_RenderPresent(renderer);
             count = count + 10;
 
-            canbus_comms.readFrame();
+            //canbus_comms.readFrame();
         }
     }
     catch (const std::runtime_error &e)

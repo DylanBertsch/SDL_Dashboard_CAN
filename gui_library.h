@@ -13,6 +13,7 @@
 #define Widget_PagePicker 11
 #define Widget_TextView 12
 #define Widget_Table 13
+#define Widget_Grapher 14
 
 #define Window_Width 850
 #define Window_Height 850
@@ -251,6 +252,89 @@ public:
     {
 
     }
+
+};
+
+class Grapher : public DashboardWidget{
+
+ public:
+  int xmin,ymin,xmax,ymax;
+
+  Grapher(int XPOS, int YPOS, int Width, int Height) : DashboardWidget(XPOS,YPOS,Width,Height,(char*)"Grapher",Widget_Grapher)
+  {
+
+  }
+  void onClick(Renderer* RENDERER) override
+  {
+    int i = 0;
+  }
+
+  int drawPointCoordinatePlane(SDL_Renderer* renderer, float x, float y)
+  {
+    if(x > xmax || x < xmin || y > ymax || y < ymin)
+    {
+      return -1;
+    }
+    int xPrime = xpos+100;//X position of coordinate plane
+    int yPrime = ypos+(height-150);//Y position of coordinate plane
+    //Compute the offset from the prime coordinates.
+    float scaledXCoordinate = (((width-100)*x)/(xmax-xmin))-((xmin*(width-100))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
+    float scaledYCoordinate = ((y*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
+    SDL_RenderDrawPointF(renderer,scaledXCoordinate,scaledYCoordinate);
+
+  }
+
+  void setScale(int xmin, int ymin, int xmax, int ymax)
+  {
+    this->xmin = xmin;
+    this->ymin = ymin;
+    this->xmax = xmax;
+    this->ymax = ymax;
+  }
+
+  void onDraw(Renderer *RENDERER) override
+  {
+    Context* context = getContext(RENDERER);
+
+    SDL_Rect rect;
+    rect.x = xpos-1;
+    rect.y = ypos-1;
+    rect.w = width-1;
+    rect.h = height-1;
+    SDL_SetRenderDrawColor(context->renderer,255,255,255,255);
+    SDL_RenderDrawRect(context->renderer,&rect);
+    SDL_SetRenderDrawColor(context->renderer,0,255,0,255);
+    //Draw coordinate plane(horizontal)
+    int y = ypos;
+    while(y < ypos + height-100)
+    {
+      for(int x = xpos+100; x < xpos + width; x++)
+      {
+        SDL_RenderDrawPoint(context->renderer,x,y);
+        SDL_RenderDrawPoint(context->renderer,x,y+1);
+      }
+      y = y + 50;
+    }
+    //Draw coordinate plate(vertical)
+    int x = xpos+100;
+    while(x < xpos + width-2)
+    {
+      for(int y = ypos; y < ypos + height-150; y++)
+      {
+        SDL_RenderDrawPoint(context->renderer,x+1,y);
+        SDL_RenderDrawPoint(context->renderer,x,y);
+      }
+      x = x + 50;
+    }
+    setScale(0,0,100,100);
+    //Draw test
+    SDL_SetRenderDrawColor(context->renderer,255,0,0,255);
+    for(float i = 0; i < 150; i = i + 0.01)
+    {
+      drawPointCoordinatePlane(context->renderer, i, i);
+    }
+  }
+
 
 };
 
