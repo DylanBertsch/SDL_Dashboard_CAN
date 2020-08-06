@@ -24,6 +24,7 @@
 #define CAN_AFR_ADDRESS 0x1E02100A
 #define CAN_TARGETAFR_ADDRESS 0x1E01500A
 #define CAN_IGNADV_ADDRESS 0x1E05900A
+#define CAN_SPEED_ADDRESS 0x1E4A900A
 
 using namespace std;
 
@@ -34,6 +35,7 @@ struct SensorData{
     float AFR;
     float IgnitionTiming;
     float TargetAFR;
+    float Speed;
 };
 class CanBus_Comms;
 
@@ -157,6 +159,11 @@ public:
                 float *data = (float *) &(frameData[0]);
                 sensorData.IgnitionTiming = *data;
                 break;
+            }
+            case CAN_SPEED_ADDRESS:{
+              float *data = (float*)&(frameData[0]);
+              sensorData.Speed = *data;
+              break; 
             }
         }
         //

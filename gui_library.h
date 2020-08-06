@@ -6,6 +6,7 @@
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
 
+
 #define Widget_BUTTON 1
 #define Widget_Label  2
 #define Widget_VGRAPH 3
@@ -257,21 +258,50 @@ public:
 
 class Grapher : public DashboardWidget{
 
+ private:
+  struct coordinate{
+    float x;
+    float y;
+  };
+  int yAxisTickFontSize = 0;
+  int xAxisTickFontSize = 0;
+  std::vector<struct coordinate> graphPoints;
+
  public:
   int xmin,ymin,xmax,ymax;
-  int xPrime = xpos+100;//X position of coordinate plane
-  int yPrime = ypos+(height-150);//Y position of coordinate plane
-  int coordinatePlaneXOffset = 100;
-  int coordinatePlaneYOffset = 150;
-  TTF_Font *Font_Sizes[50]{};//from 1-49 point size
+  int xPrime = xpos+75;//X position of coordinate plane
+  int yPrime = ypos+(height-75);//Y position of coordinate plane
+  int coordinatePlaneXOffset = 75;
+  int coordinatePlaneYOffset = 75;
+  TTF_Font *Font_Sizes[200]{};//from 1-49 point size
   Grapher(int XPOS, int YPOS, int Width, int Height) : DashboardWidget(XPOS,YPOS,Width,Height,(char*)"Grapher",Widget_Grapher)
   {
     //initialize Fonts
-    for(int i = 0; i <50; i++)
+    for(int i = 0; i <200; i++)
     {
       Font_Sizes[i] = TTF_OpenFont("/home/dylan/Desktop/sans/Orbitron-Black.ttf", i+1);
     }
   }
+
+  void graphPoint(float x, float y)
+  {
+    struct coordinate c;
+    c.x = x;
+    c.y = y;
+    graphPoints.push_back(c);
+
+  }
+
+  void setYAxisTickFontSize(int fontsize)
+  {
+    this->yAxisTickFontSize = fontsize;
+  }
+
+  void setXAxisTickFontSize(int fontsize)
+  {
+    this->xAxisTickFontSize = fontsize;
+  }
+
   void onClick(Renderer* RENDERER) override
   {
     int i = 0;
@@ -289,115 +319,180 @@ class Grapher : public DashboardWidget{
       return -1;
     }
     //Compute the offset from the prime coordinates.
-    float scaledXCoordinate = (((width-coordinatePlaneXOffset)*x)/(xmax-xmin))-((xmin*(width-coordinatePlaneXOffset))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
+    float scaledXCoordinate = ((x*((xpos+width)-xPrime))/(xmax-xmin))-((xmin*((xpos+width)-xPrime))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
     float scaledYCoordinate = ((y*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
+    //SDL_RenderDrawLine(renderer,0,0,scaledXCoordinate,scaledYCoordinate);
     SDL_RenderDrawPointF(renderer,scaledXCoordinate,scaledYCoordinate);
+    SDL_RenderDrawPointF(renderer,scaledXCoordinate+1,scaledYCoordinate+1);
+    SDL_RenderDrawPointF(renderer,scaledXCoordinate-1,scaledYCoordinate+1);
 
   }
 
-  void setScale(int xmin, int ymin, int xmax, int ymax)
+  void setScale(int XMIN, int YMIN, int XMAX, int YMAX)
   {
-    this->xmin = xmin;
-    this->ymin = ymin;
-    this->xmax = xmax;
-    this->ymax = ymax;
+    this->xmin = XMIN;
+    this->ymin = YMIN;
+    this->xmax = XMAX;
+    this->ymax = YMAX;
   }
 
+  void clearPoints()
+  {
+    graphPoints.clear();
+  }
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "bugprone-narrowing-conversions"
   void onDraw(Renderer *RENDERER) override
   {
     Context* context = getContext(RENDERER);
-
     SDL_Rect rect;
     rect.x = xpos-1;
     rect.y = ypos-1;
     rect.w = width-1;
     rect.h = height-1;
     SDL_SetRenderDrawColor(context->renderer,255,255,255,255);
-    SDL_RenderDrawRect(context->renderer,&rect);
+    //SDL_RenderDrawRect(context->renderer,&rect);
     SDL_SetRenderDrawColor(context->renderer,0,255,0,255);
     //Draw coordinate plane(horizontal)
     int y = ypos;
-    while(y < ypos + height-125)
+    int ySpacing = (height-75)/8;
+    int count = 0;
+    while(count < 9)
     {
-      for(int x = xpos+100; x < xpos + width; x++)
+      for(int x = xpos + 75; x < xpos + width; x++)
       {
-        SDL_RenderDrawPoint(context->renderer,x,y);
-        SDL_RenderDrawPoint(context->renderer,x,y+1);
+        SDL_RenderDrawPoint(context->renderer, x,y);
+        SDL_RenderDrawPoint(context->renderer, x,y-1);
       }
-      y = y + 45;
+      y = y + ySpacing;
+      count++;
     }
     //Draw coordinate plane(vertical)
-    int x = xpos+100;
-    while(x < xpos + width-2)
+    int x = xpos + 75;
+    int xSpacing = (width - 75)/8;
+    count = 0;
+    while(count < 9)
     {
-      for(int y = ypos; y < ypos + height-150; y++)
+      for(int y = ypos; y < ypos + height - 75; y++)
       {
-        SDL_RenderDrawPoint(context->renderer,x+1,y);
-        SDL_RenderDrawPoint(context->renderer,x,y);
+        SDL_RenderDrawPoint(context->renderer, x,y);
+        SDL_RenderDrawPoint(context->renderer, x+1,y);
       }
-      x = x + 50;
+      x = x + xSpacing;
+      count++;
     }
-    //Draw axis numbers
-    SDL_Color textColor = {255, 255, 0};
+    //Draw tick labels
+    SDL_Color textColor = {255,255,0};
     int xIndex = 0;
-    int count = 0;
-    while(xIndex < xmax)//Draw x-axis tick markers
+    count = 0;
+    while(xIndex < xmax+25)
     {
       std::string value = std::to_string(count);
       SDL_Surface *surfaceMessage;
-      surfaceMessage = TTF_RenderText_Solid(getFont(20),
-                                            value.c_str(),
-                                            textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+      SDL_Rect Message_rect;
+      float scaledXCoordinate = ((xIndex*((xpos+width)-xPrime))/(xmax-xmin))-((xmin*((xpos+width)-xPrime))/(xmax-xmin))+xPrime;
+      if(this->xAxisTickFontSize != 0)
+      {
+        surfaceMessage = TTF_RenderText_Solid(getFont(this->xAxisTickFontSize),
+                                              value.c_str(),
+                                              textColor);
+        Message_rect.x = scaledXCoordinate-(xSpacing*.75)/2;
+        Message_rect.y = yPrime;
+        Message_rect.w = this->xAxisTickFontSize*.75; // controls the width of the rect
+        Message_rect.h = this->xAxisTickFontSize*.75; // controls the height of the rect
+      } else
+      {
+        surfaceMessage = TTF_RenderText_Solid(getFont(xSpacing),
+                                              value.c_str(),
+                                              textColor);
+        Message_rect.x = scaledXCoordinate-(xSpacing*.75)/2;
+        Message_rect.y = yPrime;
+        Message_rect.w = xSpacing*.75; // controls the width of the rect
+        Message_rect.h = xSpacing*.75; // controls the height of the rect
+      }
+
       SDL_Texture *Message;
       Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-      SDL_Rect Message_rect; //create a rect
-      float scaledXCoordinate = (((width-coordinatePlaneXOffset)*xIndex)/(xmax-xmin))-((xmin*(width-coordinatePlaneXOffset))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
-      float scaledYCoordinate = ((y*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
-      Message_rect.x = scaledXCoordinate-(25/2);
-      Message_rect.y = yPrime;
-      Message_rect.w = 25; // controls the width of the rect
-      Message_rect.h = 25; // controls the height of the rect
       SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
       SDL_DestroyTexture(Message);
       SDL_FreeSurface(surfaceMessage);
-      xIndex = xIndex + 10;
-      count = count + 10;
+      xIndex = xIndex + 25;
+      count = count + 25;
     }
-    int yIndex = 10;
-    count = 10;
-    while(yIndex < ymax)
+
+    int yIndex = 25;
+    count = 25 ;
+    SDL_Rect Message_rect;
+    while(yIndex < ymax+25)
     {
       std::string value = std::to_string(count);
       SDL_Surface *surfaceMessage;
-      surfaceMessage = TTF_RenderText_Solid(getFont(20),
-                                            value.c_str(),
-                                            textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-      SDL_Texture *Message;
-      Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-      SDL_Rect Message_rect; //create a rect
-      float scaledXCoordinate = (((width-coordinatePlaneXOffset)*xIndex)/(xmax-xmin))-((xmin*(width-coordinatePlaneXOffset))/(xmax-xmin))+xPrime;//actual screen x coordinate on coordinate plane
       float scaledYCoordinate = ((yIndex*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
-      Message_rect.x = xPrime-25;
-      Message_rect.y = scaledYCoordinate-(25/2);
-      Message_rect.w = 25; // controls the width of the rect
-      Message_rect.h = 25; // controls the height of the rect
+      if(this->yAxisTickFontSize != 0)
+      {
+        surfaceMessage = TTF_RenderText_Solid(getFont(this->yAxisTickFontSize),
+                                              value.c_str(),
+                                              textColor);
+        Message_rect.x = xPrime - 50;
+        Message_rect.y = scaledYCoordinate-((ySpacing*.75)/2);
+        Message_rect.h = this->yAxisTickFontSize*.75;
+        Message_rect.w = this->yAxisTickFontSize*.75;
+      }
+      else
+      {
+        surfaceMessage = TTF_RenderText_Solid(getFont(xSpacing),
+                                              value.c_str(),
+                                              textColor);
+        Message_rect.x = xPrime - 50;
+        Message_rect.y = scaledYCoordinate-((ySpacing*.75)/2);
+        Message_rect.h = ySpacing*.75;
+        Message_rect.w = ySpacing*.75;
+      }
+      SDL_Texture *Message;
+      Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+
       SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
       SDL_DestroyTexture(Message);
       SDL_FreeSurface(surfaceMessage);
-      yIndex = yIndex + 10;
-      count = count + 10;
+      yIndex = yIndex + 25;
+      count = count + 25;
     }
 
-
-    setScale(0,0,100,100);
-    //Draw test
+    textColor = {0,255,0};
+    SDL_Surface *surfaceMessage;
+    surfaceMessage = TTF_RenderText_Solid(getFont(20),
+                                          "PSI",
+                                          textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+    SDL_Texture *Message;
+    Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+    yIndex = 50;
+    float scaledYCoordinate = ((yIndex*(ypos-yPrime))/(ymax-ymin))-((ymin*(ypos-yPrime))/(ymax-ymin))+yPrime;
+    Message_rect.x = xPrime-95;
+    Message_rect.y = scaledYCoordinate-(35/2)-2;
+    Message_rect.w = 35; // controls the width of the rect
+    Message_rect.h = 35; // controls the height of the rect
+    SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
+    SDL_DestroyTexture(Message);
+    //SDL_FreeSurface(surfaceMessage);
+    xIndex = 50;
+    Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+    float scaledXCoordinate = ((xIndex*((xpos+width)-xPrime))/(xmax-xmin))-((xmin*((xpos+width)-xPrime))/(xmax-xmin))+xPrime;
+    Message_rect.x = scaledXCoordinate-(35/2)-2;
+    Message_rect.y = yPrime+30;
+    Message_rect.w = 35; // controls the width of the rect
+    Message_rect.h = 35; // controls the height of the rect
+    SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
+    SDL_DestroyTexture(Message);
+    SDL_FreeSurface(surfaceMessage);
     SDL_SetRenderDrawColor(context->renderer,255,0,0,255);
-    for(float i = 0; i < 150; i = i + 0.001)
+    //Draw user points.
+    for(auto& coordinate : graphPoints)
     {
-      drawPointCoordinatePlane(context->renderer, i, 10*(1/cos(i)));
+      drawPointCoordinatePlane(context->renderer,coordinate.x,coordinate.y);
     }
   }
-
+#pragma clang diagnostic pop
 
 };
 

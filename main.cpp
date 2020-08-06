@@ -142,12 +142,14 @@ int main(int /* argc */, char ** /* argv */)
     oilGraph.onClick(&RENDERER);
     Coolant_Widget.setInitalConditions(150,1000,175,1099);
     RPM_Widget.setInitalConditions(0,10000,1000,10009);
-    Grapher grapher = Grapher(25,150,600,600);
+    Grapher grapher = Grapher(25,100,400,400);
+    grapher.setScale(0,0,100,100);
     graphPage.addWidget(&grapher);
     bool quit = false;
     try
     {
         SDL_Event e;
+        float count2 = 0.0;
         while(true)
         {
             SDL_Event event;
@@ -182,6 +184,7 @@ int main(int /* argc */, char ** /* argv */)
                     quit = true;
                 }
             }
+            grapher.graphPoint(count2,0+20*sin(count2/6.18)+count2);
             SDL_SetRenderDrawColor(renderer, 0xd3, 0xd3, 0xd3, 0xff );
             SDL_RenderClear( renderer );
             // Render the rect to the screen
@@ -193,6 +196,7 @@ int main(int /* argc */, char ** /* argv */)
             table.setValue(1,"Timing:",(char*)outputSTR.c_str());
             outputSTR = std::to_string(canbus_comms.sensorData.AFR);
             table.setValue(2,"AFR:",(char*)outputSTR.c_str());
+            table.setValue(3,"Speed:","0");
             batteryGraph.setValue(10);
             RPM_Widget.setValue(count);
             std::cout << count << std::endl;
@@ -200,9 +204,10 @@ int main(int /* argc */, char ** /* argv */)
             SDL_RenderClear(renderer);
             RENDERER.render();
             SDL_RenderPresent(renderer);
-            count = count + 10;
-
-            //canbus_comms.readFrame();
+            count = count + 1;
+            usleep(100);
+          count2 = count2 + 0.05;
+          //canbus_comms.readFrame();
         }
     }
     catch (const std::runtime_error &e)
