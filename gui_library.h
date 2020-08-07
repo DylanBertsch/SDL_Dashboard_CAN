@@ -148,7 +148,7 @@ public:
     int tickDivision;
     TTF_Font* Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
     TTF_Font* SansOilGaugeTicks = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 45);
-    VerticalGraph(int XPOS, int YPOS, float MAX_Value, int tickDIVISION, char* graphName, char* UNITNAME): DashboardWidget(XPOS, YPOS, 125, 250, graphName, Widget_VGRAPH)
+    VerticalGraph(int XPOS, int YPOS, float MAX_Value, int tickDIVISION, char* graphName, char* UNITNAME): DashboardWidget(XPOS, YPOS, 125, 260, graphName, Widget_VGRAPH)
     {
         maxValue = MAX_Value;
         tickDivision = tickDIVISION;
@@ -169,68 +169,75 @@ public:
     void onDraw(Renderer *RENDERER) override
     {
         Context* context = getContext(RENDERER);
+        //Draw outer Rectangle
         SDL_Rect rect;
         rect.x = xpos;
         rect.y = ypos;
         rect.w = width;
         rect.h = height;
         SDL_SetRenderDrawColor(context->renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-        //Draw Graph Name
-        SDL_Color textColor = {255, 255, 0};
+        SDL_RenderDrawRect(context->renderer,&rect);
+        rect.x = xpos-1;
+        rect.y = ypos-1;
+        rect.w = width+1;
+        rect.h = height+1;
+        SDL_RenderDrawRect(context->renderer,&rect);
+      //Draw Graph Name
+      SDL_Color textColor = {255, 255, 0};
       SDL_Surface *surfaceMessage;
       surfaceMessage = TTF_RenderText_Solid(Sans,
                                             widgetName,
                                             textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
       SDL_Texture *Message;
       Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-        SDL_Rect Message_rect; //create a rect
-        Message_rect.x = xpos+(width/2)-25;
-        Message_rect.y = ypos;
-        Message_rect.w = 50; // controls the width of the rect
-        Message_rect.h = 40; // controls the height of the rect
-        SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
-        SDL_DestroyTexture(Message);
-        SDL_FreeSurface(surfaceMessage);
-        //Draw inner rectangle for bar value
-        rect.x = (xpos + (width/2)) - (25/2);
-        rect.y = ypos + 50;
+      SDL_Rect Message_rect; //create a rect
+      Message_rect.x = xpos+(width/2)-25;
+      Message_rect.y = ypos;
+      Message_rect.w = 50; // controls the width of the rect
+      Message_rect.h = 40; // controls the height of the rect
+      SDL_RenderCopy(context->renderer, Message, nullptr, &Message_rect);
+      SDL_DestroyTexture(Message);
+      SDL_FreeSurface(surfaceMessage);
+      //Draw inner rectangle for bar value
+      rect.x = (xpos + (width/2)) - (25/2);
+      rect.y = ypos + 50;
+      rect.w = 25;
+      rect.h = 150;
+      SDL_RenderDrawRect(context->renderer, &rect);
+      //Draw Bar (Vertical)
+      SDL_SetRenderDrawColor(context->renderer, 0, 255, 255, SDL_ALPHA_OPAQUE);
+      rect.x = ((xpos + (width/2)) - (25/2))+2;
+      rect.y = ypos + 52;
+      rect.w = 21;
+      rect.h = (150*value)/(maxValue); // NOLINT(cppcoreguidelines-narrowing-conversions,bugprone-narrowing-conversions)
+      SDL_RenderFillRect(context->renderer, &rect);
+      //Draw Tick Numbers
+      textColor = {0, 255, 0};
+      for(int index = 0; index < 4; index++)
+      {
+        std::string tickValue = std::to_string(index*tickDivision);
+        rect.x = ((xpos + (width/2)) - (25/2))-40;
+        rect.y = ypos + 50 + (150*index*tickDivision)/(maxValue)-(30/2);
         rect.w = 25;
-        rect.h = 150;
-        SDL_RenderDrawRect(context->renderer, &rect);
-        //Draw Bar (Vertical)
-        SDL_SetRenderDrawColor(context->renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
-        rect.x = ((xpos + (width/2)) - (25/2))+2;
-        rect.y = ypos + 52;
-        rect.w = 21;
-        rect.h = (150 / (maxValue))*value; // NOLINT(cppcoreguidelines-narrowing-conversions,bugprone-narrowing-conversions)
-        SDL_RenderFillRect(context->renderer, &rect);
-        //Draw Tick Numbers
-        textColor = {0, 255, 0};
-        for(int index = 0; index < 4; index++)
-        {
-            std::string tickValue = std::to_string(index*tickDivision);
-            rect.x = ((xpos + (width/2)) - (25/2))-40;
-            rect.y = ypos+(index*40)+45;
-            rect.w = 25;
-            rect.h = 30;
-            surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, tickValue.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-            Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
-            SDL_RenderCopy(context->renderer, Message, nullptr, &rect);
-            SDL_DestroyTexture(Message);
-            SDL_FreeSurface(surfaceMessage);
-        }
-        //Draw Value text
-        textColor = {255,255,255};
-        std::string valueText = std::to_string((int)value) + " " +std::string(unitName);
-        rect.x = xpos+(50/2)-10;
-        rect.y = ypos+height-45;
-        rect.w = 100;
-        rect.h = 40;
-        surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, valueText.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+        rect.h = 30;
+        surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, tickValue.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
         Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
         SDL_RenderCopy(context->renderer, Message, nullptr, &rect);
         SDL_DestroyTexture(Message);
         SDL_FreeSurface(surfaceMessage);
+      }
+      //Draw Value text
+      textColor = {255,255,255};
+      std::string valueText = std::to_string((int)value) + " " +std::string(unitName);
+      rect.x = xpos+(50/2)-10;
+      rect.y = ypos+height-45;
+      rect.w = 100;
+      rect.h = 40;
+      surfaceMessage = TTF_RenderText_Solid(SansOilGaugeTicks, valueText.c_str(), textColor); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+      Message = SDL_CreateTextureFromSurface(context->renderer, surfaceMessage);
+      SDL_RenderCopy(context->renderer, Message, nullptr, &rect);
+      SDL_DestroyTexture(Message);
+      SDL_FreeSurface(surfaceMessage);
     }
 
 };

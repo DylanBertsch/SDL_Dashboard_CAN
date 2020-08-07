@@ -167,6 +167,7 @@ public:
             }
         }
         //
+        std::cout << sensorData.AFR << std::endl;
     }
 #pragma clang diagnostic pop
 };
