@@ -16,6 +16,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../include"
   "."
   "../kiss_sdl-master"
+  "/usr/local/include/SDL2"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dylan/Desktop/SDL_Dashboard/gui_library.cpp" "/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug/CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o"
@@ -59,6 +60,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "."
   "../kiss_sdl-master"
+  "/usr/local/include/SDL2"
   )
 
 # Targets to which this target links.

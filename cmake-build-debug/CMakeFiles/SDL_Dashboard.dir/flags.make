@@ -7,11 +7,11 @@ C_FLAGS = -g
 
 C_DEFINES = 
 
-C_INCLUDES = -I/usr/include/SDL2 -I/home/dylan/Desktop/SDL_Dashboard -I/home/dylan/Desktop/SDL_Dashboard/include -I/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug -I/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master 
+C_INCLUDES = -I/usr/include/SDL2 -I/home/dylan/Desktop/SDL_Dashboard -I/home/dylan/Desktop/SDL_Dashboard/include -I/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug -I/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master -I/usr/local/include/SDL2 
 
 CXX_FLAGS =  -std=c++14 -g   -std=c++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/SDL2 -I/home/dylan/Desktop/SDL_Dashboard -I/home/dylan/Desktop/SDL_Dashboard/include -I/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug -I/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master 
+CXX_INCLUDES = -I/usr/include/SDL2 -I/home/dylan/Desktop/SDL_Dashboard -I/home/dylan/Desktop/SDL_Dashboard/include -I/home/dylan/Desktop/SDL_Dashboard/cmake-build-debug -I/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master -I/usr/local/include/SDL2 
 

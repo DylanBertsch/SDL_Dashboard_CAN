@@ -5,6 +5,7 @@
 #include <linux/can.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
+#include "SDL2_gfxPrimitives.h"
 
 
 #define Widget_BUTTON 1
@@ -31,6 +32,28 @@
 class Renderer;
 class DashboardWidget;
 class menuPage;
+
+void DrawRectangle_FIX(SDL_Renderer* renderer, int x, int y, int width, int height)
+{
+  uint8_t r,g,b,a;
+  SDL_GetRenderDrawColor(renderer,&r,&g,&b,&a);
+  int lineWidth = 2;
+  thickLineRGBA(renderer,x,y,x+width,y,lineWidth,r,g,b,a);
+  thickLineRGBA(renderer,x,y,x,y+height,lineWidth,r,g,b,a);
+  thickLineRGBA(renderer,x,y+height,x+width,y+height,lineWidth,r,g,b,a);
+  thickLineRGBA(renderer,x+width,y+height,x+width,y,lineWidth,r,g,b,a);
+}
+
+void DrawRectangle_FIX(SDL_Renderer* renderer, SDL_Rect* rect)
+{
+  uint8_t r,g,b,a;
+  SDL_GetRenderDrawColor(renderer,&r,&g,&b,&a);
+  int lineWidth = 2;
+  thickLineRGBA(renderer,rect->x,rect->y,rect->x+rect->w,rect->y,lineWidth,r,g,b,a);
+  thickLineRGBA(renderer,rect->x,rect->y,rect->x,rect->y+rect->h,lineWidth,r,g,b,a);
+  thickLineRGBA(renderer,rect->x,rect->y+rect->h,rect->x+rect->w,rect->y+rect->h,lineWidth,r,g,b,a);
+  thickLineRGBA(renderer,rect->x+rect->w,rect->y+rect->h,rect->x+rect->w,rect->y,lineWidth,r,g,b,a);
+}
 
 struct Context{
     Renderer* RENDERER;//Renderer being used to draw to the screen
@@ -176,12 +199,12 @@ public:
         rect.w = width;
         rect.h = height;
         SDL_SetRenderDrawColor(context->renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawRect(context->renderer,&rect);
+        //DrawRectangle_FIX(context->renderer,&rect);
         rect.x = xpos-1;
         rect.y = ypos-1;
         rect.w = width+1;
         rect.h = height+1;
-        SDL_RenderDrawRect(context->renderer,&rect);
+        //DrawRectangle_FIX(context->renderer,&rect);
       //Draw Graph Name
       SDL_Color textColor = {255, 255, 0};
       SDL_Surface *surfaceMessage;
@@ -203,7 +226,7 @@ public:
       rect.y = ypos + 50;
       rect.w = 25;
       rect.h = 150;
-      SDL_RenderDrawRect(context->renderer, &rect);
+      DrawRectangle_FIX(context->renderer, &rect);
       //Draw Bar (Vertical)
       SDL_SetRenderDrawColor(context->renderer, 0, 255, 255, SDL_ALPHA_OPAQUE);
       rect.x = ((xpos + (width/2)) - (25/2))+2;
@@ -359,7 +382,7 @@ class Grapher : public DashboardWidget{
     rect.w = width-1;
     rect.h = height-1;
     SDL_SetRenderDrawColor(context->renderer,255,255,255,255);
-    //SDL_RenderDrawRect(context->renderer,&rect);
+    //DrawRectangle_FIX(context->renderer,&rect);
     SDL_SetRenderDrawColor(context->renderer,0,255,0,255);
     //Draw coordinate plane(horizontal)
     int y = ypos;
@@ -572,7 +595,7 @@ public:
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(image);
         ////////return addr.can_addr;////////////////////
-        //SDL_RenderDrawRect(renderer,&r);
+        //DrawRectangle_FIX(renderer,&r);
     }
 
 };
@@ -632,7 +655,7 @@ public:
         rect.w = width;
         rect.h = height;
         SDL_SetRenderDrawColor(context->renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawRect(context->renderer, &rect);//Draw the outer rectangle of the console window
+        DrawRectangle_FIX(context->renderer, &rect);//Draw the outer rectangle of the console window
         /*
         //Draw the 2x3 grid
         for(int i = 0; i < 3; i++)//Vertical Lines
@@ -733,7 +756,7 @@ public:
     widgetRect.w = width;
     widgetRect.h = height;
     SDL_SetRenderDrawColor(context->renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-    SDL_RenderDrawRect(context->renderer,&widgetRect);
+    DrawRectangle_FIX(context->renderer,&widgetRect);
         SDL_SetRenderDrawColor(context->renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
     //Draw grid (debugging)
     SDL_Rect textRect;
@@ -823,7 +846,7 @@ public:
         rect.w = width;
         rect.h = height;
         SDL_SetRenderDrawColor(context->renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
-        //SDL_RenderDrawRect(context->renderer,&rect);
+        //DrawRectangle_FIX(context->renderer,&rect);
         //Draw values
         int y = ypos;
         int index = 0;
@@ -898,7 +921,7 @@ public:
         outline.h = height;
         outline.w = width;
         SDL_SetRenderDrawColor(context->renderer, 51, 51, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawRect(context->renderer, &outline);
+        DrawRectangle_FIX(context->renderer, &outline);
         //Draw the Button name
         //Determine if button is selected
         SDL_Color textColor;
@@ -1012,7 +1035,7 @@ void Renderer::render() {
     SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
     SDL_DestroyTexture(Message);
     SDL_FreeSurface(surfaceMessage);
-    //SDL_RenderDrawRect(renderer,&gridRectangle);
+    //DrawRectangle_FIX(renderer,&gridRectangle);
     //End page title drawing
     for(int index = 0; index < currentPage->widgetVector.size(); index++)
     {

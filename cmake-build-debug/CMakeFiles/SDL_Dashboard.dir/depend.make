@@ -60,6 +60,7 @@ CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_version.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_video.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/begin_code.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/close_code.h
+CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/local/include/SDL2/SDL2_gfxPrimitives.h
 
 CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o: ../nanogui-sdl/sdlgui/button.h
 CMakeFiles/SDL_Dashboard.dir/nanogui-sdl/sdlgui/button.cpp.o: ../nanogui-sdl/sdlgui/common.h

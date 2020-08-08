@@ -57,6 +57,8 @@ SDL2/SDL_ttf.h
 -
 iostream
 -
+SDL2_gfxPrimitives.h
+/home/dylan/Desktop/SDL_Dashboard/SDL2_gfxPrimitives.h
 
 /home/dylan/Desktop/SDL_Dashboard/main.cpp
 SDL2/SDL.h
@@ -209,8 +211,8 @@ close_code.h
 /usr/include/SDL2/close_code.h
 
 /usr/include/SDL2/SDL_config.h
-SDL_platform.h
-/usr/include/SDL2/SDL_platform.h
+SDL2/_real_SDL_config.h
+-
 
 /usr/include/SDL2/SDL_cpuinfo.h
 SDL_stdinc.h
@@ -729,4 +731,10 @@ close_code.h
 /usr/include/SDL2/begin_code.h
 
 /usr/include/SDL2/close_code.h
+
+/usr/local/include/SDL2/SDL2_gfxPrimitives.h
+math.h
+-
+SDL.h
+/usr/local/include/SDL2/SDL.h
 

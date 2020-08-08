@@ -174,10 +174,12 @@ list(APPEND NNGUI_BASIC_SOURCE
 
 set(CMAKE_CXX_STANDARD 14)
 include_directories(/home/dylan/Desktop/SDL_Dashboard/kiss_sdl-master)
+include_directories(/usr/local/include/SDL2/)
 FILE(GLOB MyCSources *.c)
 add_executable(SDL_Dashboard main.cpp gui_library.cpp gui_library.h ${NNGUI_EXTRA_SOURCE} ${NNGUI_BASIC_SOURCE})
 
 target_link_libraries(SDL_Dashboard SDL2)
 target_link_libraries(SDL_Dashboard SDL2_ttf)
 target_link_libraries(SDL_Dashboard SDL2_image)
+target_link_libraries(SDL_Dashboard SDL2_gfx)
 target_link_libraries(SDL_Dashboard ${NNGUI_EXTRA_LIBS} ${SDL2_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY})
