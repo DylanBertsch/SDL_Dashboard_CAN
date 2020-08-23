@@ -288,6 +288,9 @@
 		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/nanogui-sdl/sdlgui/window.h">
 			<Option target="SDL_Dashboard"/>
 		</Unit>
+		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/sensorRules.h">
+			<Option target="SDL_Dashboard"/>
+		</Unit>
 		<Unit filename="/home/dylan/Desktop/SDL_Dashboard/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

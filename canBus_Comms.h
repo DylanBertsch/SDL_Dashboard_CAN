@@ -25,17 +25,21 @@
 #define CAN_TARGETAFR_ADDRESS 0x1E01500A
 #define CAN_IGNADV_ADDRESS 0x1E05900A
 #define CAN_SPEED_ADDRESS 0x1E4A900A
+#define CAN_FUEL_LEVEL_ADDRESS 0x1E4AD00A
+
+#define DEBUG
 
 using namespace std;
 
 struct SensorData{
-    float RPM;
-    float CTS;
-    float BATT;
-    float AFR;
-    float IgnitionTiming;
-    float TargetAFR;
-    float Speed;
+    float RPM;//CH0
+    float CTS;//CH1
+    float BATT;//CH2
+    float AFR;//CH3
+    int IgnitionTiming;//CH4
+    float TargetAFR;//CH5
+    int Speed;//CH6
+    int FuelLevel;//CH7
 };
 class CanBus_Comms;
 
@@ -48,6 +52,7 @@ public:
     struct ifreq ifr{};
     struct can_frame frame{};
     SensorData sensorData{};
+    int currentControlInput = -1;
     CanBus_Comms()
     {
         //Run command line commands to bring the can0 interface online.
@@ -74,6 +79,13 @@ public:
             perror("Bind");
             //return 1;
         }
+    }
+
+    int getControlInput()
+    {
+      int output = currentControlInput;
+      currentControlInput = -1;//Invalidate
+      return output;
     }
 
      std::string exec(char* cmd)
@@ -109,6 +121,28 @@ public:
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "hicpp-use-auto"
+/* Every n cycles, update certain low refresh sensors, such as FuelLevel
+ *
+ */
+  int cycleCount = 0;
+#ifdef DEBUG // Apply test conditions.
+  int count = 0;
+  float count2 = 11.3;
+void readFrame()
+{
+  float speedAdjusted = (1.53)*(count)-(12.58);
+  sensorData.Speed = speedAdjusted;
+
+  sensorData.CTS = 185;
+  std::cout << count << std::endl;
+  count++;
+  count2 = count2 + 0.1;
+  sensorData.BATT = count2;
+  std::cout << count2 << std::endl;
+  count = count % 100;
+  usleep(1000000);
+}
+#elif
   void readFrame()
     {
         nbytes = read(s, &frame, sizeof(struct can_frame));
@@ -156,18 +190,32 @@ public:
                 break;
             }
             case CAN_IGNADV_ADDRESS:{
+              if(cycleCount == 10) {
                 float *data = (float *) &(frameData[0]);
-                sensorData.IgnitionTiming = *data;
+                sensorData.IgnitionTiming = (int)*data;
                 break;
+              }
             }
             case CAN_SPEED_ADDRESS:{
               float *data = (float*)&(frameData[0]);
-              sensorData.Speed = *data;
-              break; 
+              float speedAdjusted = (1.53)*(*data)-(12.58);
+              sensorData.Speed = speedAdjusted;
+              break;
             }
+            case CAN_FUEL_LEVEL_ADDRESS:
+            {
+              if(cycleCount == 10) {
+                float *data = (float *) &(frameData[0]);
+                sensorData.FuelLevel = *data;
+                cycleCount = 0;
+                break;
+              }
+            }
+            cycleCount++;
         }
         //
-        std::cout << sensorData.AFR << std::endl;
     }
+#endif
+
 #pragma clang diagnostic pop
 };

@@ -4,7 +4,7 @@
 #include "gui_library.h"
 #include "canBus_Comms.h"
 #include <unistd.h>
-
+#include "sensorRules.h"
 
 
 #include <memory>
@@ -29,16 +29,17 @@
 #endif
 int count = 0;
 void testCanBusRead();
+void beginButtonFunc();
 CanBus_Comms canbus_comms;
 TextView* textView;
-
 void frameThread()
 {
   while(true) {
     canbus_comms.readFrame();
   }
 }
-
+Grapher* grapher;
+sensorWarningRules* warningRules;
 int main(int /* argc */, char ** /* argv */)
 {
   char rendername[256] = {0};
@@ -47,7 +48,7 @@ int main(int /* argc */, char ** /* argv */)
   SDL_Init(SDL_INIT_EVERYTHING);   // Initialize SDL2
   TTF_Init();
   SDL_Window *window;        // Declare a pointer to an SDL_Window
-
+  warningRules = new sensorWarningRules("/home/dylan/sensorRules.txt");
 
 
   int winWidth = 850;
@@ -115,7 +116,7 @@ int main(int /* argc */, char ** /* argv */)
   canBusPage.addWidget(&testBus_Button);
   //mainPage.addWidget(&oilGraph);
   //mainPage.addWidget(&RPM_Widget);
-  pagePicker Drawer1 = pagePicker(0,25,600,500);
+  pagePicker Drawer1 = pagePicker(5,25,600,500);
   pagePicker::iconStruct icon1;
   strcpy(icon1.iconName,"Main Dash");
   icon1.iconPath = "/home/dylan/Desktop/icon1.bmp";
@@ -143,21 +144,26 @@ int main(int /* argc */, char ** /* argv */)
   oilGraph.onClick(&RENDERER);
   Coolant_Widget.setInitalConditions(150,1000,175,1099);
   RPM_Widget.setInitalConditions(0,10000,1000,10009);
-  Grapher grapher = Grapher(25,100,400,400);
-  grapher.setScale(0,0,100,100);
-  graphPage.addWidget(&grapher);
+  grapher = new Grapher(200,200,400,400);
+  Button beginRun = Button(0,600,"Begin");
+  beginRun.setOnClickHandler(beginButtonFunc);
+  graphPage.addWidget(&beginRun);
+  grapher->setScale(0,0,100,100);
+  graphPage.addWidget(grapher);
   std::thread dataThread(frameThread);
   bool quit = false;
   try
   {
     SDL_Event e;
     float count2 = 0.0;
+    TTF_Font *Sans = TTF_OpenFont("/home/dylan/Desktop/sans/OpenSans-Regular.ttf", 40);
     while(true)
     {
       SDL_Event event;
       while( SDL_PollEvent( &e ) != 0 )
       {
         const Uint8* keyboard_state_array = SDL_GetKeyboardState(NULL);
+        int currentInputState = canbus_comms.getControlInput();
         //SDL_WaitEventTimeout(&event,50);
         if(keyboard_state_array[SDL_SCANCODE_DOWN])
         {
@@ -187,7 +193,6 @@ int main(int /* argc */, char ** /* argv */)
         }
       }
       oilGraph.setValue(25);
-      grapher.graphPoint(count2,0+20*sin(count2/6.18)+count2);
       // Render the rect to the screen
       SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
       batteryGraph.setValue(canbus_comms.sensorData.BATT);
@@ -204,10 +209,12 @@ int main(int /* argc */, char ** /* argv */)
       Coolant_Widget.setValue((int)(155));
       SDL_RenderClear(renderer);
       RENDERER.render();
+      warningRules->checkRules(renderer,canbus_comms);
+      //Render warning if applicable
+
+      /////
       SDL_RenderPresent(renderer);
-      count = count + 1;
-      usleep(100);
-      count2 = count2 + 0.05;
+      usleep(10000);
     }
   }
   catch (const std::runtime_error &e)
@@ -225,6 +232,9 @@ int main(int /* argc */, char ** /* argv */)
 
 void testCanBusRead()
 {
+#ifdef DEBUG
+  canbus_comms.readFrame();
+#endif
   std::string output;
   if(canbus_comms.getStatus() == -1)
   {
@@ -235,5 +245,13 @@ void testCanBusRead()
     canbus_comms.readFrame();
     output = std::to_string(canbus_comms.sensorData.CTS);
     textView->insertString(output.c_str());
+  }
+}
+
+void beginButtonFunc()
+{
+  for(float x = 0.0; x < 100; x = x + 0.001)
+  {
+    grapher->graphPoint(x,20*sin(x)+50);
   }
 }

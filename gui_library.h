@@ -33,17 +33,6 @@ class Renderer;
 class DashboardWidget;
 class menuPage;
 
-void DrawRectangle_FIX(SDL_Renderer* renderer, int x, int y, int width, int height)
-{
-  uint8_t r,g,b,a;
-  SDL_GetRenderDrawColor(renderer,&r,&g,&b,&a);
-  int lineWidth = 2;
-  thickLineRGBA(renderer,x,y,x+width,y,lineWidth,r,g,b,a);
-  thickLineRGBA(renderer,x,y,x,y+height,lineWidth,r,g,b,a);
-  thickLineRGBA(renderer,x,y+height,x+width,y+height,lineWidth,r,g,b,a);
-  thickLineRGBA(renderer,x+width,y+height,x+width,y,lineWidth,r,g,b,a);
-}
-
 void DrawRectangle_FIX(SDL_Renderer* renderer, SDL_Rect* rect)
 {
   uint8_t r,g,b,a;
@@ -1051,7 +1040,6 @@ void Renderer::render() {
             }
             widPTR->onDraw(this);
         }
-
     }
 }
 ///////////////////End Renderer Functions////////////////////////

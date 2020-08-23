@@ -12,6 +12,7 @@ CMakeFiles/SDL_Dashboard.dir/gui_library.cpp.o: ../gui_library.cpp
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../canBus_Comms.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../gui_library.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../main.cpp
+CMakeFiles/SDL_Dashboard.dir/main.cpp.o: ../sensorRules.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_assert.h
 CMakeFiles/SDL_Dashboard.dir/main.cpp.o: /usr/include/SDL2/SDL_atomic.h

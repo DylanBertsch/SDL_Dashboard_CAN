@@ -13,6 +13,7 @@ CMakeFiles/SDL_Dashboard.dir/main.cpp.o
  /home/dylan/Desktop/SDL_Dashboard/canBus_Comms.h
  /home/dylan/Desktop/SDL_Dashboard/gui_library.h
  /home/dylan/Desktop/SDL_Dashboard/main.cpp
+ /home/dylan/Desktop/SDL_Dashboard/sensorRules.h
  /usr/include/SDL2/SDL.h
  /usr/include/SDL2/SDL_assert.h
  /usr/include/SDL2/SDL_atomic.h
