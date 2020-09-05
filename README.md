@@ -9,8 +9,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![Home Screen](https://github.com/dbbert7729/SDL_Dashboard_CAN/blob/master/s1.jpg)
+![Dashboard](https://github.com/dbbert7729/SDL_Dashboard_CAN/blob/master/s1.jpg)
 ![Home Screen](https://github.com/dbbert7729/SDL_Dashboard_CAN/blob/master/s2.jpg)
+![Graph Widget](https://github.com/dbbert7729/SDL_Dashboard_CAN/blob/master/s3.jpg)
 
 
 ### Built With
