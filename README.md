@@ -28,7 +28,8 @@
   </a>
 
   <h3 align="center">SDL CAN Dashboard</h3>
-
+![alt text](https://github.com/dbbert7729/SDL_Dashboard_CAN/blob/master/s1.jpg)
+![alt text](https://github.com/dbbert7729/SDL_Dashboard_CAN/blob/master/s2.jpg)
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 Screenshots coming soon!
