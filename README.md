@@ -1,10 +1,3 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
   <h3 align="center">SDL CAN Dashboard</h3>
 
 <!-- ABOUT THE PROJECT -->
@@ -27,7 +20,7 @@ Simply use the CMakeLists file to create the necessary Makefile; and run make.
 This project is intended to be used with a Holley EFI engine management setup paired with a canbus adapter. Simply connect the Raspberry PI or Linux computer to the CAN network and run the program.
 One of the main goals of this project is to give the user the ability to create a custom dashboard layout while maintating a clear/concise telemetry interface. 
 The main.cpp layout file is the one I personally use, and therefore serves as an example for users to follow.
-Additionaly, Sensor rules(alarms) can be created for ensuring engine components stay within safe operating regions. 
+Additionally, Sensor rules(alarms) can be created for ensuring engine components stay within safe operating regions. 
 
 <!-- ROADMAP -->
 ## Roadmap
